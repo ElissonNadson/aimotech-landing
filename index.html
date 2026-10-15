@@ -1636,15 +1636,10 @@
                 </p>
               </div>
             </div>
-            <div class="project-specs" style="align-items: center; justify-content: space-between;">
-              <div>
-                <span data-i18n="algodao_p1">Culinária Baiana &amp; Memória</span>
-                <span> · </span>
-                <span data-i18n="algodao_p2">Arcade &amp; Plataforma Vertical</span>
-              </div>
-              <button type="button" class="btn btn-secondary-dark btn-compact" onclick="openHtml5GameModal()" data-i18n="btn_play_html5">
-                Testar Demo HTML5 ▶
-              </button>
+            <div class="project-specs">
+              <span data-i18n="algodao_p1">Culinária Baiana &amp; Memória</span>
+              <span> · </span>
+              <span data-i18n="algodao_p2">Arcade &amp; Plataforma Vertical</span>
             </div>
           </article>
 
@@ -2088,195 +2083,7 @@
   </div>
 
 
-  <!-- MODAL DE JOGO HTML5 EMBARCADO (Demonstração real em <canvas> / pronta para iframe Unity WebGL ou Godot HTML5) -->
-  <div class="modal-backdrop" id="html5GameModal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
-    <div class="modal-panel" style="max-width: 480px; background-color: #171717; color: #F8F6F2; border-color: rgba(248,246,242,0.18); padding: 24px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-        <h2 id="gameModalTitle" style="font-size: 1.05rem; color: #FFFFFF;" data-i18n="game_modal_title">Algodão Doce — Protótipo Jogável HTML5 (Canvas)</h2>
-        <button type="button" onclick="closeHtml5GameModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #F8F6F2;" aria-label="Fechar">×</button>
-      </div>
-      <p style="font-size: 0.8125rem; color: #B8B4AE; margin-bottom: 12px;" data-i18n="game_modal_instructions">
-        Use as setas ◀ ▶ (ou toque nos botões abaixo) para saltar entre os doces baianos antes que as plataformas despenquem!
-      </p>
-      <div style="position: relative; border-radius: 6px; overflow: hidden; border: 1px solid rgba(248,246,242,0.16); background: #204A7A;">
-        <canvas id="algodaoCanvas" width="420" height="460" style="width: 100%; height: auto; display: block;"></canvas>
-      </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px;">
-        <button type="button" class="btn btn-secondary-dark btn-compact" onmousedown="gameInput(-1)" ontouchstart="gameInput(-1)" onmouseup="gameInput(0)" ontouchend="gameInput(0)">◀ Esquerda</button>
-        <button type="button" class="btn btn-primary btn-compact" onclick="restartHtml5Game()">Reiniciar</button>
-        <button type="button" class="btn btn-secondary-dark btn-compact" onmousedown="gameInput(1)" ontouchstart="gameInput(1)" onmouseup="gameInput(0)" ontouchend="gameInput(0)">Direita ▶</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-
-    // Mini-Jogo HTML5 Canvas (Algodão Doce Vertical Slice Demo)
-    let gameLoopId = null;
-    let gameMoveDir = 0;
-    let player = { x: 210, y: 360, vx: 0, vy: -8, r: 14, score: 0 };
-    let platforms = [];
-    let candies = [];
-
-    function initHtml5Game() {
-      player = { x: 210, y: 360, vx: 0, vy: -9, r: 14, score: 0 };
-      platforms = [
-        { x: 160, y: 410, w: 100, h: 14, type: "normal", timer: 0 },
-        { x: 70, y: 325, w: 90, h: 14, type: "normal", timer: 0 },
-        { x: 240, y: 245, w: 92, h: 14, type: "fragile", timer: 0 },
-        { x: 110, y: 165, w: 90, h: 14, type: "normal", timer: 0 },
-        { x: 250, y: 85, w: 92, h: 14, type: "fragile", timer: 0 }
-      ];
-      candies = [
-        { x: 115, y: 295, collected: false },
-        { x: 285, y: 215, collected: false },
-        { x: 155, y: 135, collected: false }
-      ];
-    }
-
-    function gameInput(dir) {
-      gameMoveDir = dir;
-    }
-
-    function openHtml5GameModal() {
-      document.getElementById("html5GameModal").classList.add("open");
-      initHtml5Game();
-      if (!gameLoopId) {
-        gameLoopId = requestAnimationFrame(updateHtml5Game);
-      }
-    }
-
-    function closeHtml5GameModal() {
-      document.getElementById("html5GameModal").classList.remove("open");
-      if (gameLoopId) {
-        cancelAnimationFrame(gameLoopId);
-        gameLoopId = null;
-      }
-    }
-
-    function restartHtml5Game() {
-      initHtml5Game();
-    }
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") gameMoveDir = -1;
-      if (e.key === "ArrowRight") gameMoveDir = 1;
-    });
-    window.addEventListener("keyup", (e) => {
-      if (e.key === "ArrowLeft" || e.key === "ArrowRight") gameMoveDir = 0;
-    });
-
-    function updateHtml5Game() {
-      const canvas = document.getElementById("algodaoCanvas");
-      if (!canvas || !document.getElementById("html5GameModal").classList.contains("open")) {
-        gameLoopId = null;
-        return;
-      }
-      const ctx = canvas.getContext("2d");
-      ctx.fillStyle = "#1B2845";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Movimento horizontal e gravidade
-      player.vx = gameMoveDir * 4.5;
-      player.x += player.vx;
-      if (player.x < 16) player.x = 16;
-      if (player.x > canvas.width - 16) player.x = canvas.width - 16;
-
-      player.vy += 0.34;
-      player.y += player.vy;
-
-      // Subida da câmera quando a personagem alcança o topo
-      if (player.y < 190 && player.vy < 0) {
-        const shift = -player.vy;
-        player.y = 190;
-        player.score += Math.round(shift);
-        platforms.forEach(p => {
-          p.y += shift;
-          if (p.y > canvas.height) {
-            p.y = 10;
-            p.x = 30 + Math.random() * (canvas.width - 130);
-            p.type = Math.random() > 0.45 ? "fragile" : "normal";
-            p.timer = 0;
-          }
-        });
-        candies.forEach(c => {
-          c.y += shift;
-          if (c.y > canvas.height) {
-            c.y = 15;
-            c.x = 50 + Math.random() * (canvas.width - 100);
-            c.collected = false;
-          }
-        });
-      }
-
-      // Colisão com plataformas doces (apenas caindo)
-      if (player.vy > 0) {
-        platforms.forEach(p => {
-          if (
-            p.timer < 25 &&
-            player.x + 10 > p.x &&
-            player.x - 10 < p.x + p.w &&
-            player.y + player.r >= p.y &&
-            player.y + player.r <= p.y + p.h + 10
-          ) {
-            player.vy = -9.6;
-            player.score += 10;
-            if (p.type === "fragile") p.timer = 1;
-          }
-        });
-      }
-
-      // Desenha plataformas (Azuis = fixas, Terracota = despencam após pisar conforme GDD)
-      platforms.forEach(p => {
-        if (p.timer > 0) p.timer += 1;
-        if (p.timer >= 25) return;
-        ctx.fillStyle = p.type === "fragile" ? "#B75A36" : "#F8F6F2";
-        ctx.fillRect(p.x, p.y + (p.timer * 1.5), p.w, p.h);
-        ctx.fillStyle = "#7C4DFF";
-        ctx.fillRect(p.x, p.y + (p.timer * 1.5), p.w, 4);
-      });
-
-      // Coleta de confeitos
-      candies.forEach(c => {
-        if (!c.collected) {
-          const dx = player.x - c.x;
-          const dy = player.y - c.y;
-          if (Math.hypot(dx, dy) < player.r + 8) {
-            c.collected = true;
-            player.score += 50;
-          }
-          ctx.fillStyle = "#6CD4A6";
-          ctx.beginPath();
-          ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      });
-
-      // Desenha personagem Algodão Doce
-      ctx.fillStyle = "#8D5524";
-      ctx.beginPath();
-      ctx.arc(player.x, player.y - 12, 13, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = "#F8F6F2";
-      ctx.beginPath();
-      ctx.arc(player.x, player.y + 2, 10, 0, Math.PI * 2);
-      ctx.fill();
-
-      // HUD de Pontuação
-      ctx.fillStyle = "#F8F6F2";
-      ctx.font = "bold 14px Manrope, sans-serif";
-      ctx.fillText("SCORE: " + player.score, 16, 28);
-      ctx.font = "12px Inter, sans-serif";
-      ctx.fillStyle = "#B8B4AE";
-      ctx.fillText("HTML5 Canvas · 60 FPS", 275, 28);
-
-      // Reinicia se cair na base
-      if (player.y > canvas.height + 30) {
-        initHtml5Game();
-      }
-
-      gameLoopId = requestAnimationFrame(updateHtml5Game);
-    }
+  
 
     const bxpPhotos = [
       {
@@ -2358,9 +2165,6 @@
         algodao_desc: "Experiência infantojuvenil que trabalha território de forma lúdica por meio de alimentação, modos de fazer, memória, infância e relações intergeracionais, ampliando a leitura do que pode constituir matéria territorial para criação.",
         algodao_p1: "Culinária Baiana & Memória",
         algodao_p2: "Arcade & Plataforma Vertical",
-        btn_play_html5: "Testar Demo HTML5 ▶",
-        game_modal_title: "Algodão Doce — Protótipo Jogável HTML5 (Canvas)",
-        game_modal_instructions: "Use as setas ◀ ▶ (ou toque nos botões abaixo) para saltar entre os doces baianos antes que as plataformas despenquem!",
         wini_badge: "PRODUTO DIGITAL · INTELIGÊNCIA ARTIFICIAL",
         wini_desc: "Projeto que demonstra a capacidade da Aimotech para desenvolver produtos digitais e soluções com inteligência artificial, conectando acervo referencial, curadoria de dados e experiência de usuário intuitiva.",
         wini_p1: "Inteligência Artificial & NLP",
@@ -2479,9 +2283,6 @@
         algodao_desc: "Experiencia infantojuvenil que aborda el territorio de forma lúdica a través de la alimentación, los saberes locales, la memoria, la infancia y las relaciones intergeneracionales, ampliando la lectura de lo que constituye materia territorial para la creación.",
         algodao_p1: "Gastronomía & Memoria Afectiva",
         algodao_p2: "Arcade & Plataformas Vertical",
-        btn_play_html5: "Probar Demo HTML5 ▶",
-        game_modal_title: "Algodão Doce — Prototipo Jugable HTML5 (Canvas)",
-        game_modal_instructions: "Usa las flechas ◀ ▶ (o toca los botones abajo) para saltar entre los dulces antes de que caigan las plataformas.",
         wini_badge: "PRODUCTO DIGITAL · INTELIGENCIA ARTIFICIAL",
         wini_desc: "Proyecto que demuestra la capacidad de Aimotech para desarrollar productos digitales y soluciones con inteligencia artificial, conectando acervo referencial, curaduría de datos y experiencia de usuario intuitiva.",
         wini_p1: "Inteligencia Artificial & NLP",
