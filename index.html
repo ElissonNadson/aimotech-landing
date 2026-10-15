@@ -541,6 +541,67 @@
       position: relative;
     }
 
+    .trilhas-composite-frame {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 14px;
+      padding: 14px;
+      background-color: var(--graphite-surface);
+    }
+
+    .trilhas-composite-frame .territorio-art {
+      width: 100%;
+      height: 332px;
+      object-fit: cover;
+      border-radius: var(--radius-control);
+      border: 1px solid var(--hairline-dark);
+    }
+
+    .trilhas-composite-frame .character-3d-box {
+      width: 100%;
+      height: 332px;
+      background: radial-gradient(circle at center, #2e261f 0%, #1a1715 100%);
+      border: 1px solid var(--hairline-dark);
+      border-radius: var(--radius-control);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trilhas-composite-frame .character-3d-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .trilhas-composite-frame .character-3d-box:hover img {
+      transform: scale(1.08) translateY(-4px);
+    }
+
+    .trilhas-composite-frame .character-badge-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      text-align: center;
+      font-size: 0.6875rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background-color: rgba(23, 23, 23, 0.85);
+      backdrop-filter: blur(4px);
+      color: #6CD4A6;
+      border: 1px solid rgba(108, 212, 166, 0.3);
+      border-radius: 999px;
+      padding: 4px 8px;
+    }
+
     .project-media-frame img {
       width: 100%;
       height: 360px;
@@ -1522,9 +1583,15 @@
         <!-- PROTAGONISTA: TRILHAS DA TERRA -->
         <article class="protagonist-feature">
           <div class="project-media-frame">
-            <img src="assets/fotos/hero_territorio.jpg" alt="Pesquisa territorial que origina a narrativa e mecânicas de Trilhas da Terra" />
+            <div class="trilhas-composite-frame">
+              <img class="territorio-art" src="assets/fotos/hero_territorio.jpg" alt="Pesquisa territorial de campo e comunidade de Trilhas da Terra" />
+              <div class="character-3d-box">
+                <img src="assets/fotos/comb_trilhas.png" alt="Render 3D do personagem protagonista do jogo Trilhas da Terra" />
+                <span class="character-badge-label">Protagonista 3D</span>
+              </div>
+            </div>
             <div class="project-media-bar">
-              <span data-i18n="trilhas_media_cap">Pesquisa de campo, narrativa territorial e direção de arte 3D</span>
+              <span data-i18n="trilhas_media_cap">Pesquisa territorial de campo &amp; Modelagem 3D autoral do protagonista</span>
               <span>prioridade 2026</span>
             </div>
           </div>
