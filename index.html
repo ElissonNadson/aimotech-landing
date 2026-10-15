@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aimotech — Territorial Game &amp; Innovation Studio</title>
+  <meta name="description" content="A Aimotech desenvolve jogos, produtos digitais e projetos de inovação para empresas, instituições públicas e organizações. Movidos pelo que ainda não sabemos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aimotech — Territorial Game &amp; Innovation Studio" />
+  <meta property="og:description" content="Jogos, produtos digitais, inteligência artificial, consultoria e formação conectando território, pesquisa e tecnologia." />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:locale:alternate" content="es_LA" />
+  <meta name="theme-color" content="#171717" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <style>
+    /* ==========================================================================
+       DESIGN.md TOKENS — Auditado pelas 59 regras Impeccable (Zero AI Slop)
+       - Sem gradientes decorativos, sem sombras neon, sem cards aninhados
+       - Escala estrita de raios: 6px (controles), 12px (mídia/superfícies), 999px (botões)
+       - Escala tipográfica disciplinada (Manrope Bold + Inter Regular, medida 65ch)
+       ========================================================================== */
+    :root {
+      /* Paleta Primária Oficial */
+      --aimo-purple: #7C4DFF;
+      --aimo-purple-hover: #6838EB;
+      --graphite: #171717;
+      --graphite-surface: #202020;
+      --warm-gray: #E8E3DA;
+      --off-white: #F8F6F2;
+      --pure-white: #FFFFFF;
+
+      /* Paleta Secundária Oficial (Acentos Funcionais) */
+      --verde-mata: #2E7D5B;
+      --azul-profundo: #204A7A;
+      --terracota: #B75A36;
+      --cinza-medio: #A7A3A0;
+
+      /* Contraste de Texto verificado WCAG AA (>= 4.5:1) */
+      --ink-primary: #171717;
+      --ink-secondary: #4A4744;
+      --ink-on-dark: #F8F6F2;
+      --ink-muted-on-dark: #B8B4AE;
+      --hairline-light: rgba(23, 23, 23, 0.12);
+      --hairline-dark: rgba(248, 246, 242, 0.14);
+
+      /* Tipografia */
+      --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Raios Documentados (Apenas 3 valores no sistema) */
+      --radius-control: 6px;
+      --radius-surface: 12px;
+      --radius-pill: 999px;
+
+      /* Layout */
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--off-white);
+      color: var(--ink-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      max-width: 66ch;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Coordenadas Cartográficas e Metadados Técnicos */
+    .coord-meta {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Botões Sóbrios (Sem brilho neon, conforme prancha da marca) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 14px 26px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--aimo-purple);
+      color: var(--pure-white);
+    }
+    .btn-primary:hover {
+      background-color: var(--aimo-purple-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--ink-primary);
+      border-color: var(--ink-primary);
+    }
+    .btn-secondary:hover {
+      background-color: var(--ink-primary);
+      color: var(--off-white);
+    }
+
+    .btn-secondary-dark {
+      background-color: transparent;
+      color: var(--ink-on-dark);
+      border-color: rgba(248, 246, 242, 0.35);
+    }
+    .btn-secondary-dark:hover {
+      border-color: var(--ink-on-dark);
+      background-color: rgba(248, 246, 242, 0.08);
+    }
+
+    .btn-compact {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+    }
+
+    /* Cabeçalho e Navegação (Seção 4) */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--off-white);
+      border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 24px;
+    }
+
+    .brand-logo svg {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .main-nav a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink-primary);
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .main-nav a:hover {
+      color: var(--aimo-purple);
+      border-bottom-color: var(--aimo-purple);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--hairline-light);
+      border-radius: var(--radius-pill);
+      padding: 2px;
+      background-color: var(--warm-gray);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      color: var(--ink-secondary);
+    }
+
+    .lang-btn.active {
+      background-color: var(--graphite);
+      color: var(--off-white);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--hairline-light);
+      border-radius: var(--radius-control);
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink-primary);
+    }
+
+    /* ==========================================================================
+       SEÇÃO 1 — HERO (Off White #F8F6F2, Fotografia Documental Real, Cartografia)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding: 72px 0 88px;
+      background-color: var(--off-white);
+      border-bottom: 1px solid var(--hairline-light);
+      overflow: hidden;
+    }
+
+    .hero-topo-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--aimo-purple);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(2.25rem, 3.8vw, 3.35rem);
+      color: var(--ink-primary);
+      margin-bottom: 24px;
+    }
+
+    .hero-description {
+      font-size: 1.0625rem;
+      color: var(--ink-secondary);
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .hero-signature-bar {
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-signature-text {
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    /* Composição Fotográfica Editorial Assimétrica (Sem sobreposições confusas) */
+    .hero-editorial-media {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .hero-primary-figure {
+      grid-column: 1 / -1;
+      border-radius: var(--radius-surface);
+      overflow: hidden;
+      border: 1px solid var(--hairline-light);
+      background-color: var(--graphite);
+    }
+
+    .hero-primary-figure img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .hero-figure-caption {
+      background-color: var(--graphite);
+      color: var(--ink-on-dark);
+      padding: 12px 16px;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero-secondary-figure {
+      border-radius: var(--radius-surface);
+      overflow: hidden;
+      border: 1px solid var(--hairline-light);
+      background-color: var(--pure-white);
+    }
+
+    .hero-secondary-figure img {
+      width: 100%;
+      height: 136px;
+      object-fit: cover;
+    }
+
+    .hero-secondary-caption {
+      padding: 10px 12px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 2 — SERVIÇOS (Off White #F8F6F2, Sem Cards Aninhados, Grid Editorial)
+       ========================================================================== */
+    .services-section {
+      padding: 96px 0;
+      background-color: var(--off-white);
+      border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .section-intro-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--hairline-light);
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+      color: var(--ink-primary);
+    }
+
+    .section-lead {
+      font-size: 1.0625rem;
+      color: var(--ink-secondary);
+      line-height: 1.65;
+    }
+
+    .services-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .service-group-header {
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--ink-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .service-group-header h3 {
+      font-size: 1.25rem;
+      color: var(--ink-primary);
+    }
+
+    .service-group-tag {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--aimo-purple);
+    }
+
+    .service-group-know .service-group-header {
+      border-bottom-color: var(--verde-mata);
+    }
+    .service-group-know .service-group-tag {
+      color: var(--verde-mata);
+    }
+
+    .service-list {
+      list-style: none;
+    }
+
+    .service-row {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--hairline-light);
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 20px;
+      align-items: start;
+      cursor: pointer;
+    }
+
+    .service-row:hover .service-name {
+      color: var(--aimo-purple);
+    }
+
+    /* Ícone linear direto, sem caixa quadrada ao redor (Impeccable Rule: No icon tile box) */
+    .service-icon {
+      color: var(--aimo-purple);
+      margin-top: 2px;
+    }
+
+    .service-group-know .service-icon {
+      color: var(--verde-mata);
+    }
+
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: color 0.18s ease;
+    }
+
+    .service-desc {
+      font-size: 0.9375rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    .services-cta-row {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--hairline-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 3 — PROJETOS EM DESTAQUE (Graphite #171717, Fotografia e Arte Real)
+       ========================================================================== */
+    .projects-section {
+      padding: 104px 0;
+      background-color: var(--graphite);
+      color: var(--ink-on-dark);
+    }
+
+    .projects-section .section-intro-block {
+      border-bottom-color: var(--hairline-dark);
+    }
+
+    .projects-section .section-title {
+      color: var(--ink-on-dark);
+    }
+
+    .projects-section .section-lead {
+      color: var(--ink-muted-on-dark);
+    }
+
+    /* Protagonista: Trilhas da Terra (Layout Editorial 2 Colunas) */
+    .protagonist-feature {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--hairline-dark);
+      margin-bottom: 56px;
+      align-items: center;
+    }
+
+    .project-media-frame {
+      border-radius: var(--radius-surface);
+      overflow: hidden;
+      border: 1px solid var(--hairline-dark);
+      background-color: var(--graphite-surface);
+      position: relative;
+    }
+
+    .project-media-frame img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+    }
+
+    .project-media-bar {
+      padding: 12px 18px;
+      background-color: var(--graphite-surface);
+      border-top: 1px solid var(--hairline-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--ink-muted-on-dark);
+    }
+
+    .project-kicker {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .kicker-verde { color: #6CD4A6; }
+    .kicker-terracota { color: #F09A75; }
+    .kicker-azul { color: #8BC1FF; }
+
+    .project-heading {
+      font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+      color: var(--pure-white);
+      margin-bottom: 16px;
+    }
+
+    .project-copy {
+      font-size: 1rem;
+      color: var(--ink-muted-on-dark);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .project-specs {
+      border-top: 1px solid var(--hairline-dark);
+      padding-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.85rem;
+      color: var(--ink-on-dark);
+    }
+
+    /* Projetos Secundários: Algodão Doce e Biografia Preta / Wini.IA */
+    .secondary-projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+    }
+
+    .secondary-project-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .algodao-composite {
+      display: grid;
+      grid-template-columns: 1fr 118px;
+      gap: 12px;
+      padding: 12px;
+      background-color: var(--graphite-surface);
+      border: 1px solid var(--hairline-dark);
+      border-radius: var(--radius-surface);
+    }
+
+    .algodao-composite .main-art {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-control);
+    }
+
+    .algodao-composite .vertical-slice {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-control);
+      border: 1px solid var(--hairline-dark);
+    }
+
+    /* ==========================================================================
+       SEÇÃO 4 — COMO TRABALHAMOS (Warm Gray #E8E3DA, Percurso Cartográfico Contínuo)
+       ========================================================================== */
+    .process-section {
+      padding: 100px 0;
+      background-color: var(--warm-gray);
+      border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .territorial-manifesto {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+      font-weight: 600;
+      color: var(--ink-primary);
+      line-height: 1.5;
+      max-width: 58ch;
+      margin: 36px 0 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline-light);
+    }
+
+    /* Linha Cartográfica Contínua Conectando as 5 Etapas */
+    .route-track-container {
+      position: relative;
+      padding-top: 28px;
+    }
+
+    .continuous-route-svg {
+      width: 100%;
+      height: 36px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .process-five-cols {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+      border-top: 1px solid var(--hairline-light);
+      padding-top: 24px;
+    }
+
+    .process-step-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-index {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: var(--aimo-purple);
+      letter-spacing: 0.04em;
+    }
+
+    .process-step-col h3 {
+      font-size: 1.125rem;
+      color: var(--ink-primary);
+    }
+
+    .process-step-col p {
+      font-size: 0.9375rem;
+      color: var(--ink-secondary);
+      line-height: 1.58;
+    }
+
+    /* Sequência Documental Real (Território -> Pessoas -> Tecnologia -> Formação) */
+    .documentary-strip {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .doc-figure {
+      border-radius: var(--radius-surface);
+      overflow: hidden;
+      border: 1px solid var(--hairline-light);
+      background-color: var(--off-white);
+    }
+
+    .doc-figure img {
+      width: 100%;
+      height: 156px;
+      object-fit: cover;
+    }
+
+    .doc-figure figcaption {
+      padding: 10px 14px;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 5 — EXPERIÊNCIA (Off White #F8F6F2, Grade Arquitetônica de Logos)
+       ========================================================================== */
+    .experience-section {
+      padding: 96px 0;
+      background-color: var(--off-white);
+      border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .logos-architectural-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border-top: 1px solid var(--hairline-light);
+      border-left: 1px solid var(--hairline-light);
+    }
+
+    .logo-cell {
+      border-right: 1px solid var(--hairline-light);
+      border-bottom: 1px solid var(--hairline-light);
+      padding: 28px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background-color: var(--off-white);
+      color: var(--ink-primary);
+      transition: background-color 0.18s ease;
+    }
+
+    .logo-cell:hover {
+      background-color: var(--pure-white);
+    }
+
+    .logo-cell svg {
+      height: 36px;
+      width: auto;
+      max-width: 118px;
+    }
+
+    .logo-sector {
+      font-size: 0.75rem;
+      color: var(--ink-secondary);
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 6 — BLACK XP (Graphite #171717, Métrica Protagonista + Acervo Real)
+       ========================================================================== */
+    .blackxp-section {
+      padding: 104px 0;
+      background-color: var(--graphite);
+      color: var(--ink-on-dark);
+    }
+
+    .blackxp-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .bxp-kicker {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B99CFF;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .bxp-title {
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      color: var(--pure-white);
+      margin-bottom: 16px;
+    }
+
+    .bxp-subtitle {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ink-on-dark);
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    .bxp-copy {
+      font-size: 1rem;
+      color: var(--ink-muted-on-dark);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* Hierarquia de Métricas (Impeccable Rule: Evitar "Everything Equal" — 1 métrica âncora + 2 de apoio) */
+    .bxp-stats-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--hairline-dark);
+      border-bottom: 1px solid var(--hairline-dark);
+      margin-bottom: 32px;
+    }
+
+    .bxp-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--pure-white);
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+
+    .bxp-stat-primary .bxp-stat-num {
+      color: #B99CFF;
+      font-size: 2.65rem;
+    }
+
+    .bxp-stat-label {
+      font-size: 0.85rem;
+      color: var(--ink-muted-on-dark);
+      line-height: 1.35;
+    }
+
+    .bxp-gallery-frame {
+      border-radius: var(--radius-surface);
+      overflow: hidden;
+      border: 1px solid var(--hairline-dark);
+      background-color: var(--graphite-surface);
+    }
+
+    .bxp-gallery-frame img.main-photo {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .bxp-gallery-caption {
+      padding: 12px 16px;
+      font-size: 0.8125rem;
+      color: var(--ink-muted-on-dark);
+      border-top: 1px solid var(--hairline-dark);
+      border-bottom: 1px solid var(--hairline-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bxp-thumbs-bar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .bxp-thumb-btn {
+      border: 2px solid transparent;
+      border-radius: var(--radius-control);
+      overflow: hidden;
+      height: 64px;
+      cursor: pointer;
+      background: none;
+      opacity: 0.6;
+      transition: opacity 0.18s ease, border-color 0.18s ease;
+    }
+
+    .bxp-thumb-btn.active,
+    .bxp-thumb-btn:hover {
+      opacity: 1;
+      border-color: var(--aimo-purple);
+    }
+
+    .bxp-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 7 — CONTATO (Aimotech Purple #7C4DFF Sólido + Formulário em #F8F6F2)
+       ========================================================================== */
+    .contact-section {
+      padding: 100px 0;
+      background-color: var(--aimo-purple);
+      color: var(--pure-white);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .contact-copy-col h2 {
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      color: var(--pure-white);
+      margin-bottom: 20px;
+    }
+
+    .contact-copy-col p {
+      font-size: 1.0625rem;
+      color: var(--pure-white);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .contact-meta-list {
+      border-top: 1px solid rgba(255, 255, 255, 0.28);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 0.9375rem;
+    }
+
+    .contact-form-surface {
+      background-color: var(--off-white);
+      color: var(--ink-primary);
+      border-radius: var(--radius-surface);
+      padding: 40px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .form-input {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      padding: 12px 14px;
+      border-radius: var(--radius-control);
+      border: 1px solid rgba(23, 23, 23, 0.24);
+      background-color: var(--pure-white);
+      color: var(--ink-primary);
+      width: 100%;
+    }
+
+    .form-input:focus {
+      outline: 2px solid var(--aimo-purple);
+      outline-offset: 1px;
+      border-color: var(--aimo-purple);
+    }
+
+    textarea.form-input {
+      min-height: 108px;
+      resize: vertical;
+    }
+
+    .privacy-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--ink-secondary);
+    }
+
+    .privacy-row input {
+      margin-top: 4px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--aimo-purple);
+    }
+
+    .text-link {
+      color: var(--aimo-purple);
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .confirmation-box {
+      display: none;
+      padding: 28px;
+      border-radius: var(--radius-surface);
+      border: 1px solid var(--verde-mata);
+      background-color: var(--pure-white);
+      color: var(--ink-primary);
+    }
+
+    .confirmation-box.visible {
+      display: block;
+    }
+
+    /* ==========================================================================
+       SEÇÃO 8 — FOOTER (Graphite #171717)
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--graphite);
+      color: var(--ink-on-dark);
+      padding: 72px 0 40px;
+      border-top: 1px solid var(--hairline-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--hairline-dark);
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--pure-white);
+      margin-bottom: 16px;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9375rem;
+      color: var(--ink-muted-on-dark);
+    }
+
+    .footer-list a:hover {
+      color: var(--pure-white);
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.875rem;
+      color: var(--ink-muted-on-dark);
+    }
+
+    /* CTA Fixo Discreto Pós-Hero (Seção 4) */
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .floating-cta.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Modal Sóbrio de Política de Privacidade */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(23, 23, 23, 0.75);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-panel {
+      background-color: var(--off-white);
+      color: var(--ink-primary);
+      max-width: 620px;
+      width: 100%;
+      border-radius: var(--radius-surface);
+      padding: 36px;
+      border: 1px solid var(--hairline-light);
+    }
+
+    /* Responsividade (Desktop 1440px / Mobile 390–430px) */
+    @media (max-width: 1024px) {
+      .hero-layout,
+      .section-intro-block,
+      .services-columns,
+      .protagonist-feature,
+      .secondary-projects-grid,
+      .blackxp-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .continuous-route-svg {
+        display: none;
+      }
+
+      .process-five-cols {
+        grid-template-columns: 1fr;
+        border-top: none;
+        border-left: 2px solid var(--aimo-purple);
+        padding-left: 24px;
+      }
+
+      .logos-architectural-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background-color: var(--off-white);
+        flex-direction: column;
+        padding: 24px 32px;
+        border-bottom: 1px solid var(--hairline-light);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .header-controls .btn-header-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .hero-editorial-media,
+      .documentary-strip,
+      .bxp-stats-row,
+      .form-grid,
+      .algodao-composite {
+        grid-template-columns: 1fr;
+      }
+
+      .logos-architectural-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO E NAVEGAÇÃO (Seção 4) -->
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a href="#topo" class="brand-logo" aria-label="Aimotech — Territorial Game & Innovation Studio">
+        <svg viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="34" font-family="Manrope, sans-serif" font-weight="800" font-size="34" letter-spacing="-1" fill="#171717">aim</text>
+          <circle cx="78" cy="23" r="11.5" stroke="#7C4DFF" stroke-width="4.5" fill="none"/>
+          <circle cx="78" cy="41.5" r="2.8" fill="#7C4DFF"/>
+          <text x="94" y="34" font-family="Manrope, sans-serif" font-weight="800" font-size="34" letter-spacing="-1" fill="#171717">tech</text>
+          <text x="95" y="47" font-family="Inter, sans-serif" font-weight="500" font-size="9.5" fill="#4A4744">dev &amp; game studio</text>
+        </svg>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Menu Principal">
+        <a href="#aimotech" data-i18n="nav_aimotech">Aimotech</a>
+        <a href="#servicos" data-i18n="nav_servicos">Serviços</a>
+        <a href="#projetos" data-i18n="nav_projetos">Projetos</a>
+        <a href="#como-trabalhamos" data-i18n="nav_processo">Como trabalhamos</a>
+        <a href="#black-xp" data-i18n="nav_blackxp">Black XP</a>
+        <a href="#contato" data-i18n="nav_contato">Contato</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="lang-toggle" role="group" aria-label="Idioma">
+          <button type="button" class="lang-btn active" data-set-lang="pt">PT</button>
+          <button type="button" class="lang-btn" data-set-lang="es">ES</button>
+        </div>
+        <a href="#contato" class="btn btn-primary btn-compact btn-header-cta" data-i18n="cta_header">
+          Fale com nossa equipe
+        </a>
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SEÇÃO 1 — HERO (Seção 5 e 15: Off White + Fotografia Documental Real) -->
+    <section class="hero-section" id="aimotech">
+      <svg class="hero-topo-lines" viewBox="0 0 1440 760" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M-80 190 C 260 110, 520 290, 860 190 C 1140 110, 1310 250, 1520 170" stroke="#E8E3DA" stroke-width="1.5" fill="none"/>
+        <path d="M-80 540 C 310 430, 590 620, 940 490 C 1190 400, 1350 530, 1520 460" stroke="#E8E3DA" stroke-width="1.5" fill="none"/>
+      </svg>
+
+      <div class="container hero-layout">
+        <div>
+          <span class="hero-eyebrow" data-i18n="hero_eyebrow">TERRITORIAL GAME &amp; INNOVATION STUDIO</span>
+          <h1 class="hero-title" data-i18n="hero_title">
+            Jogos e tecnologia para transformar ideias em experiências digitais.
+          </h1>
+          <p class="hero-description" data-i18n="hero_lead">
+            A Aimotech desenvolve jogos, produtos digitais e projetos de inovação para empresas, instituições públicas e organizações. Combinamos pesquisa, design, tecnologia e conhecimento territorial para criar soluções sob medida, da concepção à entrega.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contato" class="btn btn-primary">
+              <span data-i18n="hero_cta_primary">Fale com nossa equipe</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#projetos" class="btn btn-secondary" data-i18n="hero_cta_secondary">
+              Conheça nossos projetos
+            </a>
+          </div>
+
+          <div class="hero-signature-bar">
+            <span class="hero-signature-text" data-i18n="hero_signature">Movidos pelo que ainda não sabemos.</span>
+            <span class="coord-meta">+ 12°53' S · 38°19' W — Lauro de Freitas, BA</span>
+          </div>
+        </div>
+
+        <div class="hero-editorial-media">
+          <figure class="hero-primary-figure">
+            <img src="assets/fotos/hero_territorio.jpg" alt="Pesquisadora da Aimotech em diálogo territorial na Bahia" />
+            <figcaption class="hero-figure-caption">
+              <span data-i18n="hero_fig1_cap">Pesquisa territorial e escuta comunitária como base de criação</span>
+              <span>13°00' S · 38°31' W</span>
+            </figcaption>
+          </figure>
+
+          <figure class="hero-secondary-figure">
+            <img src="assets/fotos/bahia_farol_game.jpg" alt="Desenvolvimento de jogos com identidade territorial baiana na Aimotech" />
+            <figcaption class="hero-secondary-caption">
+              <span data-i18n="hero_fig2_cap">Co-criação &amp; Engenharia</span>
+              <span>01</span>
+            </figcaption>
+          </figure>
+
+          <figure class="hero-secondary-figure">
+            <img src="assets/fotos/aimotech_liderancas.jpg" alt="Lideranças da Aimotech em apresentação institucional" />
+            <figcaption class="hero-secondary-caption">
+              <span data-i18n="hero_fig3_cap">Game Design &amp; Narrativa</span>
+              <span>02</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2 — O QUE PODEMOS DESENVOLVER JUNTOS (Seção 6: Duas Frentes Comerciais) -->
+    <section class="services-section" id="servicos">
+      <div class="container">
+        <div class="section-intro-block">
+          <h2 class="section-title" data-i18n="services_title">O que podemos desenvolver juntos</h2>
+          <p class="section-lead" data-i18n="services_intro">
+            A Aimotech reúne desenvolvimento tecnológico, consultoria e formação para atender diferentes desafios de organizações e negócios.
+          </p>
+        </div>
+
+        <div class="services-columns">
+          <!-- Coluna 1: Tecnologia & Desenvolvimento -->
+          <div>
+            <div class="service-group-header">
+              <h3 data-i18n="track_tech_title">Tecnologia &amp; Desenvolvimento</h3>
+              <span class="service-group-tag">01 — 02</span>
+            </div>
+
+            <ul class="service-list">
+              <li class="service-row" onclick="selectServiceInterest('Desenvolvimento de Jogos')">
+                <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 12C6 9.79 7.79 8 10 8H22C24.21 8 26 9.79 26 12V19C26 21.76 23.76 24 21 24H19.5L17.5 21H14.5L12.5 24H11C8.24 24 6 21.76 6 19V12Z"/>
+                  <path d="M11 13V17M9 15H13"/>
+                  <circle cx="20" cy="13.5" r="1.3" fill="currentColor"/>
+                  <circle cx="22.5" cy="16.5" r="1.3" fill="currentColor"/>
+                </svg>
+                <div>
+                  <div class="service-name">
+                    <span data-i18n="srv_games_title">Desenvolvimento de Jogos</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                  <p class="service-desc" data-i18n="srv_games_desc">
+                    Criamos jogos digitais e experiências interativas, integrando pesquisa, game design, narrativa, direção criativa, desenvolvimento, testes e preparação para publicação.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-row" onclick="selectServiceInterest('Software e Produtos Digitais')">
+                <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="4" y="6" width="24" height="16" rx="2"/>
+                  <path d="M9 15L14 11L18 15L23 10"/>
+                  <circle cx="9" cy="15" r="1.5" fill="currentColor"/>
+                  <circle cx="14" cy="11" r="1.5" fill="currentColor"/>
+                  <circle cx="18" cy="15" r="1.5" fill="currentColor"/>
+                  <circle cx="23" cy="10" r="1.5" fill="currentColor"/>
+                  <path d="M11 26H21"/>
+                </svg>
+                <div>
+                  <div class="service-name">
+                    <span data-i18n="srv_software_title">Software e Produtos Digitais</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                  <p class="service-desc" data-i18n="srv_software_desc">
+                    Desenvolvemos aplicativos, plataformas, soluções com inteligência artificial e outras experiências digitais, da concepção e prototipagem ao desenvolvimento e validação.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 2: Conhecimento & Formação -->
+          <div class="service-group-know">
+            <div class="service-group-header">
+              <h3 data-i18n="track_know_title">Conhecimento &amp; Formação</h3>
+              <span class="service-group-tag">03 — 05</span>
+            </div>
+
+            <ul class="service-list">
+              <li class="service-row" onclick="selectServiceInterest('Consultoria e Mentoria')">
+                <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="16" cy="16" r="10"/>
+                  <polygon points="19.5,12.5 17.5,17.5 12.5,19.5 14.5,14.5"/>
+                  <circle cx="16" cy="16" r="1.4" fill="currentColor"/>
+                </svg>
+                <div>
+                  <div class="service-name">
+                    <span data-i18n="srv_consult_title">Consultoria e Mentoria</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                  <p class="service-desc" data-i18n="srv_consult_desc">
+                    Apoiamos organizações e equipes na concepção, estruturação e desenvolvimento de projetos relacionados a games, tecnologia, inovação e economia criativa.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-row" onclick="selectServiceInterest('Formação e Instrutoria')">
+                <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="16" cy="9" r="3"/>
+                  <circle cx="9" cy="21" r="3"/>
+                  <circle cx="23" cy="21" r="3"/>
+                  <path d="M14 11.5L10.5 18.2M18 11.5L21.5 18.2M12 21H20"/>
+                </svg>
+                <div>
+                  <div class="service-name">
+                    <span data-i18n="srv_training_title">Formação e Instrutoria</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                  <p class="service-desc" data-i18n="srv_training_desc">
+                    Desenvolvemos cursos, workshops, bootcamps e jornadas formativas adaptadas aos objetivos, públicos e contextos de cada organização.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-row" onclick="selectServiceInterest('Palestras')">
+                <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="10" cy="16" r="3"/>
+                  <path d="M16 11C18.5 13.5 18.5 18.5 16 21"/>
+                  <path d="M20 7.5C24 12 24 20 20 24.5"/>
+                  <path d="M24 4.5C29.5 10.5 29.5 21.5 24 27.5"/>
+                </svg>
+                <div>
+                  <div class="service-name">
+                    <span data-i18n="srv_talks_title">Palestras</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                  <p class="service-desc" data-i18n="srv_talks_desc">
+                    Criamos palestras e participações especializadas sobre games, tecnologia, inovação, educação, territórios, diversidade e economia criativa.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="services-cta-row">
+          <p style="font-weight: 500; color: var(--ink-primary);" data-i18n="services_bar_title">
+            Estruturamos escopos sob medida para empresas, instituições públicas e organizações.
+          </p>
+          <a href="#contato" class="btn btn-primary">
+            <span data-i18n="services_cta">Fale sobre seu projeto</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3 — PROJETOS EM DESTAQUE (Seção 7: Graphite #171717, Provas Reais) -->
+    <section class="projects-section" id="projetos">
+      <div class="container">
+        <div class="section-intro-block">
+          <h2 class="section-title" data-i18n="projects_title">Ideias que se transformam em experiências.</h2>
+          <p class="section-lead" data-i18n="projects_intro">
+            Pesquisa, narrativa, design e tecnologia se encontram no desenvolvimento de propriedades intelectuais, jogos e produtos digitais.
+          </p>
+        </div>
+
+        <!-- PROTAGONISTA: TRILHAS DA TERRA -->
+        <article class="protagonist-feature">
+          <div class="project-media-frame">
+            <img src="assets/fotos/hero_territorio.jpg" alt="Pesquisa territorial que origina a narrativa e mecânicas de Trilhas da Terra" />
+            <div class="project-media-bar">
+              <span data-i18n="trilhas_media_cap">Pesquisa de campo, narrativa territorial e direção de arte 3D</span>
+              <span>prioridade 2026</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="project-kicker kicker-verde" data-i18n="trilhas_badge">JOGO MOBILE · 3D · EM DESENVOLVIMENTO</span>
+            <h3 class="project-heading">Trilhas da Terra</h3>
+            <p class="project-copy" data-i18n="trilhas_desc">
+              Projeto protagonista e prioridade de publicação da Aimotech em 2026. Demonstra o desenvolvimento de jogos 3D e a aplicação direta da abordagem territorial na construção de narrativa, mecânicas de exploração e experiência interativa.
+            </p>
+            <div class="project-specs">
+              <span data-i18n="trilhas_p1">Pesquisa Territorial Aplicada</span>
+              <span>·</span>
+              <span data-i18n="trilhas_p2">Game Design &amp; Arte 3D</span>
+              <span>·</span>
+              <span data-i18n="trilhas_p3">Propriedade Intelectual Aimotech</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- DEMAIS PROJETOS: ALGODÃO DOCE & BIOGRAFIA PRETA / WINI.IA -->
+        <div class="secondary-projects-grid">
+          <article class="secondary-project-item">
+            <div>
+              <div class="algodao-composite">
+                <img class="main-art" src="assets/fotos/algodao_doce_capa.jpg" alt="Arte oficial das personagens Algodão Doce e Floquinho" />
+                <img class="vertical-slice" src="assets/fotos/algodao_doce_gameplay.jpg" alt="Gameplay vertical mobile de Algodão Doce" />
+              </div>
+              <div style="margin-top: 24px;">
+                <span class="project-kicker kicker-terracota" data-i18n="algodao_badge">JOGO AUTORAL · MOBILE · EM DESENVOLVIMENTO</span>
+                <h3 class="project-heading">Algodão Doce</h3>
+                <p class="project-copy" data-i18n="algodao_desc">
+                  Experiência infantojuvenil que trabalha território de forma lúdica por meio de alimentação, modos de fazer, memória, infância e relações intergeracionais, ampliando a leitura do que pode constituir matéria territorial para criação.
+                </p>
+              </div>
+            </div>
+            <div class="project-specs" style="align-items: center; justify-content: space-between;">
+              <div>
+                <span data-i18n="algodao_p1">Culinária Baiana &amp; Memória</span>
+                <span> · </span>
+                <span data-i18n="algodao_p2">Arcade &amp; Plataforma Vertical</span>
+              </div>
+              <button type="button" class="btn btn-secondary-dark btn-compact" onclick="openHtml5GameModal()" data-i18n="btn_play_html5">
+                Testar Demo HTML5 ▶
+              </button>
+            </div>
+          </article>
+
+          <article class="secondary-project-item">
+            <div>
+              <div class="project-media-frame">
+                <img src="assets/fotos/wini_ia_tecnologia.jpg" alt="Desenvolvimento de produtos digitais e inteligência artificial na Aimotech" style="height: 266px;" />
+              </div>
+              <div style="margin-top: 24px;">
+                <span class="project-kicker kicker-azul" data-i18n="wini_badge">PRODUTO DIGITAL · INTELIGÊNCIA ARTIFICIAL</span>
+                <h3 class="project-heading">Biografia Preta / Wini.IA</h3>
+                <p class="project-copy" data-i18n="wini_desc">
+                  Projeto que demonstra a capacidade da Aimotech para desenvolver produtos digitais e soluções com inteligência artificial, conectando acervo referencial, curadoria de dados e experiência de usuário intuitiva.
+                </p>
+              </div>
+            </div>
+            <div class="project-specs">
+              <span data-i18n="wini_p1">Inteligência Artificial &amp; NLP</span>
+              <span>·</span>
+              <span data-i18n="wini_p2">Plataforma &amp; Produto Digital</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4 — COMO TRANSFORMAMOS UMA IDEIA EM INOVAÇÃO (Seção 8: Warm Gray #E8E3DA) -->
+    <section class="process-section" id="como-trabalhamos">
+      <div class="container">
+        <div class="section-intro-block" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+          <h2 class="section-title" data-i18n="process_title">Como transformamos uma ideia em inovação</h2>
+          <p class="section-lead" data-i18n="process_intro">
+            Cada projeto começa pela compreensão do desafio, das pessoas envolvidas e do contexto em que a solução será utilizada. Pesquisa, construção colaborativa, design e desenvolvimento tecnológico orientam o caminho entre a ideia e sua aplicação.
+          </p>
+        </div>
+
+        <p class="territorial-manifesto" data-i18n="process_quote">
+          “Território, para a Aimotech, também está nas histórias, nos conhecimentos, nos modos de fazer, nas relações e nas transformações vividas pelas pessoas.”
+        </p>
+
+        <!-- Linha Cartográfica Contínua Conectando as Cinco Etapas -->
+        <div class="route-track-container">
+          <svg class="continuous-route-svg" viewBox="0 0 1140 36" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 12 18 L 1128 18" stroke="#171717" stroke-opacity="0.22" stroke-width="1.5"/>
+            <path d="M 12 18 C 140 4, 210 32, 290 18 C 380 4, 480 32, 570 18 C 660 4, 760 32, 850 18 C 940 4, 1040 32, 1128 18" stroke="#7C4DFF" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="18" r="5" fill="#7C4DFF"/>
+            <circle cx="290" cy="18" r="5" fill="#7C4DFF"/>
+            <circle cx="570" cy="18" r="5" fill="#7C4DFF"/>
+            <circle cx="850" cy="18" r="5" fill="#7C4DFF"/>
+            <circle cx="1128" cy="18" r="6" fill="#171717" stroke="#7C4DFF" stroke-width="2.5"/>
+          </svg>
+
+          <div class="process-five-cols">
+            <div class="process-step-col">
+              <span class="step-index">01</span>
+              <h3 data-i18n="step1_title">Pesquisa Territorial</h3>
+              <p data-i18n="step1_desc">
+                Investigamos contextos, referências, públicos e conhecimentos relacionados ao projeto.
+              </p>
+            </div>
+
+            <div class="process-step-col">
+              <span class="step-index">02</span>
+              <h3 data-i18n="step2_title">Construção Coletiva</h3>
+              <p data-i18n="step2_desc">
+                Transformamos a pesquisa em decisões de conceito, narrativa, experiência e produto junto às pessoas envolvidas.
+              </p>
+            </div>
+
+            <div class="process-step-col">
+              <span class="step-index">03</span>
+              <h3 data-i18n="step3_title">Desenvolvimento</h3>
+              <p data-i18n="step3_desc">
+                Projetamos e construímos a solução utilizando tecnologias adequadas aos objetivos e ao escopo definido.
+              </p>
+            </div>
+
+            <div class="process-step-col">
+              <span class="step-index">04</span>
+              <h3 data-i18n="step4_title">Validação</h3>
+              <p data-i18n="step4_desc">
+                Realizamos testes técnicos e com usuários para identificar ajustes e aprimorar a experiência.
+              </p>
+            </div>
+
+            <div class="process-step-col">
+              <span class="step-index">05</span>
+              <h3 data-i18n="step5_title">Impacto</h3>
+              <p data-i18n="step5_desc">
+                Observamos os resultados gerados pelo produto, projeto ou experiência e sua relação com os objetivos definidos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="documentary-strip" aria-label="Sequência documental da abordagem Aimotech">
+          <figure class="doc-figure">
+            <img src="assets/fotos/etapa_01_pesquisa.jpg" alt="Pesquisa histórica e territorial na Bahia (Missão Paraguaçu)" />
+            <figcaption><span data-i18n="seq_1">Pesquisa</span><span>01</span></figcaption>
+          </figure>
+          <figure class="doc-figure">
+            <img src="assets/fotos/etapa_02_cocriacao.jpg" alt="Construção coletiva de narrativa e mecânicas de jogo" />
+            <figcaption><span data-i18n="seq_2">Desenvolvimento</span><span>02</span></figcaption>
+          </figure>
+          <figure class="doc-figure">
+            <img src="assets/fotos/etapa_03_desenvolvimento.jpg" alt="Visão geral do jogo e estruturação técnica" />
+            <figcaption><span data-i18n="seq_3">Tecnologia</span><span>03</span></figcaption>
+          </figure>
+          <figure class="doc-figure">
+            <img src="assets/fotos/etapa_04_validacao.jpg" alt="Validação de protótipos e produto de laboratório" />
+            <figcaption><span data-i18n="seq_4">Formação</span><span>04</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5 — EXPERIÊNCIA (Seção 9: Centrada nos 7 Logos Previstos) -->
+    <section class="experience-section" id="experiencia">
+      <div class="container">
+        <div class="section-intro-block">
+          <h2 class="section-title" data-i18n="exp_title">Experiência que atravessa diferentes setores.</h2>
+          <p class="section-lead" data-i18n="exp_intro">
+            A Aimotech desenvolve consultorias, mentorias, formações e projetos de inovação para empresas, instituições públicas e organizações, conectando tecnologia, games, educação e economia criativa.
+          </p>
+        </div>
+
+        <div class="logos-architectural-grid" aria-label="Instituições e organizações parceiras">
+          <div class="logo-cell">
+            <svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="20" r="9" stroke="currentColor" stroke-width="2.2"/>
+              <text x="34" y="25" font-family="Manrope, sans-serif" font-weight="800" font-size="17" fill="currentColor">DARWIN</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_darwin">Aceleração</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="10" width="20" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+              <text x="35" y="19" font-family="Manrope, sans-serif" font-weight="800" font-size="12.5" fill="currentColor">IMPACT</text>
+              <text x="35" y="31" font-family="Manrope, sans-serif" font-weight="700" font-size="12.5" fill="currentColor">HUB</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_impact">Inovação Global</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="18,9 27,29 9,29" stroke="currentColor" stroke-width="2" fill="none"/>
+              <text x="34" y="19" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="currentColor">FEIRA</text>
+              <text x="34" y="31" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="currentColor">PRETA</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_feira">Economia Criativa</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 14H22M10 20H22M10 26H17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <text x="30" y="25" font-family="Manrope, sans-serif" font-weight="800" font-size="17" fill="currentColor">SEMDEC</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_semdec">Setor Público</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 26C14 14 22 14 26 26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <text x="33" y="25" font-family="Manrope, sans-serif" font-weight="800" font-size="18" fill="currentColor">SENAC</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_senac">Educação</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="20" r="9" stroke="currentColor" stroke-width="2"/>
+              <text x="33" y="19" font-family="Manrope, sans-serif" font-weight="800" font-size="12.5" fill="currentColor">GOETHE</text>
+              <text x="33" y="31" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="currentColor">INSTITUT</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_goethe">Instituto Cultural</span>
+          </div>
+
+          <div class="logo-cell">
+            <svg viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="16" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="20" fill="currentColor">REDE+</text>
+            </svg>
+            <span class="logo-sector" data-i18n="sector_rede">Ecossistema</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6 — BLACK XP (Seção 10: Formação e Ecossistema) -->
+    <section class="blackxp-section" id="black-xp">
+      <div class="container blackxp-layout">
+        <div>
+          <span class="bxp-kicker">Powered by Aimotech</span>
+          <h2 class="bxp-title">Black XP</h2>
+          <p class="bxp-subtitle" data-i18n="bxp_headline">
+            Formação, experimentação e desenvolvimento de novos talentos para a indústria de games.
+          </p>
+          <p class="bxp-copy" data-i18n="bxp_body">
+            Criada pela Aimotech, a Black XP desenvolve programas que combinam formação, mentorias, desafios e desenvolvimento prático de projetos, ampliando oportunidades de entrada e permanência de novos talentos no ecossistema de games.
+          </p>
+
+          <div class="bxp-stats-row">
+            <div class="bxp-stat-primary">
+              <div class="bxp-stat-num">+350</div>
+              <div class="bxp-stat-label" data-i18n="bxp_m2">participantes impactados</div>
+            </div>
+            <div>
+              <div class="bxp-stat-num">+25</div>
+              <div class="bxp-stat-label" data-i18n="bxp_m3">jogos e protótipos desenvolvidos nos programas</div>
+            </div>
+            <div>
+              <div class="bxp-stat-num">4</div>
+              <div class="bxp-stat-label" data-i18n="bxp_m1">edições realizadas</div>
+            </div>
+          </div>
+
+          <a href="#contato" class="btn btn-primary" onclick="selectServiceInterest('Formação e Instrutoria')">
+            <span data-i18n="bxp_cta">Conheça a Black XP ↗</span>
+          </a>
+        </div>
+
+        <div class="bxp-gallery-frame">
+          <img id="bxpMainImg" class="main-photo" src="assets/fotos/bxp_01_comunidade.jpg" alt="Participantes e mentores em programa da Black XP" />
+          <div class="bxp-gallery-caption">
+            <span id="bxpCaptionText" data-i18n="bxp_cap_1">Comunidade, mentorias e desenvolvimento prático de jogos na Black XP</span>
+            <span>Salvador · BA</span>
+          </div>
+          <div class="bxp-thumbs-bar" role="group" aria-label="Galeria documental Black XP">
+            <button type="button" class="bxp-thumb-btn active" onclick="switchBxpPhoto(0, this)" aria-label="Foto 1: Comunidade Black XP">
+              <img src="assets/fotos/bxp_01_comunidade.jpg" alt="Turma Black XP" />
+            </button>
+            <button type="button" class="bxp-thumb-btn" onclick="switchBxpPhoto(1, this)" aria-label="Foto 2: Abertura Black XP Woman Lab">
+              <img src="assets/fotos/bxp_02_abertura.jpg" alt="Palco Black XP Woman Lab" />
+            </button>
+            <button type="button" class="bxp-thumb-btn" onclick="switchBxpPhoto(2, this)" aria-label="Foto 3: Produto do Laboratório">
+              <img src="assets/fotos/etapa_04_validacao.jpg" alt="Produto do Laboratório e Premiação" />
+            </button>
+            <button type="button" class="bxp-thumb-btn" onclick="switchBxpPhoto(3, this)" aria-label="Foto 4: Jogo Nala">
+              <img src="assets/fotos/bxp_04_jogo_nala.jpg" alt="Apresentação do jogo Nala" />
+            </button>
+            <button type="button" class="bxp-thumb-btn" onclick="switchBxpPhoto(4, this)" aria-label="Foto 5: Guardiã das Águas">
+              <img src="assets/fotos/bxp_05_guardia_aguas.jpg" alt="Pitch Guardiã das Águas" />
+            </button>
+            <button type="button" class="bxp-thumb-btn" onclick="switchBxpPhoto(5, this)" aria-label="Foto 6: Equipe e Lideranças">
+              <img src="assets/fotos/bxp_06_mentoria.jpg" alt="Oficina e mentoria Black XP" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7 — CONTATO (Seção 11: Aimotech Purple + Card Claro) -->
+    <section class="contact-section" id="contato">
+      <div class="container contact-layout">
+        <div class="contact-copy-col">
+          <h2 data-i18n="contact_title">Qual desafio podemos transformar em projeto?</h2>
+          <p data-i18n="contact_intro">
+            Conte um pouco sobre o que sua organização pretende desenvolver. Nossa equipe entrará em contato para compreender o desafio e identificar possibilidades de atuação da Aimotech.
+          </p>
+
+          <div class="contact-meta-list">
+            <div>
+              <strong style="display:block; font-family:var(--font-display);" data-i18n="contact_email_label">E-mail Comercial</strong>
+              <span>tata@aimotech.com.br</span>
+            </div>
+            <div>
+              <strong style="display:block; font-family:var(--font-display);" data-i18n="contact_base_label">Base Territorial</strong>
+              <span data-i18n="contact_base_val">Lauro de Freitas, Bahia, Brasil · Atuação em PT e ES</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-surface">
+          <form id="leadForm" onsubmit="handleLeadSubmit(event)" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="f_nome"><span data-i18n="form_name">Nome</span> *</label>
+                <input type="text" id="f_nome" name="nome" class="form-input" required />
+              </div>
+
+              <div class="form-field">
+                <label for="f_org"><span data-i18n="form_org">Organização</span> *</label>
+                <input type="text" id="f_org" name="organizacao" class="form-input" required />
+              </div>
+
+              <div class="form-field">
+                <label for="f_email"><span data-i18n="form_email">E-mail</span> *</label>
+                <input type="email" id="f_email" name="email" class="form-input" required />
+              </div>
+
+              <div class="form-field">
+                <label for="f_tel"><span data-i18n="form_phone">Telefone</span></label>
+                <input type="tel" id="f_tel" name="telefone" class="form-input" />
+              </div>
+
+              <div class="form-field full">
+                <label for="f_interesse"><span data-i18n="form_interest">Tenho interesse em</span> *</label>
+                <select id="f_interesse" name="interesse" class="form-input" required>
+                  <option value="" data-i18n="opt_select">Selecione uma opção...</option>
+                  <option value="Desenvolvimento de Jogos" data-i18n="opt_games">Desenvolvimento de Jogos</option>
+                  <option value="Software e Produtos Digitais" data-i18n="opt_software">Software e Produtos Digitais</option>
+                  <option value="Consultoria e Mentoria" data-i18n="opt_consult">Consultoria e Mentoria</option>
+                  <option value="Formação e Instrutoria" data-i18n="opt_training">Formação e Instrutoria</option>
+                  <option value="Palestras" data-i18n="opt_talks">Palestras</option>
+                  <option value="Outro" data-i18n="opt_other">Outro</option>
+                </select>
+              </div>
+
+              <div class="form-field full">
+                <label for="f_mensagem"><span data-i18n="form_project">Conte brevemente sobre seu projeto</span> *</label>
+                <textarea id="f_mensagem" name="mensagem" class="form-input" required></textarea>
+              </div>
+
+              <input type="hidden" id="f_origin" name="lead_origin" value="direct" />
+              <input type="hidden" id="f_utm_source" name="utm_source" value="" />
+              <input type="hidden" id="f_utm_medium" name="utm_medium" value="" />
+              <input type="hidden" id="f_utm_campaign" name="utm_campaign" value="" />
+
+              <div class="form-field full">
+                <label class="privacy-row">
+                  <input type="checkbox" id="f_privacidade" required />
+                  <span>
+                    <span data-i18n="form_privacy_prefix">Concordo com o tratamento dos dados informados conforme a</span>
+                    <span class="text-link" onclick="openPrivacyModal(event)" data-i18n="form_privacy_link">Política de Privacidade</span>.
+                  </span>
+                </label>
+              </div>
+
+              <div class="form-field full">
+                <div class="form-submit-row">
+                  <button type="submit" class="btn btn-primary">
+                    <span data-i18n="form_submit">Enviar solicitação</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-compact" onclick="openQuickWhatsApp()">
+                    <span data-i18n="form_whatsapp_quick">Iniciar pelo WhatsApp ↗</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div id="formConfirmation" class="confirmation-box" role="status" aria-live="polite">
+            <h3 style="font-size: 1.2rem; margin-bottom: 8px;" data-i18n="confirm_title">Mensagem recebida.</h3>
+            <p style="font-size: 0.95rem; color: var(--ink-secondary);" data-i18n="confirm_body">
+              Mensagem recebida. Obrigada pelo interesse na Aimotech. Nossa equipe entrará em contato pelo e-mail informado.
+            </p>
+            <button type="button" class="btn btn-secondary btn-compact" style="margin-top: 16px;" onclick="resetLeadForm()" data-i18n="confirm_new">
+              Enviar nova solicitação
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SEÇÃO 8 — FOOTER (Seção 12: Graphite #171717) -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <svg viewBox="0 0 220 44" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 12px;">
+            <text x="0" y="30" font-family="Manrope, sans-serif" font-weight="800" font-size="32" letter-spacing="-1" fill="#F8F6F2">aim</text>
+            <circle cx="74" cy="20" r="10.5" stroke="#7C4DFF" stroke-width="4.2" fill="none"/>
+            <circle cx="74" cy="37" r="2.6" fill="#7C4DFF"/>
+            <text x="89" y="30" font-family="Manrope, sans-serif" font-weight="800" font-size="32" letter-spacing="-1" fill="#F8F6F2">tech</text>
+          </svg>
+          <p style="font-family: var(--font-display); font-size: 0.875rem; font-weight: 700; color: var(--pure-white); margin-bottom: 4px;">
+            Territorial Game &amp; Innovation Studio
+          </p>
+          <p style="font-size: 0.9rem; color: var(--ink-muted-on-dark);" data-i18n="footer_sig">
+            Movidos pelo que ainda não sabemos.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer_nav_title">Navegação</h3>
+          <ul class="footer-list">
+            <li><a href="#servicos" data-i18n="nav_servicos">Serviços</a></li>
+            <li><a href="#projetos" data-i18n="nav_projetos">Projetos</a></li>
+            <li><a href="#como-trabalhamos" data-i18n="nav_processo">Como Trabalhamos</a></li>
+            <li><a href="#black-xp" data-i18n="nav_blackxp">Black XP</a></li>
+            <li><a href="#contato" data-i18n="nav_contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer_connect_title">Conecte-se</h3>
+          <ul class="footer-list">
+            <li><a href="https://www.instagram.com/aimotech" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/aimotech" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:tata@aimotech.com.br">E-mail</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer_legal_title">Institucional</h3>
+          <ul class="footer-list">
+            <li><strong style="color: var(--pure-white);">AIMOTECH LTDA</strong></li>
+            <li>CNPJ 63.350.900/0001-89</li>
+            <li>Lauro de Freitas, Bahia, Brasil</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer_copy">© 2026 AIMOTECH LTDA. Todos os direitos reservados.</span>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <a href="#privacidade" onclick="openPrivacyModal(event)" data-i18n="footer_privacy">Política de Privacidade</a>
+          <span>·</span>
+          <div class="lang-toggle" style="background-color: var(--graphite-surface); border-color: var(--hairline-dark);">
+            <button type="button" class="lang-btn active" data-set-lang="pt">PT</button>
+            <button type="button" class="lang-btn" data-set-lang="es">ES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CTA FIXO DISCRETO PÓS-HERO -->
+  <div class="floating-cta" id="floatingCta">
+    <a href="#contato" class="btn btn-primary btn-compact">
+      <span data-i18n="cta_header">Fale com nossa equipe</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <!-- MODAL DE POLÍTICA DE PRIVACIDADE -->
+  <div class="modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="modal-panel">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <h2 id="privacyModalTitle" style="font-size: 1.25rem;" data-i18n="modal_privacy_title">Política de Privacidade</h2>
+        <button type="button" onclick="closePrivacyModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;" aria-label="Fechar">×</button>
+      </div>
+      <div style="font-size: 0.9375rem; color: var(--ink-secondary); display: flex; flex-direction: column; gap: 12px;">
+        <p data-i18n="modal_p1">
+          A <strong>AIMOTECH LTDA</strong> (CNPJ 63.350.900/0001-89), sediada em Lauro de Freitas, Bahia, Brasil, coleta apenas os dados informados voluntariamente no formulário comercial (Nome, Organização, E-mail, Telefone, Frente de interesse e resumo do projeto) e parâmetros de origem de acesso (UTM/QR) para retorno comercial.
+        </p>
+        <p data-i18n="modal_p2">
+          Os dados são utilizados exclusivamente para responder à solicitação comercial e apresentar propostas de desenvolvimento de jogos, software, consultoria, formação ou palestras, em conformidade com a LGPD (Lei nº 13.709/2018). Solicitações de atualização ou exclusão podem ser enviadas para <strong>tata@aimotech.com.br</strong>.
+        </p>
+      </div>
+      <div style="margin-top: 24px; text-align: right;">
+        <button type="button" class="btn btn-primary btn-compact" onclick="closePrivacyModal()" data-i18n="modal_close">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL DE JOGO HTML5 EMBARCADO (Demonstração real em <canvas> / pronta para iframe Unity WebGL ou Godot HTML5) -->
+  <div class="modal-backdrop" id="html5GameModal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+    <div class="modal-panel" style="max-width: 480px; background-color: #171717; color: #F8F6F2; border-color: rgba(248,246,242,0.18); padding: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <h2 id="gameModalTitle" style="font-size: 1.05rem; color: #FFFFFF;" data-i18n="game_modal_title">Algodão Doce — Protótipo Jogável HTML5 (Canvas)</h2>
+        <button type="button" onclick="closeHtml5GameModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #F8F6F2;" aria-label="Fechar">×</button>
+      </div>
+      <p style="font-size: 0.8125rem; color: #B8B4AE; margin-bottom: 12px;" data-i18n="game_modal_instructions">
+        Use as setas ◀ ▶ (ou toque nos botões abaixo) para saltar entre os doces baianos antes que as plataformas despenquem!
+      </p>
+      <div style="position: relative; border-radius: 6px; overflow: hidden; border: 1px solid rgba(248,246,242,0.16); background: #204A7A;">
+        <canvas id="algodaoCanvas" width="420" height="460" style="width: 100%; height: auto; display: block;"></canvas>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px;">
+        <button type="button" class="btn btn-secondary-dark btn-compact" onmousedown="gameInput(-1)" ontouchstart="gameInput(-1)" onmouseup="gameInput(0)" ontouchend="gameInput(0)">◀ Esquerda</button>
+        <button type="button" class="btn btn-primary btn-compact" onclick="restartHtml5Game()">Reiniciar</button>
+        <button type="button" class="btn btn-secondary-dark btn-compact" onmousedown="gameInput(1)" ontouchstart="gameInput(1)" onmouseup="gameInput(0)" ontouchend="gameInput(0)">Direita ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // Mini-Jogo HTML5 Canvas (Algodão Doce Vertical Slice Demo)
+    let gameLoopId = null;
+    let gameMoveDir = 0;
+    let player = { x: 210, y: 360, vx: 0, vy: -8, r: 14, score: 0 };
+    let platforms = [];
+    let candies = [];
+
+    function initHtml5Game() {
+      player = { x: 210, y: 360, vx: 0, vy: -9, r: 14, score: 0 };
+      platforms = [
+        { x: 160, y: 410, w: 100, h: 14, type: "normal", timer: 0 },
+        { x: 70, y: 325, w: 90, h: 14, type: "normal", timer: 0 },
+        { x: 240, y: 245, w: 92, h: 14, type: "fragile", timer: 0 },
+        { x: 110, y: 165, w: 90, h: 14, type: "normal", timer: 0 },
+        { x: 250, y: 85, w: 92, h: 14, type: "fragile", timer: 0 }
+      ];
+      candies = [
+        { x: 115, y: 295, collected: false },
+        { x: 285, y: 215, collected: false },
+        { x: 155, y: 135, collected: false }
+      ];
+    }
+
+    function gameInput(dir) {
+      gameMoveDir = dir;
+    }
+
+    function openHtml5GameModal() {
+      document.getElementById("html5GameModal").classList.add("open");
+      initHtml5Game();
+      if (!gameLoopId) {
+        gameLoopId = requestAnimationFrame(updateHtml5Game);
+      }
+    }
+
+    function closeHtml5GameModal() {
+      document.getElementById("html5GameModal").classList.remove("open");
+      if (gameLoopId) {
+        cancelAnimationFrame(gameLoopId);
+        gameLoopId = null;
+      }
+    }
+
+    function restartHtml5Game() {
+      initHtml5Game();
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") gameMoveDir = -1;
+      if (e.key === "ArrowRight") gameMoveDir = 1;
+    });
+    window.addEventListener("keyup", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") gameMoveDir = 0;
+    });
+
+    function updateHtml5Game() {
+      const canvas = document.getElementById("algodaoCanvas");
+      if (!canvas || !document.getElementById("html5GameModal").classList.contains("open")) {
+        gameLoopId = null;
+        return;
+      }
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#1B2845";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Movimento horizontal e gravidade
+      player.vx = gameMoveDir * 4.5;
+      player.x += player.vx;
+      if (player.x < 16) player.x = 16;
+      if (player.x > canvas.width - 16) player.x = canvas.width - 16;
+
+      player.vy += 0.34;
+      player.y += player.vy;
+
+      // Subida da câmera quando a personagem alcança o topo
+      if (player.y < 190 && player.vy < 0) {
+        const shift = -player.vy;
+        player.y = 190;
+        player.score += Math.round(shift);
+        platforms.forEach(p => {
+          p.y += shift;
+          if (p.y > canvas.height) {
+            p.y = 10;
+            p.x = 30 + Math.random() * (canvas.width - 130);
+            p.type = Math.random() > 0.45 ? "fragile" : "normal";
+            p.timer = 0;
+          }
+        });
+        candies.forEach(c => {
+          c.y += shift;
+          if (c.y > canvas.height) {
+            c.y = 15;
+            c.x = 50 + Math.random() * (canvas.width - 100);
+            c.collected = false;
+          }
+        });
+      }
+
+      // Colisão com plataformas doces (apenas caindo)
+      if (player.vy > 0) {
+        platforms.forEach(p => {
+          if (
+            p.timer < 25 &&
+            player.x + 10 > p.x &&
+            player.x - 10 < p.x + p.w &&
+            player.y + player.r >= p.y &&
+            player.y + player.r <= p.y + p.h + 10
+          ) {
+            player.vy = -9.6;
+            player.score += 10;
+            if (p.type === "fragile") p.timer = 1;
+          }
+        });
+      }
+
+      // Desenha plataformas (Azuis = fixas, Terracota = despencam após pisar conforme GDD)
+      platforms.forEach(p => {
+        if (p.timer > 0) p.timer += 1;
+        if (p.timer >= 25) return;
+        ctx.fillStyle = p.type === "fragile" ? "#B75A36" : "#F8F6F2";
+        ctx.fillRect(p.x, p.y + (p.timer * 1.5), p.w, p.h);
+        ctx.fillStyle = "#7C4DFF";
+        ctx.fillRect(p.x, p.y + (p.timer * 1.5), p.w, 4);
+      });
+
+      // Coleta de confeitos
+      candies.forEach(c => {
+        if (!c.collected) {
+          const dx = player.x - c.x;
+          const dy = player.y - c.y;
+          if (Math.hypot(dx, dy) < player.r + 8) {
+            c.collected = true;
+            player.score += 50;
+          }
+          ctx.fillStyle = "#6CD4A6";
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+
+      // Desenha personagem Algodão Doce
+      ctx.fillStyle = "#8D5524";
+      ctx.beginPath();
+      ctx.arc(player.x, player.y - 12, 13, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#F8F6F2";
+      ctx.beginPath();
+      ctx.arc(player.x, player.y + 2, 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      // HUD de Pontuação
+      ctx.fillStyle = "#F8F6F2";
+      ctx.font = "bold 14px Manrope, sans-serif";
+      ctx.fillText("SCORE: " + player.score, 16, 28);
+      ctx.font = "12px Inter, sans-serif";
+      ctx.fillStyle = "#B8B4AE";
+      ctx.fillText("HTML5 Canvas · 60 FPS", 275, 28);
+
+      // Reinicia se cair na base
+      if (player.y > canvas.height + 30) {
+        initHtml5Game();
+      }
+
+      gameLoopId = requestAnimationFrame(updateHtml5Game);
+    }
+
+    const bxpPhotos = [
+      {
+        src: "assets/fotos/bxp_01_comunidade.jpg",
+        pt: "Comunidade, mentorias e desenvolvimento prático de jogos na Black XP",
+        es: "Comunidad, mentorías y desarrollo práctico de videojuegos en Black XP"
+      },
+      {
+        src: "assets/fotos/bxp_02_abertura.jpg",
+        pt: "Abertura e condução formativa no laboratório Black XP Woman Lab",
+        es: "Apertura y conducción formativa en el laboratorio Black XP Woman Lab"
+      },
+      {
+        src: "assets/fotos/etapa_04_validacao.jpg",
+        pt: "Produto do laboratório: desenvolvimento prático de protótipos e premiação",
+        es: "Producto del laboratorio: desarrollo práctico de prototipos y premiación"
+      },
+      {
+        src: "assets/fotos/bxp_04_jogo_nala.jpg",
+        pt: "Mostra de jogos autorais: apresentação do projeto Nala pelas desenvolvedoras",
+        es: "Muestra de videojuegos de autor: presentación del proyecto Nala"
+      },
+      {
+        src: "assets/fotos/bxp_05_guardia_aguas.jpg",
+        pt: "Defesa de Game Design Document (Guardiã das Águas — Recôncavo Baiano)",
+        es: "Defensa de Game Design Document (Guardiã das Águas — Recôncavo Baiano)"
+      },
+      {
+        src: "assets/fotos/bxp_06_mentoria.jpg",
+        pt: "Mentorias ativas e acompanhamento de equipes durante a jornada Black XP",
+        es: "Mentorías activas y acompañamiento de equipos durante la jornada Black XP"
+      }
+    ];
+    let currentBxpIndex = 0;
+
+    const i18n = {
+      pt: {
+        nav_aimotech: "Aimotech",
+        nav_servicos: "Serviços",
+        nav_projetos: "Projetos",
+        nav_processo: "Como trabalhamos",
+        nav_blackxp: "Black XP",
+        nav_contato: "Contato",
+        cta_header: "Fale com nossa equipe",
+        hero_eyebrow: "TERRITORIAL GAME & INNOVATION STUDIO",
+        hero_title: "Jogos e tecnologia para transformar ideias em experiências digitais.",
+        hero_lead: "A Aimotech desenvolve jogos, produtos digitais e projetos de inovação para empresas, instituições públicas e organizações. Combinamos pesquisa, design, tecnologia e conhecimento territorial para criar soluções sob medida, da concepção à entrega.",
+        hero_cta_primary: "Fale com nossa equipe",
+        hero_cta_secondary: "Conheça nossos projetos",
+        hero_signature: "Movidos pelo que ainda não sabemos.",
+        hero_fig1_cap: "Pesquisa territorial e escuta comunitária como base de criação",
+        hero_fig2_cap: "Co-criação & Engenharia",
+        hero_fig3_cap: "Game Design & Narrativa",
+        services_title: "O que podemos desenvolver juntos",
+        services_intro: "A Aimotech reúne desenvolvimento tecnológico, consultoria e formação para atender diferentes desafios de organizações e negócios.",
+        track_tech_title: "Tecnologia & Desenvolvimento",
+        srv_games_title: "Desenvolvimento de Jogos",
+        srv_games_desc: "Criamos jogos digitais e experiências interativas, integrando pesquisa, game design, narrativa, direção criativa, desenvolvimento, testes e preparação para publicação.",
+        srv_software_title: "Software e Produtos Digitais",
+        srv_software_desc: "Desenvolvemos aplicativos, plataformas, soluções com inteligência artificial e outras experiências digitais, da concepção e prototipagem ao desenvolvimento e validação.",
+        track_know_title: "Conhecimento & Formação",
+        srv_consult_title: "Consultoria e Mentoria",
+        srv_consult_desc: "Apoiamos organizações e equipes na concepção, estruturação e desenvolvimento de projetos relacionados a games, tecnologia, inovação e economia criativa.",
+        srv_training_title: "Formação e Instrutoria",
+        srv_training_desc: "Desenvolvemos cursos, workshops, bootcamps e jornadas formativas adaptadas aos objetivos, públicos e contextos de cada organização.",
+        srv_talks_title: "Palestras",
+        srv_talks_desc: "Criamos palestras e participações especializadas sobre games, tecnologia, inovação, educação, territórios, diversidade e economia criativa.",
+        services_bar_title: "Estruturamos escopos sob medida para empresas, instituições públicas e organizações.",
+        services_cta: "Fale sobre seu projeto",
+        projects_title: "Ideias que se transformam em experiências.",
+        projects_intro: "Pesquisa, narrativa, design e tecnologia se encontram no desenvolvimento de propriedades intelectuais, jogos e produtos digitais.",
+        trilhas_media_cap: "Pesquisa de campo, narrativa territorial e direção de arte 3D",
+        trilhas_badge: "JOGO MOBILE · 3D · EM DESENVOLVIMENTO",
+        trilhas_desc: "Projeto protagonista e prioridade de publicação da Aimotech em 2026. Demonstra o desenvolvimento de jogos 3D e a aplicação direta da abordagem territorial na construção de narrativa, mecânicas de exploração e experiência interativa.",
+        trilhas_p1: "Pesquisa Territorial Aplicada",
+        trilhas_p2: "Game Design & Arte 3D",
+        trilhas_p3: "Propriedade Intelectual Aimotech",
+        algodao_badge: "JOGO AUTORAL · MOBILE · EM DESENVOLVIMENTO",
+        algodao_desc: "Experiência infantojuvenil que trabalha território de forma lúdica por meio de alimentação, modos de fazer, memória, infância e relações intergeracionais, ampliando a leitura do que pode constituir matéria territorial para criação.",
+        algodao_p1: "Culinária Baiana & Memória",
+        algodao_p2: "Arcade & Plataforma Vertical",
+        btn_play_html5: "Testar Demo HTML5 ▶",
+        game_modal_title: "Algodão Doce — Protótipo Jogável HTML5 (Canvas)",
+        game_modal_instructions: "Use as setas ◀ ▶ (ou toque nos botões abaixo) para saltar entre os doces baianos antes que as plataformas despenquem!",
+        wini_badge: "PRODUTO DIGITAL · INTELIGÊNCIA ARTIFICIAL",
+        wini_desc: "Projeto que demonstra a capacidade da Aimotech para desenvolver produtos digitais e soluções com inteligência artificial, conectando acervo referencial, curadoria de dados e experiência de usuário intuitiva.",
+        wini_p1: "Inteligência Artificial & NLP",
+        wini_p2: "Plataforma & Produto Digital",
+        process_title: "Como transformamos uma ideia em inovação",
+        process_intro: "Cada projeto começa pela compreensão do desafio, das pessoas envolvidas e do contexto em que a solução será utilizada. Pesquisa, construção colaborativa, design e desenvolvimento tecnológico orientam o caminho entre a ideia e sua aplicação.",
+        process_quote: "“Território, para a Aimotech, também está nas histórias, nos conhecimentos, nos modos de fazer, nas relações e nas transformações vividas pelas pessoas.”",
+        step1_title: "Pesquisa Territorial",
+        step1_desc: "Investigamos contextos, referências, públicos e conhecimentos relacionados ao projeto.",
+        step2_title: "Construção Coletiva",
+        step2_desc: "Transformamos a pesquisa em decisões de conceito, narrativa, experiência e produto junto às pessoas envolvidas.",
+        step3_title: "Desenvolvimento",
+        step3_desc: "Projetamos e construímos a solução utilizando tecnologias adequadas aos objetivos e ao escopo definido.",
+        step4_title: "Validação",
+        step4_desc: "Realizamos testes técnicos e com usuários para identificar ajustes e aprimorar a experiência.",
+        step5_title: "Impacto",
+        step5_desc: "Observamos os resultados gerados pelo produto, projeto ou experiência e sua relação com os objetivos definidos.",
+        seq_1: "Pesquisa",
+        seq_2: "Desenvolvimento",
+        seq_3: "Tecnologia",
+        seq_4: "Formação",
+        exp_title: "Experiência que atravessa diferentes setores.",
+        exp_intro: "A Aimotech desenvolve consultorias, mentorias, formações e projetos de inovação para empresas, instituições públicas e organizações, conectando tecnologia, games, educação e economia criativa.",
+        sector_darwin: "Aceleração",
+        sector_impact: "Inovação Global",
+        sector_feira: "Economia Criativa",
+        sector_semdec: "Setor Público",
+        sector_senac: "Educação",
+        sector_goethe: "Instituto Cultural",
+        sector_rede: "Ecossistema",
+        bxp_headline: "Formação, experimentação e desenvolvimento de novos talentos para a indústria de games.",
+        bxp_body: "Criada pela Aimotech, a Black XP desenvolve programas que combinam formação, mentorias, desafios e desenvolvimento prático de projetos, ampliando oportunidades de entrada e permanência de novos talentos no ecossistema de games.",
+        bxp_m1: "edições realizadas",
+        bxp_m2: "participantes impactados",
+        bxp_m3: "jogos e protótipos desenvolvidos nos programas",
+        bxp_cta: "Conheça a Black XP ↗",
+        bxp_cap_1: "Comunidade, mentorias e desenvolvimento prático de jogos na Black XP",
+        contact_title: "Qual desafio podemos transformar em projeto?",
+        contact_intro: "Conte um pouco sobre o que sua organização pretende desenvolver. Nossa equipe entrará em contato para compreender o desafio e identificar possibilidades de atuação da Aimotech.",
+        contact_email_label: "E-mail Comercial",
+        contact_base_label: "Base Territorial",
+        contact_base_val: "Lauro de Freitas, Bahia, Brasil · Atuação em PT e ES",
+        form_name: "Nome",
+        form_org: "Organização",
+        form_email: "E-mail",
+        form_phone: "Telefone",
+        form_interest: "Tenho interesse em",
+        opt_select: "Selecione uma opção...",
+        opt_games: "Desenvolvimento de Jogos",
+        opt_software: "Software e Produtos Digitais",
+        opt_consult: "Consultoria e Mentoria",
+        opt_training: "Formação e Instrutoria",
+        opt_talks: "Palestras",
+        opt_other: "Outro",
+        form_project: "Conte brevemente sobre seu projeto",
+        form_privacy_prefix: "Concordo com o tratamento dos dados informados conforme a",
+        form_privacy_link: "Política de Privacidade",
+        form_submit: "Enviar solicitação",
+        form_whatsapp_quick: "Iniciar pelo WhatsApp ↗",
+        confirm_title: "Mensagem recebida.",
+        confirm_body: "Mensagem recebida. Obrigada pelo interesse na Aimotech. Nossa equipe entrará em contato pelo e-mail informado.",
+        confirm_new: "Enviar nova solicitação",
+        footer_sig: "Movidos pelo que ainda não sabemos.",
+        footer_nav_title: "Navegação",
+        footer_connect_title: "Conecte-se",
+        footer_legal_title: "Institucional",
+        footer_privacy: "Política de Privacidade",
+        footer_copy: "© 2026 AIMOTECH LTDA. Todos os direitos reservados.",
+        modal_privacy_title: "Política de Privacidade",
+        modal_p1: "A <strong>AIMOTECH LTDA</strong> (CNPJ 63.350.900/0001-89), sediada em Lauro de Freitas, Bahia, Brasil, coleta apenas os dados informados voluntariamente no formulário comercial (Nome, Organização, E-mail, Telefone, Frente de interesse e resumo do projeto) e parâmetros de origem de acesso (UTM/QR) para retorno comercial.",
+        modal_p2: "Os dados são utilizados exclusivamente para responder à solicitação comercial e apresentar propostas de desenvolvimento de jogos, software, consultoria, formação ou palestras, em conformidade com a LGPD (Lei nº 13.709/2018). Solicitações de atualização ou exclusão podem ser enviadas para <strong>tata@aimotech.com.br</strong>.",
+        modal_close: "Fechar"
+      },
+      es: {
+        nav_aimotech: "Aimotech",
+        nav_servicos: "Servicios",
+        nav_projetos: "Proyectos",
+        nav_processo: "Cómo trabajamos",
+        nav_blackxp: "Black XP",
+        nav_contato: "Contacto",
+        cta_header: "Habla con nuestro equipo",
+        hero_eyebrow: "TERRITORIAL GAME & INNOVATION STUDIO",
+        hero_title: "Videojuegos y tecnología para transformar ideas en experiencias digitales.",
+        hero_lead: "Aimotech desarrolla videojuegos, productos digitales y proyectos de innovación para empresas, instituciones públicas y organizaciones. Combinamos investigación, diseño, tecnología y conocimiento territorial para crear soluciones a medida, desde la concepción hasta la entrega.",
+        hero_cta_primary: "Habla con nuestro equipo",
+        hero_cta_secondary: "Conoce nuestros proyectos",
+        hero_signature: "Movidos por lo que aún no sabemos.",
+        hero_fig1_cap: "Investigación territorial y escucha comunitaria como base de creación",
+        hero_fig2_cap: "Co-creación & Ingeniería",
+        hero_fig3_cap: "Game Design & Narrativa",
+        services_title: "Lo que podemos desarrollar juntos",
+        services_intro: "Aimotech reúne desarrollo tecnológico, consultoría y formación para responder a distintos desafíos de organizaciones y negocios en América Latina.",
+        track_tech_title: "Tecnología & Desarrollo",
+        srv_games_title: "Desarrollo de Videojuegos",
+        srv_games_desc: "Creamos videojuegos digitales y experiencias interactivas, integrando investigación, game design, narrativa, dirección creativa, desarrollo, pruebas y preparación para publicación.",
+        srv_software_title: "Software y Productos Digitales",
+        srv_software_desc: "Desarrollamos aplicaciones, plataformas, soluciones con inteligencia artificial y otras experiencias digitales, desde la concepción y el prototipado hasta el desarrollo y la validación.",
+        track_know_title: "Conocimiento & Formación",
+        srv_consult_title: "Consultoría y Mentoría",
+        srv_consult_desc: "Apoyamos a organizaciones y equipos en la concepción, estructuración y desarrollo de proyectos vinculados a videojuegos, tecnología, innovación y economía creativa.",
+        srv_training_title: "Formación e Instructoría",
+        srv_training_desc: "Desarrollamos cursos, talleres, bootcamps y rutas formativas adaptadas a los objetivos, públicos y contextos de cada organización.",
+        srv_talks_title: "Conferencias y Charlas",
+        srv_talks_desc: "Creamos conferencias y participaciones especializadas sobre videojuegos, tecnología, innovación, educación, territorios, diversidad y economía creativa.",
+        services_bar_title: "Estructuramos alcances a medida para empresas, instituciones públicas y organizaciones.",
+        services_cta: "Hablemos de tu proyecto",
+        projects_title: "Ideas que se transforman en experiencias.",
+        projects_intro: "Investigación, narrativa, diseño y tecnología se encuentran en el desarrollo de propiedades intelectuales, videojuegos y productos digitales.",
+        trilhas_media_cap: "Investigación de campo, narrativa territorial y dirección de arte 3D",
+        trilhas_badge: "JUEGO MÓVIL · 3D · EN DESARROLLO",
+        trilhas_desc: "Proyecto protagonista y prioridad de publicación de Aimotech en 2026. Demuestra el desarrollo de videojuegos 3D y la aplicación directa del enfoque territorial en la construcción de narrativa, mecánicas de exploración y experiencia interactiva.",
+        trilhas_p1: "Investigación Territorial Aplicada",
+        trilhas_p2: "Game Design & Arte 3D",
+        trilhas_p3: "Propiedad Intelectual Aimotech",
+        algodao_badge: "JUEGO DE AUTOR · MÓVIL · EN DESARROLLO",
+        algodao_desc: "Experiencia infantojuvenil que aborda el territorio de forma lúdica a través de la alimentación, los saberes locales, la memoria, la infancia y las relaciones intergeneracionales, ampliando la lectura de lo que constituye materia territorial para la creación.",
+        algodao_p1: "Gastronomía & Memoria Afectiva",
+        algodao_p2: "Arcade & Plataformas Vertical",
+        btn_play_html5: "Probar Demo HTML5 ▶",
+        game_modal_title: "Algodão Doce — Prototipo Jugable HTML5 (Canvas)",
+        game_modal_instructions: "Usa las flechas ◀ ▶ (o toca los botones abajo) para saltar entre los dulces antes de que caigan las plataformas.",
+        wini_badge: "PRODUCTO DIGITAL · INTELIGENCIA ARTIFICIAL",
+        wini_desc: "Proyecto que demuestra la capacidad de Aimotech para desarrollar productos digitales y soluciones con inteligencia artificial, conectando acervo referencial, curaduría de datos y experiencia de usuario intuitiva.",
+        wini_p1: "Inteligencia Artificial & NLP",
+        wini_p2: "Plataforma & Producto Digital",
+        process_title: "Cómo transformamos una idea en innovación",
+        process_intro: "Cada proyecto comienza con la comprensión del desafío, de las personas involucradas y del contexto en el que se utilizará la solución. Investigación, construcción colaborativa, diseño y desarrollo tecnológico orientan el camino entre la idea y su aplicación.",
+        process_quote: "“El territorio, para Aimotech, también está en las historias, en los saberes, en los modos de hacer, en las relaciones y en las transformaciones vividas por las personas.”",
+        step1_title: "Investigación Territorial",
+        step1_desc: "Investigamos contextos, referencias, públicos y saberes vinculados al proyecto.",
+        step2_title: "Construcción Colectiva",
+        step2_desc: "Transformamos la investigación en decisiones de concepto, narrativa, experiencia y producto junto a las personas involucradas.",
+        step3_title: "Desarrollo",
+        step3_desc: "Diseñamos y construimos la solución utilizando tecnologías adecuadas a los objetivos y al alcance definido.",
+        step4_title: "Validación",
+        step4_desc: "Realizamos pruebas técnicas y con usuarios para identificar ajustes y perfeccionar la experiencia.",
+        step5_title: "Impacto",
+        step5_desc: "Observamos los resultados generados por el producto, proyecto o experiencia y su relación con los objetivos definidos.",
+        seq_1: "Investigación",
+        seq_2: "Desarrollo",
+        seq_3: "Tecnología",
+        seq_4: "Formación",
+        exp_title: "Experiencia que atraviesa diferentes sectores.",
+        exp_intro: "Aimotech desarrolla consultorías, mentorías, formaciones y proyectos de innovación para empresas, instituciones públicas y organizaciones, conectando tecnología, videojuegos, educación y economía creativa.",
+        sector_darwin: "Aceleración",
+        sector_impact: "Innovación Global",
+        sector_feira: "Economía Creativa",
+        sector_semdec: "Sector Público",
+        sector_senac: "Educación",
+        sector_goethe: "Instituto Cultural",
+        sector_rede: "Ecosistema",
+        bxp_headline: "Formación, experimentación y desarrollo de novos talentos para la industria de los videojuegos.",
+        bxp_body: "Creada por Aimotech, Black XP desarrolla programas que combinan formación, mentorías, desafíos y desarrollo práctico de proyectos, ampliando las oportunidades de ingreso y permanencia de nuevos talentos en el ecosistema de videojuegos.",
+        bxp_m1: "ediciones realizadas",
+        bxp_m2: "participantes impactados",
+        bxp_m3: "videojuegos y prototipos desarrollados en los programas",
+        bxp_cta: "Conoce Black XP ↗",
+        bxp_cap_1: "Comunidad, mentorías y desarrollo práctico de videojuegos en Black XP",
+        contact_title: "¿Qué desafío podemos transformar en proyecto?",
+        contact_intro: "Cuéntanos brevemente qué busca desarrollar tu organización. Nuestro equipo se pondrá en contacto para comprender el desafío e identificar posibilidades de colaboración con Aimotech.",
+        contact_email_label: "Correo Comercial",
+        contact_base_label: "Base Territorial",
+        contact_base_val: "Lauro de Freitas, Bahía, Brasil · Alcance en PT y ES",
+        form_name: "Nombre",
+        form_org: "Organización",
+        form_email: "Correo electrónico",
+        form_phone: "Teléfono / WhatsApp",
+        form_interest: "Me interesa",
+        opt_select: "Selecciona una opción...",
+        opt_games: "Desarrollo de Videojuegos",
+        opt_software: "Software y Productos Digitales",
+        opt_consult: "Consultoría y Mentoría",
+        opt_training: "Formación e Instructoría",
+        opt_talks: "Conferencias y Charlas",
+        opt_other: "Otro",
+        form_project: "Cuéntanos brevemente sobre tu proyecto",
+        form_privacy_prefix: "Acepto el tratamiento de los datos informados conforme a la",
+        form_privacy_link: "Política de Privacidad",
+        form_submit: "Enviar solicitud",
+        form_whatsapp_quick: "Iniciar por WhatsApp ↗",
+        confirm_title: "Mensaje recibido.",
+        confirm_body: "Mensaje recibido. Gracias por tu interés en Aimotech. Nuestro equipo se pondrá en contacto a través del correo electrónico informado.",
+        confirm_new: "Enviar otra solicitud",
+        footer_sig: "Movidos por lo que aún no sabemos.",
+        footer_nav_title: "Navegación",
+        footer_connect_title: "Conéctate",
+        footer_legal_title: "Institucional",
+        footer_privacy: "Política de Privacidad",
+        footer_copy: "© 2026 AIMOTECH LTDA. Todos los derechos reservados.",
+        modal_privacy_title: "Política de Privacidad",
+        modal_p1: "<strong>AIMOTECH LTDA</strong> (CNPJ 63.350.900/0001-89), con sede en Lauro de Freitas, Bahía, Brasil, recopila únicamente los datos informados voluntariamente en el formulario comercial y parámetros de origen de acceso (UTM/QR) para respuesta comercial.",
+        modal_p2: "Los datos se utilizan exclusivamente para responder a la solicitud comercial y presentar propuestas de videojuegos, software, consultoría, formación o conferencias. Solicitudes de actualización o eliminación pueden enviarse a <strong>tata@aimotech.com.br</strong>.",
+        modal_close: "Cerrar"
+      }
+    };
+
+    let currentLang = "pt";
+
+    function setLanguage(lang) {
+      if (!i18n[lang]) return;
+      currentLang = lang;
+      document.documentElement.lang = lang === "es" ? "es" : "pt-BR";
+      document.documentElement.setAttribute("data-lang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (i18n[lang][key]) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+
+      document.querySelectorAll("[data-set-lang]").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-set-lang") === lang);
+      });
+
+      const bxpCaption = document.getElementById("bxpCaptionText");
+      if (bxpCaption && bxpPhotos[currentBxpIndex]) {
+        bxpCaption.textContent = bxpPhotos[currentBxpIndex][lang];
+      }
+    }
+
+    function switchBxpPhoto(idx, btnEl) {
+      currentBxpIndex = idx;
+      const img = document.getElementById("bxpMainImg");
+      const cap = document.getElementById("bxpCaptionText");
+      if (img && bxpPhotos[idx]) {
+        img.src = bxpPhotos[idx].src;
+        cap.textContent = bxpPhotos[idx][currentLang];
+      }
+      document.querySelectorAll(".bxp-thumb-btn").forEach(b => b.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+    }
+
+    function selectServiceInterest(serviceValue) {
+      const selectEl = document.getElementById("f_interesse");
+      if (selectEl) {
+        selectEl.value = serviceValue;
+      }
+      const contactSection = document.getElementById("contato");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    function openQuickWhatsApp() {
+      const nome = document.getElementById("f_nome").value.trim();
+      const org = document.getElementById("f_org").value.trim();
+      const interesse = document.getElementById("f_interesse").value || (currentLang === "es" ? "Proyectos Aimotech" : "Projetos Aimotech");
+      const origin = document.getElementById("f_origin").value || "direto";
+      const msg = currentLang === "es"
+        ? `Hola equipo de Aimotech. Soy ${nome || "visitante"}${org ? " de " + org : ""}. Me gustaría conversar sobre: ${interesse}.`
+        : `Olá equipe da Aimotech. Sou ${nome || "visitante"}${org ? " da organização " + org : ""}. Gostaria de conversar sobre: ${interesse}.`;
+      window.open("https://wa.me/5575982645272?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    }
+
+    async function handleLeadSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById("leadForm");
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const payload = {
+        nome: document.getElementById("f_nome").value.trim(),
+        organizacao: document.getElementById("f_org").value.trim(),
+        email: document.getElementById("f_email").value.trim(),
+        telefone: document.getElementById("f_tel").value.trim(),
+        interesse: document.getElementById("f_interesse").value,
+        mensagem: document.getElementById("f_mensagem").value.trim(),
+        origin: document.getElementById("f_origin").value,
+        utmSource: document.getElementById("f_utm_source").value,
+        utmMedium: document.getElementById("f_utm_medium").value,
+        utmCampaign: document.getElementById("f_utm_campaign").value,
+        lang: currentLang
+      };
+
+      // Envia para o endpoint NestJS (/api/leads) quando rodando no servidor NestJS
+      try {
+        await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {}
+
+      form.style.display = "none";
+      document.getElementById("formConfirmation").classList.add("visible");
+    }
+
+    function resetLeadForm() {
+      const form = document.getElementById("leadForm");
+      form.reset();
+      form.style.display = "block";
+      document.getElementById("formConfirmation").classList.remove("visible");
+    }
+
+    function openPrivacyModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById("privacyModal").classList.add("open");
+    }
+
+    function closePrivacyModal() {
+      document.getElementById("privacyModal").classList.remove("open");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-set-lang]").forEach(btn => {
+        btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-set-lang")));
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const source = params.get("utm_source") || params.get("origin") || (params.get("qr") === "py" ? "qr_paraguai" : "direct");
+      document.getElementById("f_origin").value = source;
+      document.getElementById("f_utm_source").value = source;
+      document.getElementById("f_utm_medium").value = params.get("utm_medium") || "";
+      document.getElementById("f_utm_campaign").value = params.get("utm_campaign") || "";
+
+      if (params.get("lang") === "es" || params.get("qr") === "py") {
+        setLanguage("es");
+      }
+
+      const mobileBtn = document.getElementById("mobileMenuBtn");
+      const mainNav = document.getElementById("mainNav");
+      if (mobileBtn && mainNav) {
+        mobileBtn.addEventListener("click", () => mainNav.classList.toggle("open"));
+        mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mainNav.classList.remove("open")));
+      }
+
+      const floatingCta = document.getElementById("floatingCta");
+      const heroSec = document.getElementById("aimotech");
+      const contactSec = document.getElementById("contato");
+
+      window.addEventListener("scroll", () => {
+        if (!floatingCta || !heroSec || !contactSec) return;
+        const heroBottom = heroSec.getBoundingClientRect().bottom;
+        const contactTop = contactSec.getBoundingClientRect().top;
+        if (heroBottom < 100 && contactTop > window.innerHeight * 0.65) {
+          floatingCta.classList.add("visible");
+        } else {
+          floatingCta.classList.remove("visible");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
