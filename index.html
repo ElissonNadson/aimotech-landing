@@ -1535,8 +1535,46 @@
       .documentary-strip,
       .bxp-stats-row,
       .form-grid,
-      .algodao-composite {
+      .algodao-composite,
+      .trilhas-composite-frame {
         grid-template-columns: 1fr;
+      }
+
+      .hero-carousel-track {
+        height: 380px;
+      }
+
+      .hero-slide img {
+        height: 295px;
+      }
+
+      .hero-slide-caption {
+        padding: 10px 14px;
+        height: 85px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .hero-carousel-controls {
+        bottom: 96px;
+        right: 12px;
+      }
+
+      .trilhas-composite-frame .character-3d-box {
+        height: 220px;
+      }
+
+      .hero-map-badge {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero-signature-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
       }
 
       .logos-architectural-grid {
@@ -2559,6 +2597,28 @@
       if (heroWrap) {
         heroWrap.addEventListener(mouseenter, () => clearInterval(heroAutoPlayTimer));
         heroWrap.addEventListener(mouseleave, resetHeroAutoPlay);
+
+        // Suporte a Touch Swipe no Mobile (Deslizar o dedo para trocar slide)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        heroWrap.addEventListener(touchstart, (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+          clearInterval(heroAutoPlayTimer);
+        }, { passive: true });
+
+        heroWrap.addEventListener(touchend, (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 45) {
+            if (diff > 0) {
+              nextHeroSlide(); // Deslizou para esquerda -> proximo
+            } else {
+              prevHeroSlide(); // Deslizou para direita -> anterior
+            }
+          }
+          resetHeroAutoPlay();
+        }, { passive: true });
       }
     }
 
