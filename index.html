@@ -2562,18 +2562,18 @@
         // Carrossel Hero Interativo com Autoplay Suave
     let currentHeroSlide = 0;
     let heroAutoPlayTimer = null;
-    const heroSlides = document.querySelectorAll(.hero-slide);
-    const heroDots = document.querySelectorAll(.indicator-dot);
+    const heroSlides = document.querySelectorAll(".hero-slide");
+    const heroDots = document.querySelectorAll(".indicator-dot");
 
     function goToHeroSlide(n) {
       if (!heroSlides.length) return;
-      heroSlides[currentHeroSlide].classList.remove(active);
-      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.remove(active);
+      heroSlides[currentHeroSlide].classList.remove("active");
+      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.remove("active");
 
       currentHeroSlide = (n + heroSlides.length) % heroSlides.length;
 
-      heroSlides[currentHeroSlide].classList.add(active);
-      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.add(active);
+      heroSlides[currentHeroSlide].classList.add("active");
+      if (heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.add("active");
       resetHeroAutoPlay();
     }
 
@@ -2593,21 +2593,21 @@
     // Iniciar Carrossel
     if (heroSlides.length > 0) {
       resetHeroAutoPlay();
-      const heroWrap = document.querySelector(.hero-carousel-container);
+      const heroWrap = document.querySelector(".hero-carousel-container");
       if (heroWrap) {
-        heroWrap.addEventListener(mouseenter, () => clearInterval(heroAutoPlayTimer));
-        heroWrap.addEventListener(mouseleave, resetHeroAutoPlay);
+        heroWrap.addEventListener("mouseenter", () => clearInterval(heroAutoPlayTimer));
+        heroWrap.addEventListener("mouseleave", resetHeroAutoPlay);
 
         // Suporte a Touch Swipe no Mobile (Deslizar o dedo para trocar slide)
         let touchStartX = 0;
         let touchEndX = 0;
 
-        heroWrap.addEventListener(touchstart, (e) => {
+        heroWrap.addEventListener("touchstart", (e) => {
           touchStartX = e.changedTouches[0].screenX;
           clearInterval(heroAutoPlayTimer);
         }, { passive: true });
 
-        heroWrap.addEventListener(touchend, (e) => {
+        heroWrap.addEventListener("touchend", (e) => {
           touchEndX = e.changedTouches[0].screenX;
           const diff = touchStartX - touchEndX;
           if (Math.abs(diff) > 45) {
