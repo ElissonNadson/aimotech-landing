@@ -1555,9 +1555,137 @@
         flex-direction: column;
       }
     }
+  
+    /* ==========================================================================
+       ANIMACOES DE ENTRADA SUAVE (STAGGERED HERO) & SCROLL REVEAL (IMPECCABLE)
+       ========================================================================== */
+    @keyframes fadeInUpHero {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInHeroMedia {
+      0% {
+        opacity: 0;
+        transform: scale(0.97) translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Animacao escalonada na primeira dobra (Hero) */
+    .hero-eyebrow {
+      animation: fadeInUpHero 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-title {
+      animation: fadeInUpHero 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+      opacity: 0;
+    }
+
+    .hero-description {
+      animation: fadeInUpHero 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards;
+      opacity: 0;
+    }
+
+    .hero-actions {
+      animation: fadeInUpHero 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+      opacity: 0;
+    }
+
+    .hero-signature-bar {
+      animation: fadeInUpHero 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
+      opacity: 0;
+    }
+
+    .hero-carousel-wrapper {
+      animation: fadeInHeroMedia 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      opacity: 0;
+    }
+
+    /* Scroll Reveal para Secoes e Cards */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+
+    /* Efeito Radar Glow Cartografico no cursor */
+    .cursor-radar-glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.07) 0%, rgba(124, 77, 255, 0.02) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.4s ease;
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-radar-glow {
+        display: block;
+      }
+    }
+
+    /* Microinteracao elegante nos botoes */
+    .btn {
+      transition: background-color 0.22s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Acessibilidade de movimento reduzido */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .cursor-radar-glow {
+        display: none !important;
+      }
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
+  <!-- Cursor Radar Glow Cartografico -->
+  <div class="cursor-radar-glow" id="radarGlow" aria-hidden="true"></div>
+
 
   <!-- CABEÇALHO E NAVEGAÇÃO (Seção 4) -->
   <header class="site-header" id="topo">
@@ -1745,7 +1873,7 @@
     <!-- SEÇÃO 2 — O QUE PODEMOS DESENVOLVER JUNTOS (Seção 6: Duas Frentes Comerciais) -->
     <section class="services-section" id="servicos">
       <div class="container">
-        <div class="section-intro-block">
+        <div class="reveal-on-scroll section-intro-block">
           <h2 class="section-title" data-i18n="services_title">O que podemos desenvolver juntos</h2>
           <p class="section-lead" data-i18n="services_intro">
             A Aimotech reúne desenvolvimento tecnológico, consultoria e formação para atender diferentes desafios de organizações e negócios.
@@ -1761,7 +1889,7 @@
             </div>
 
             <ul class="service-list">
-              <li class="service-row" onclick="selectServiceInterest('Desenvolvimento de Jogos')">
+              <li class="reveal-on-scroll service-row" onclick="selectServiceInterest('Desenvolvimento de Jogos')">
                 <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M6 12C6 9.79 7.79 8 10 8H22C24.21 8 26 9.79 26 12V19C26 21.76 23.76 24 21 24H19.5L17.5 21H14.5L12.5 24H11C8.24 24 6 21.76 6 19V12Z"/>
                   <path d="M11 13V17M9 15H13"/>
@@ -1779,7 +1907,7 @@
                 </div>
               </li>
 
-              <li class="service-row" onclick="selectServiceInterest('Software e Produtos Digitais')">
+              <li class="reveal-on-scroll service-row" onclick="selectServiceInterest('Software e Produtos Digitais')">
                 <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="4" y="6" width="24" height="16" rx="2"/>
                   <path d="M9 15L14 11L18 15L23 10"/>
@@ -1810,7 +1938,7 @@
             </div>
 
             <ul class="service-list">
-              <li class="service-row" onclick="selectServiceInterest('Consultoria e Mentoria')">
+              <li class="reveal-on-scroll service-row" onclick="selectServiceInterest('Consultoria e Mentoria')">
                 <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="16" cy="16" r="10"/>
                   <polygon points="19.5,12.5 17.5,17.5 12.5,19.5 14.5,14.5"/>
@@ -1827,7 +1955,7 @@
                 </div>
               </li>
 
-              <li class="service-row" onclick="selectServiceInterest('Formação e Instrutoria')">
+              <li class="reveal-on-scroll service-row" onclick="selectServiceInterest('Formação e Instrutoria')">
                 <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="16" cy="9" r="3"/>
                   <circle cx="9" cy="21" r="3"/>
@@ -1845,7 +1973,7 @@
                 </div>
               </li>
 
-              <li class="service-row" onclick="selectServiceInterest('Palestras')">
+              <li class="reveal-on-scroll service-row" onclick="selectServiceInterest('Palestras')">
                 <svg class="service-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="10" cy="16" r="3"/>
                   <path d="M16 11C18.5 13.5 18.5 18.5 16 21"/>
@@ -1881,7 +2009,7 @@
     <!-- SEÇÃO 3 — PROJETOS EM DESTAQUE (Seção 7: Graphite #171717, Provas Reais) -->
     <section class="projects-section" id="projetos">
       <div class="container">
-        <div class="section-intro-block">
+        <div class="reveal-on-scroll section-intro-block">
           <h2 class="section-title" data-i18n="projects_title">Ideias que se transformam em experiências.</h2>
           <p class="section-lead" data-i18n="projects_intro">
             Pesquisa, narrativa, design e tecnologia se encontram no desenvolvimento de propriedades intelectuais, jogos e produtos digitais.
@@ -1889,7 +2017,7 @@
         </div>
 
         <!-- PROTAGONISTA: TRILHAS DA TERRA -->
-        <article class="protagonist-feature">
+        <article class="reveal-on-scroll protagonist-feature">
           <div class="project-media-frame">
             <div class="trilhas-composite-frame">
               <img class="territorio-art" src="assets/fotos/hero_territorio.jpg" alt="Pesquisa territorial de campo e comunidade de Trilhas da Terra" />
@@ -1930,7 +2058,7 @@
 
         <!-- DEMAIS PROJETOS: ALGODÃO DOCE & BIOGRAFIA PRETA / WINI.IA -->
         <div class="secondary-projects-grid">
-          <article class="secondary-project-item">
+          <article class="reveal-on-scroll secondary-project-item">
             <div>
               <div class="algodao-composite">
                 <img class="main-art" src="assets/fotos/algodao_doce_capa.jpg" alt="Arte oficial das personagens Algodão Doce e Floquinho" />
@@ -1951,7 +2079,7 @@
             </div>
           </article>
 
-          <article class="secondary-project-item">
+          <article class="reveal-on-scroll secondary-project-item">
             <div>
               <div class="project-media-frame">
                 <img src="assets/fotos/wini_ia_tecnologia.jpg" alt="Desenvolvimento de produtos digitais e inteligência artificial na Aimotech" style="height: 266px;" />
@@ -1977,7 +2105,7 @@
     <!-- SEÇÃO 4 — COMO TRANSFORMAMOS UMA IDEIA EM INOVAÇÃO (Seção 8: Warm Gray #E8E3DA) -->
     <section class="process-section" id="como-trabalhamos">
       <div class="container">
-        <div class="section-intro-block" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+        <div class="reveal-on-scroll section-intro-block" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
           <h2 class="section-title" data-i18n="process_title">Como transformamos uma ideia em inovação</h2>
           <p class="section-lead" data-i18n="process_intro">
             Cada projeto começa pela compreensão do desafio, das pessoas envolvidas e do contexto em que a solução será utilizada. Pesquisa, construção colaborativa, design e desenvolvimento tecnológico orientam o caminho entre a ideia e sua aplicação.
@@ -2001,7 +2129,7 @@
           </svg>
 
           <div class="process-five-cols">
-            <div class="process-step-col">
+            <div class="reveal-on-scroll process-step-col">
               <span class="step-index">01</span>
               <h3 data-i18n="step1_title">Pesquisa Territorial</h3>
               <p data-i18n="step1_desc">
@@ -2009,7 +2137,7 @@
               </p>
             </div>
 
-            <div class="process-step-col">
+            <div class="reveal-on-scroll process-step-col">
               <span class="step-index">02</span>
               <h3 data-i18n="step2_title">Construção Coletiva</h3>
               <p data-i18n="step2_desc">
@@ -2017,7 +2145,7 @@
               </p>
             </div>
 
-            <div class="process-step-col">
+            <div class="reveal-on-scroll process-step-col">
               <span class="step-index">03</span>
               <h3 data-i18n="step3_title">Desenvolvimento</h3>
               <p data-i18n="step3_desc">
@@ -2025,7 +2153,7 @@
               </p>
             </div>
 
-            <div class="process-step-col">
+            <div class="reveal-on-scroll process-step-col">
               <span class="step-index">04</span>
               <h3 data-i18n="step4_title">Validação</h3>
               <p data-i18n="step4_desc">
@@ -2033,7 +2161,7 @@
               </p>
             </div>
 
-            <div class="process-step-col">
+            <div class="reveal-on-scroll process-step-col">
               <span class="step-index">05</span>
               <h3 data-i18n="step5_title">Impacto</h3>
               <p data-i18n="step5_desc">
@@ -2044,19 +2172,19 @@
         </div>
 
         <div class="documentary-strip" aria-label="Sequência documental da abordagem Aimotech">
-          <figure class="doc-figure">
+          <figure class="reveal-on-scroll doc-figure">
             <img src="assets/fotos/etapa_01_pesquisa.jpg" alt="Pesquisa histórica e territorial na Bahia (Missão Paraguaçu)" />
             <figcaption><span data-i18n="seq_1">Pesquisa</span><span>01</span></figcaption>
           </figure>
-          <figure class="doc-figure">
+          <figure class="reveal-on-scroll doc-figure">
             <img src="assets/fotos/etapa_02_cocriacao_aluno.jpg" alt="Co-criação e validação do universo de Trilhas da Terra em sala de aula com alunos" />
             <figcaption><span data-i18n="seq_2">Co-criação Territorial</span><span>02</span></figcaption>
           </figure>
-          <figure class="doc-figure">
+          <figure class="reveal-on-scroll doc-figure">
             <img src="assets/fotos/etapa_03_desenvolvimento.jpg" alt="Visão geral do jogo e estruturação técnica" />
             <figcaption><span data-i18n="seq_3">Tecnologia</span><span>03</span></figcaption>
           </figure>
-          <figure class="doc-figure">
+          <figure class="reveal-on-scroll doc-figure">
             <img src="assets/fotos/etapa_04_validacao.jpg" alt="Validação de protótipos e produto de laboratório" />
             <figcaption><span data-i18n="seq_4">Formação</span><span>04</span></figcaption>
           </figure>
@@ -2067,7 +2195,7 @@
     <!-- SEÇÃO 5 — EXPERIÊNCIA (Seção 9: Centrada nos 7 Logos Previstos) -->
     <section class="experience-section" id="experiencia">
       <div class="container">
-        <div class="section-intro-block">
+        <div class="reveal-on-scroll section-intro-block">
           <h2 class="section-title" data-i18n="exp_title">Experiência que atravessa diferentes setores.</h2>
           <p class="section-lead" data-i18n="exp_intro">
             A Aimotech desenvolve consultorias, mentorias, formações e projetos de inovação para empresas, instituições públicas e organizações, conectando tecnologia, games, educação e economia criativa.
@@ -2075,49 +2203,49 @@
         </div>
 
         <div class="logos-architectural-grid" aria-label="Instituições e organizações parceiras">
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/darwin.png" alt="Logo Darwin Startups" class="partner-logo-img logo-darwin" />
             </div>
             <span class="logo-sector" data-i18n="sector_darwin">Aceleração</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/impact-hub.svg" alt="Logo Impact Hub" class="partner-logo-img logo-impact" />
             </div>
             <span class="logo-sector" data-i18n="sector_impact">Inovação Global</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/feira-preta.svg" alt="Logo Feira Preta" class="partner-logo-img logo-feira" />
             </div>
             <span class="logo-sector" data-i18n="sector_feira">Economia Criativa</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/semdec-clean.png" alt="Logo SEMDEC Salvador" class="partner-logo-img logo-semdec" />
             </div>
             <span class="logo-sector" data-i18n="sector_semdec">Setor Público</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/senac.svg" alt="Logo SENAC" class="partner-logo-img logo-senac" />
             </div>
             <span class="logo-sector" data-i18n="sector_senac">Educação</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <img src="assets/logos/goethe.svg" alt="Logo Goethe-Institut" class="partner-logo-img logo-goethe" />
             </div>
             <span class="logo-sector" data-i18n="sector_goethe">Instituto Cultural</span>
           </div>
 
-          <div class="logo-cell">
+          <div class="reveal-on-scroll logo-cell">
             <div class="logo-img-wrapper">
               <svg viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="partner-logo-img logo-redemais">
                 <text x="6" y="26" font-family="Manrope, sans-serif" font-weight="800" font-size="24" letter-spacing="0.02em" fill="currentColor">REDE</text>
@@ -2855,6 +2983,63 @@
         }
       });
     });
+  
+    // ==========================================================================
+    // SCROLL REVEAL (IntersectionObserver) & RADAR GLOW CARTOGRAFICO
+    // ==========================================================================
+    document.addEventListener("DOMContentLoaded", function() {
+      var revealElements = document.querySelectorAll(".reveal-on-scroll");
+      if ("IntersectionObserver" in window) {
+        var revealObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach(function(el) {
+          var parentGrid = el.closest(".services-columns, .secondary-projects-grid, .process-five-cols, .documentary-strip, .logos-architectural-grid");
+          if (parentGrid) {
+            var siblings = Array.from(parentGrid.children);
+            var pos = siblings.indexOf(el);
+            if (pos >= 0) {
+              el.classList.add("reveal-delay-" + ((pos % 5) + 1));
+            }
+          }
+          revealObserver.observe(el);
+        });
+      } else {
+        revealElements.forEach(function(el) { el.classList.add("is-revealed"); });
+      }
+
+      var radarGlow = document.getElementById("radarGlow");
+      if (radarGlow && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        var mouseX = -500;
+        var mouseY = -500;
+        var currentX = -500;
+        var currentY = -500;
+
+        window.addEventListener("mousemove", function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        }, { passive: true });
+
+        function animateGlow() {
+          currentX += (mouseX - currentX) * 0.12;
+          currentY += (mouseY - currentY) * 0.12;
+          radarGlow.style.left = currentX + "px";
+          radarGlow.style.top = currentY + "px";
+          requestAnimationFrame(animateGlow);
+        }
+        requestAnimationFrame(animateGlow);
+      }
+    });
+
   </script>
 </body>
 </html>
