@@ -1,320 +1,336 @@
 ---
-// Header.astro
+// Header.astro — Clone Autêntico Ustwo Games (Floating Playful Pill Nav)
 ---
 
-<header class="site-header" id="topo">
-  <div class="container header-container">
-    <a href="#topo" class="logo-link" aria-label="Aimotech - Início">
-      <div class="logo-mark">
-        <span class="logo-text">aimotech</span>
-        <span class="logo-tag">Territorial Game & Innovation Studio</span>
+<header class="ustwo-header" id="main-header">
+  <nav class="ustwo-nav" id="brand-nav" aria-label="Navegação Principal">
+    
+    <!-- GRUPO ESQUERDA -->
+    <div class="nav-group nav-left">
+      <a href="#aimotech" class="brand-btn-ustwo nav-btn tilt-neg-2">Sobre Nós</a>
+      <a href="#manifesto" class="brand-btn-ustwo nav-btn tilt-pos-2">Manifesto</a>
+      <a href="#jogos" class="brand-btn-ustwo nav-btn tilt-neg-2">Nossos Jogos</a>
+    </div>
+
+    <!-- LOGO CENTRAL HANGING SHIELD (ESTILO USTWO GAMES) -->
+    <a href="#aimotech" class="ustwo-logo-badge" aria-label="Aimotech Página Inicial">
+      <div class="logo-shield-wrap">
+        <svg class="logo-svg" viewBox="0 0 160 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logo-aimo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7C4DFF" />
+              <stop offset="45%" stop-color="#2E7D5B" />
+              <stop offset="100%" stop-color="#B75A36" />
+            </linearGradient>
+            <filter id="shield-shadow" x="-15%" y="-10%" width="130%" height="135%">
+              <feDropShadow dx="4" dy="6" stdDeviation="0" flood-color="rgba(0,0,0,0.25)" />
+            </filter>
+          </defs>
+          <!-- Base externa branca com borda preta grossa -->
+          <path 
+            d="M 22 12 L 138 12 Q 148 12 148 22 L 148 82 Q 148 122 80 138 Q 12 122 12 82 L 12 22 Q 12 12 22 12 Z" 
+            fill="#ffffff" 
+            stroke="#171717" 
+            stroke-width="4" 
+            filter="url(#shield-shadow)" 
+          />
+          <!-- Miolo com gradiente territorial -->
+          <path 
+            d="M 27 17 L 133 17 Q 141 17 141 25 L 141 78 Q 141 114 80 128 Q 19 114 19 78 L 19 25 Q 19 17 27 17 Z" 
+            fill="url(#logo-aimo-grad)" 
+          />
+          <!-- Tipografia Central -->
+          <text x="80" y="58" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="900" font-size="25" fill="#ffffff" letter-spacing="-1">AIMO</text>
+          <text x="80" y="83" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="14" fill="#ffffff" letter-spacing="2">GAMES</text>
+          <circle cx="80" cy="102" r="4.5" fill="#FFD734" stroke="#171717" stroke-width="1.5" />
+        </svg>
       </div>
     </a>
 
-    <nav class="nav-desktop" aria-label="Navegação Principal">
-      <ul class="nav-list">
-        <li><a href="#manifesto" class="nav-link">Manifesto</a></li>
-        <li><a href="#jogos" class="nav-link">Jogos Autorais</a></li>
-        <li><a href="#black-xp" class="nav-link">Black XP</a></li>
-        <li><a href="#servicos" class="nav-link">Serviços</a></li>
-        <li><a href="#processo" class="nav-link">Metodologia</a></li>
-        <li><a href="#contato" class="nav-link">Contato</a></li>
-      </ul>
-    </nav>
+    <!-- GRUPO DIREITA -->
+    <div class="nav-group nav-right">
+      <a href="#black-xp" class="brand-btn-ustwo nav-btn tilt-pos-2">Black XP</a>
+      <a href="#servicos" class="brand-btn-ustwo nav-btn tilt-neg-2">Serviços</a>
+      <a href="#contato" class="brand-btn-ustwo nav-btn tilt-pos-2 btn-colored">Contato</a>
+    </div>
 
-    <div class="header-actions">
-      <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="btn-trilhas-chip" title="Visitar site oficial de Trilhas da Terra">
-        <span class="chip-dot"></span>
-        <span>Trilhas da Terra</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 17L17 7"></path>
-          <path d="M7 7h10v10"></path>
-        </svg>
+    <!-- BARRA MOBILE -->
+    <div class="mobile-nav-bar">
+      <a href="#aimotech" class="mobile-logo-badge">
+        <span class="m-badge-text">AIMO<b>GAMES</b></span>
       </a>
-
-      <a href="#contato" class="btn-primary header-cta">
-        Fale Conosco
-      </a>
-
-      <button type="button" class="mobile-toggle" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-burger">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
+      <button type="button" class="brand-btn-ustwo mobile-toggle-btn" id="mobile-toggle" aria-label="Abrir Menu">
+        <span>Menu</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
         </svg>
       </button>
     </div>
-  </div>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer" hidden>
-    <div class="drawer-header">
-      <span class="logo-text">aimotech</span>
-      <button type="button" class="drawer-close" id="drawer-close-btn" aria-label="Fechar menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+  </nav>
+
+  <!-- MOBILE OVERLAY PLAYFUL -->
+  <div class="mobile-overlay" id="mobile-overlay" hidden>
+    <div class="mobile-overlay-card">
+      <div class="overlay-header">
+        <span class="overlay-brand">AIMOTECH GAMES</span>
+        <button type="button" class="brand-btn-ustwo overlay-close-btn" id="mobile-close" aria-label="Fechar Menu">✕</button>
+      </div>
+      <div class="overlay-links">
+        <a href="#aimotech" class="brand-btn-ustwo overlay-link tilt-neg-2">Sobre Nós</a>
+        <a href="#manifesto" class="brand-btn-ustwo overlay-link tilt-pos-2">Manifesto Territorial</a>
+        <a href="#jogos" class="brand-btn-ustwo overlay-link tilt-neg-2">Nossos Jogos</a>
+        <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="brand-btn-ustwo overlay-link tilt-pos-2 btn-green">Trilhas da Terra ↗</a>
+        <a href="#black-xp" class="brand-btn-ustwo overlay-link tilt-neg-2">Black XP Game Lab</a>
+        <a href="#servicos" class="brand-btn-ustwo overlay-link tilt-pos-2">Serviços & Atuação</a>
+        <a href="#contato" class="brand-btn-ustwo overlay-link tilt-neg-2 btn-colored">Fale com o Estúdio ➔</a>
+      </div>
     </div>
-    <ul class="drawer-links">
-      <li><a href="#manifesto" class="drawer-item">Manifesto</a></li>
-      <li><a href="#jogos" class="drawer-item">Jogos Autorais</a></li>
-      <li><a href="#black-xp" class="drawer-item">Black XP Festival & Lab</a></li>
-      <li><a href="#servicos" class="drawer-item">Serviços e Pilares</a></li>
-      <li><a href="#processo" class="drawer-item">Como Trabalhamos</a></li>
-      <li><a href="#contato" class="drawer-item">Contato & Coprodução</a></li>
-      <li class="drawer-divider"></li>
-      <li>
-        <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="drawer-trilhas-link">
-          Visitar site oficial: Trilhas da Terra ↗
-        </a>
-      </li>
-    </ul>
   </div>
 </header>
 
 <style>
-  .site-header {
-    position: sticky;
+  .ustwo-header {
+    position: fixed;
     top: 0;
-    z-index: 100;
-    background-color: rgba(248, 246, 242, 0.94);
-    border-bottom: 1px solid var(--cinza-borda);
-    backdrop-filter: blur(8px);
-    transition: background-color 0.2s ease;
+    left: 0;
+    right: 0;
+    z-index: 980;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
   }
 
-  .header-container {
+  .ustwo-header.is-hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  .ustwo-nav {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    height: 72px;
-    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+    pointer-events: auto;
   }
 
-  .logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--graphite);
-  }
-
-  .logo-mark {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .logo-text {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: -0.04em;
-    color: var(--graphite);
-    line-height: 1;
-  }
-
-  .logo-tag {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--cinza-medio);
-    margin-top: 3px;
-  }
-
-  .nav-desktop {
+  /* GRUPOS DE BOTÕES LATERAIS */
+  .nav-group {
     display: none;
-  }
-
-  @media (min-width: 992px) {
-    .nav-desktop {
-      display: block;
-    }
-  }
-
-  .nav-list {
-    display: flex;
-    list-style: none;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .nav-link {
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--graphite);
-    transition: color 0.15s ease;
-  }
-
-  .nav-link:hover {
-    color: var(--aimo-purple);
-  }
-
-  .header-actions {
-    display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .btn-trilhas-chip {
-    display: none;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--verde-mata);
-    background-color: rgba(46, 125, 91, 0.09);
-    border: 1px solid rgba(46, 125, 91, 0.22);
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    transition: all 0.18s ease;
-  }
-
-  @media (min-width: 768px) {
-    .btn-trilhas-chip {
-      display: inline-flex;
+  @media (min-width: 992px) {
+    .nav-group {
+      display: flex;
     }
   }
 
-  .btn-trilhas-chip:hover {
-    background-color: rgba(46, 125, 91, 0.16);
-    border-color: var(--verde-mata);
+  .nav-btn {
+    font-size: 1rem;
+    padding: 12px 20px;
+    letter-spacing: -0.01em;
   }
 
-  .chip-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--verde-mata);
+  /* ROTAÇÃO PLAYFUL ESTILO USTWO GAMES */
+  .tilt-neg-2 {
+    transform: rotate(-2deg);
   }
 
-  .header-cta {
-    padding: 10px 20px;
-    font-size: 0.875rem;
+  .tilt-pos-2 {
+    transform: rotate(2deg);
+  }
+
+  .tilt-neg-2:hover,
+  .tilt-pos-2:hover {
+    transform: rotate(0deg) scale(1.05) translate(2px, 2px);
+    box-shadow: var(--shadow-ustwo-hover);
+    color: var(--aimo-purple);
+  }
+
+  /* LOGO CENTRAL EM SHIELD */
+  .ustwo-logo-badge {
     display: none;
-  }
-
-  @media (min-width: 640px) {
-    .header-cta {
-      display: inline-flex;
-    }
-  }
-
-  .mobile-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    color: var(--graphite);
-    padding: 8px;
-    cursor: pointer;
+    margin: 0 14px;
+    text-decoration: none;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @media (min-width: 992px) {
-    .mobile-toggle {
+    .ustwo-logo-badge {
+      display: block;
+    }
+  }
+
+  .ustwo-logo-badge:hover {
+    transform: scale(1.08) translateY(2px);
+  }
+
+  .logo-shield-wrap {
+    width: 110px;
+    height: 100px;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* BARRA MOBILE */
+  .mobile-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    .mobile-nav-bar {
       display: none;
     }
   }
 
-  /* Drawer Mobile */
-  .mobile-drawer {
-    display: none;
+  .mobile-logo-badge {
+    background: #ffffff;
+    color: var(--graphite);
+    border: 2px solid var(--graphite);
+    border-radius: 14px;
+    padding: 10px 18px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .mobile-logo-badge b {
+    color: var(--aimo-purple);
+  }
+
+  .mobile-toggle-btn {
+    padding: 10px 18px;
+    font-size: 0.9375rem;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  /* OVERLAY MOBILE */
+  .mobile-overlay {
     position: fixed;
     top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    width: 320px;
-    max-width: 85vw;
-    background-color: var(--pure-white);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
-    z-index: 200;
-    padding: 24px;
-    flex-direction: column;
-  }
-
-  .mobile-drawer.is-open {
+    background-color: rgba(23, 23, 23, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 999;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    pointer-events: auto;
   }
 
-  @media (min-width: 992px) {
-    .mobile-drawer,
-    .mobile-drawer.is-open {
-      display: none !important;
-    }
+  .mobile-overlay[hidden] {
+    display: none !important;
   }
 
-  .drawer-header {
+  .mobile-overlay-card {
+    background: #ffffff;
+    border: 3px solid var(--graphite);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 440px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .overlay-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
+    border-bottom: 2px solid #E8E3DA;
+    padding-bottom: 16px;
   }
 
-  .drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
+  .overlay-brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
     color: var(--graphite);
-    padding: 6px;
   }
 
-  .drawer-links {
-    list-style: none;
+  .overlay-close-btn {
+    padding: 8px 14px;
+    font-size: 1rem;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .overlay-links {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
   }
 
-  .drawer-item {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--graphite);
-    display: block;
-    padding: 6px 0;
-  }
-
-  .drawer-divider {
-    height: 1px;
-    background-color: var(--cinza-borda);
-    margin: 12px 0;
-  }
-
-  .drawer-trilhas-link {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--verde-mata);
+  .overlay-link {
+    width: 100%;
+    font-size: 1.0625rem;
+    padding: 14px;
   }
 </style>
 
 <script>
-  const toggleBtn = document.getElementById('mobile-menu-btn');
-  const closeBtn = document.getElementById('drawer-close-btn');
-  const drawer = document.getElementById('mobile-drawer');
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const closeBtn = document.getElementById('mobile-close');
+  const overlay = document.getElementById('mobile-overlay');
+  const overlayLinks = document.querySelectorAll('.overlay-link');
 
-  function openDrawer() {
-    if (drawer) {
-      drawer.classList.add('is-open');
-      drawer.removeAttribute('hidden');
-      toggleBtn?.setAttribute('aria-expanded', 'true');
+  function openMenu() {
+    if (overlay) {
+      overlay.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
     }
   }
 
-  function closeDrawer() {
-    if (drawer) {
-      drawer.classList.remove('is-open');
-      drawer.setAttribute('hidden', '');
-      toggleBtn?.setAttribute('aria-expanded', 'false');
+  function closeMenu() {
+    if (overlay) {
+      overlay.setAttribute('hidden', '');
+      document.body.style.overflow = '';
     }
   }
 
-  toggleBtn?.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
+  toggleBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
 
-  drawer?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeDrawer);
+  overlayLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
+
+  // Auto-hide ao rolar para baixo e revelação instantânea ao rolar para cima (Padrão Ustwo Games)
+  let lastScrollY = window.scrollY;
+  const header = document.getElementById('main-header');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY <= 60) {
+      header?.classList.remove('is-hidden');
+    } else if (currentScrollY > lastScrollY && currentScrollY > 120) {
+      header?.classList.add('is-hidden');
+    } else if (currentScrollY < lastScrollY) {
+      header?.classList.remove('is-hidden');
+    }
+    
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 </script>

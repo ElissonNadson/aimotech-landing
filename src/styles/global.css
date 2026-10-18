@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700..900;1,9..144,700&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
 
 :root {
   /* Cores Sólidas Oficiais — DESIGN.md */
@@ -24,8 +24,14 @@
   --radius-pill: 999px;
 
   /* Tipografia */
+  --font-display: 'Fraunces', Georgia, serif;
   --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Ustwo Games Signature Shadows */
+  --shadow-ustwo: 6px 6px 0px rgba(0, 0, 0, 0.2);
+  --shadow-ustwo-lg: 8px 8px 0px rgba(0, 0, 0, 0.22);
+  --shadow-ustwo-hover: 2px 2px 0px rgba(0, 0, 0, 0.3);
 
   /* Grid e Layout */
   --container-max: 1240px;
@@ -136,6 +142,68 @@ button, input, select, textarea {
 }
 
 /* Botões do Design System */
+.brand-btn-ustwo {
+  cursor: pointer;
+  background-color: var(--pure-white);
+  color: var(--graphite);
+  border: 2px solid var(--graphite);
+  border-radius: 16px;
+  padding: 12px 22px;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-ustwo);
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-btn-ustwo:hover {
+  transform: translate(2px, 2px) rotate(0deg) scale(1.02);
+  box-shadow: var(--shadow-ustwo-hover);
+  background-color: #FAF8F5;
+  color: var(--aimo-purple);
+}
+
+.brand-btn-ustwo.btn-colored {
+  background-color: var(--aimo-purple);
+  color: var(--pure-white);
+  border-color: #171717;
+}
+
+.brand-btn-ustwo.btn-colored:hover {
+  background-color: var(--aimo-purple-hover);
+  color: var(--pure-white);
+}
+
+.brand-btn-ustwo.btn-green {
+  background-color: var(--verde-mata);
+  color: var(--pure-white);
+  border-color: #171717;
+}
+
+.brand-btn-ustwo.btn-terracota {
+  background-color: var(--terracota);
+  color: var(--pure-white);
+  border-color: #171717;
+}
+
+.brand-btn-ustwo.btn-blue {
+  background-color: var(--azul-profundo);
+  color: var(--pure-white);
+  border-color: #171717;
+}
+
+.brand-btn-ustwo.btn-yellow {
+  background-color: #FFD734;
+  color: #171717;
+  border-color: #171717;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

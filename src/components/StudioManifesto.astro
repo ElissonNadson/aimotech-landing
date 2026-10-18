@@ -95,6 +95,7 @@
   .manifesto-title {
     margin-bottom: 20px;
     color: var(--graphite);
+    font-family: var(--font-display), 'Fraunces', serif;
     font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
     letter-spacing: -0.03em;
   }
@@ -127,17 +128,18 @@
 
   .manifesto-card {
     background-color: var(--pure-white);
-    border: 1px solid var(--cinza-borda);
-    border-radius: var(--radius-surface);
+    border: 2px solid var(--graphite);
+    border-radius: 20px;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
     padding: 32px 24px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
   }
 
   .manifesto-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--aimo-purple);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
   }
 
   .card-num {
@@ -150,6 +152,8 @@
 
   .card-title {
     font-size: 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
     color: var(--graphite);
     margin-bottom: 12px;
   }
@@ -167,7 +171,9 @@
     gap: 24px;
     padding: 36px 32px;
     background-color: var(--graphite);
-    border-radius: var(--radius-surface);
+    border: 2px solid #333333;
+    border-radius: 20px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
     color: var(--pure-white);
   }
 

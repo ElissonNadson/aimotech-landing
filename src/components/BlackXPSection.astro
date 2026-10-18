@@ -1,589 +1,622 @@
 ---
-// BlackXPSection.astro
+// BlackXPSection.astro — Integração Autêntica do Mosaico de Fotos + Mascote 3D Oficial (Estilo Ustwo Games & Portfólio)
 import events from '../data/events.json';
 import mascote from '../data/mascote.json';
 import BlackXPMosaic from './BlackXPMosaic.astro';
 
+// Poses oficiais do Mascote 3D
 const mascotHero = mascote.poses.find(p => p.id === 'heroica') || mascote.poses[0];
-const mascotWelcome = mascote.poses.find(p => p.id === 'boas-vindas') || mascote.poses[1];
 ---
 
 <section class="blackxp-section" id="black-xp" aria-labelledby="blackxp-title">
   <div class="container">
     
-    <!-- HEADER DA SEÇÃO COM MASCOTE 3D OFICIAL -->
-    <div class="blackxp-intro-banner">
-      <div class="intro-text">
-        <span class="badge-territorio badge-dark">Metodologia Proprietária & Game Lab</span>
-        <h2 id="blackxp-title" class="section-title">
-          Black XP: Formando a vanguarda negra e periférica na indústria de games.
-        </h2>
-        <p class="section-subtitle">
-          Criada pela Aimotech, a <strong>Black XP</strong> é muito mais do que um festival: é uma metodologia viva de inclusão sociotécnica que transforma salas de aula públicas, museus e polos industriais em estúdios de desenvolvimento de jogos.
-        </p>
-
-        <div class="intro-stats-row">
-          <div class="stat-pill">
-            <span class="stat-num">150+</span>
-            <span class="stat-desc">Jovens formados</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num">10+</span>
-            <span class="stat-desc">Protótipos premiados</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num">100%</span>
-            <span class="stat-desc">Docência territorial</span>
-          </div>
-        </div>
+    <!-- HEADER EDITORIAL ESTILO USTWO GAMES -->
+    <div class="blackxp-header-center">
+      <div class="badge-row">
+        <span class="brand-btn-ustwo bxp-pill tilt-neg-2">
+          <span>Game Lab & Metodologia Proprietária</span>
+        </span>
       </div>
-
-      <div class="intro-mascot-wrap">
-        <div class="mascot-frame">
-          <img 
-            src={mascotHero.src} 
-            alt={mascotHero.alt} 
-            class="mascot-3d-img"
-            loading="lazy"
-            width="380"
-            height="380"
-          />
-          <div class="mascot-tag">
-            <span class="mascot-tag-dot"></span>
-            <span>Mascote Oficial Black XP</span>
-          </div>
-        </div>
-      </div>
+      <h2 id="blackxp-title" class="bxp-display-title">Black XP Game Lab</h2>
+      <p class="bxp-editorial-lead">
+        Formando a vanguarda negra e periférica na indústria de games através de desenvolvimento prático, ancestralidade e tecnologia territorial.
+      </p>
     </div>
 
-    <!-- SELETOR DE EDIÇÕES -->
-    <div class="editions-nav-container">
-      <div class="editions-nav" role="tablist" aria-label="Edições da Black XP">
+    <!-- O GRANDE BLOCO DE IMPACTO COM O MASCOTE 3D E O MOSAICO FOTOGRÁFICO -->
+    <div class="blackxp-hero-showcase">
+      
+      <!-- MOSAICO FOTOGRÁFICO DE EVENTOS REAIS (8 FOTOS DO PORTFÓLIO + ACERVO REAL) -->
+      <div class="mosaic-visual-frame">
+        <div class="mosaic-grid-8">
+          <div class="mosaic-photo-cell cell-1">
+            <img src="/assets/fotos/black_xp/p5_photo_0_0.webp" alt="Alunas desenvolvedoras no hackathon da Black XP" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-2">
+            <img src="/assets/fotos/black_xp/p5_photo_0_1.webp" alt="Desenvolvedor programando na sala de azulejos históricos em Salvador" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-3">
+            <img src="/assets/fotos/black_xp/p5_photo_0_2.webp" alt="Estudante apresentando pitch de game no palco" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-4">
+            <img src="/assets/fotos/black_xp/p5_photo_0_3.webp" alt="Jovens do laboratório N.A.V.E. desenvolvendo jogos" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-5">
+            <img src="/assets/fotos/black_xp/p5_photo_1_0.webp" alt="Auditório com projeção de jogos e alunos da rede pública" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-6">
+            <img src="/assets/fotos/black_xp/bxp_hackathon_02.webp" alt="Oficina de co-criação de roteiro e arte para jogos" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-7">
+            <img src="/assets/fotos/black_xp/bxp_woman_lab_02.webp" alt="Jovem desenvolvedora e participantes no laboratório" loading="lazy" />
+          </div>
+          <div class="mosaic-photo-cell cell-8">
+            <img src="/assets/fotos/black_xp/p5_photo_1_3.webp" alt="Equipe de mentores e fundadores celebrando troféu de premiação" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- BANNER INFERIOR INTEGRADO: MASCOTE 3D NO CENTRO + TEXTO DAS LEIS FEDERAIS + TÍTULO -->
+      <div class="mascote-feature-bar">
+        
+        <!-- LADO ESQUERDO: TEXTO PEDAGÓGICO E LEIS FEDERAIS -->
+        <div class="mascote-desc-col">
+          <p class="mascote-statement">
+            Preservamos a memória afro através de inteligência artificial, Web3 e metaversos imersivos, criando arquivos e memórias digitais que jamais serão apagadas.
+          </p>
+          <div class="laws-tag-box">
+            <span class="laws-badge">Leis Federais 10.639/03 & 11.645/08</span>
+            <span class="laws-desc">Ferramentas pedagógicas acessíveis que levam a cultura afro-brasileira e indígena para o currículo escolar através dos games.</span>
+          </div>
+        </div>
+
+        <!-- CENTRO: MASCOTE 3D OFICIAL EM DESTAQUE -->
+        <div class="mascote-3d-center">
+          <div class="mascot-interactive-wrap">
+            <img 
+              src={mascotHero.src} 
+              alt="Mascote 3D Oficial da Black XP" 
+              class="mascot-full-render"
+              loading="lazy"
+              width="360"
+              height="360"
+            />
+            <div class="mascot-name-pill">
+              <span class="pulse-dot"></span>
+              <span>Mascote Oficial Black XP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LADO DIREITO: TÍTULO GIGANTE & CTAS -->
+        <div class="mascote-title-col">
+          <span class="sub-label">Metodologia de Impacto</span>
+          <h3 class="giant-bxp-title">BLACK XP</h3>
+          <div class="bxp-cta-group">
+            <a href="#contato" class="brand-btn-ustwo btn-colored tilt-pos-2">
+              <span>Contratar Edição do Lab ➔</span>
+            </a>
+            <a href="#experiencia" class="brand-btn-ustwo btn-yellow tilt-neg-2">
+              <span>Ver Parcerias</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SELETOR DE EDIÇÕES DOCUMENTAIS HISTÓRICAS -->
+    <div class="editions-selector-wrapper">
+      <div class="selector-header">
+        <h4 class="selector-heading">Edições Realizadas da Black XP</h4>
+        <span class="selector-hint">Selecione para ver detalhes de cada edição</span>
+      </div>
+
+      <div class="editions-tab-row" role="tablist" aria-label="Edições Históricas">
         {events.map((evt, idx) => (
           <button 
             type="button" 
-            class={`tab-edition-btn ${idx === 0 ? 'active' : ''}`}
+            class={`brand-btn-ustwo tab-pill-btn ${idx === 0 ? 'active btn-colored' : ''}`}
             data-target={evt.id}
             role="tab"
             aria-selected={idx === 0 ? 'true' : 'false'}
             aria-controls={`panel-${evt.id}`}
             id={`tab-${evt.id}`}
           >
-            <span class="tab-badge">{evt.badge}</span>
-            <span class="tab-title">{evt.name}</span>
-            <span class="tab-meta">{evt.year} · {evt.venue.split('·')[0]}</span>
+            <span>{evt.name}</span>
+            <span class="tab-year-badge">{evt.year}</span>
           </button>
+        ))}
+      </div>
+
+      <!-- PAINEIS DAS EDIÇÕES -->
+      <div class="panels-container">
+        {events.map((evt, idx) => (
+          <div 
+            class={`edition-panel-card ${idx === 0 ? 'active' : ''}`} 
+            id={`panel-${evt.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${evt.id}`}
+            hidden={idx !== 0}
+          >
+            <div class="panel-layout">
+              <div class="panel-text-block">
+                <span class="panel-venue-pill">{evt.date} · {evt.venue}</span>
+                <h5 class="panel-headline">“{evt.headline}”</h5>
+                <p class="panel-desc">{evt.summary}</p>
+                <div class="panel-audience-callout">
+                  <strong>Público Impactado:</strong> {evt.audience}
+                </div>
+                <div class="panel-results-list">
+                  <span class="res-title">Resultados Documentados:</span>
+                  <ul>
+                    {evt.highlights.map(h => (
+                      <li>{h}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-photo-block">
+                <img 
+                  src={evt.leadPhoto} 
+                  alt={evt.name} 
+                  class="panel-lead-img"
+                  loading="lazy"
+                  width="720"
+                  height="480"
+                />
+                <span class="photo-credit">Registro Oficial · Jefferson Peixoto / Secom PMS</span>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
 
-    <!-- PAINEIS DE CONTEÚDO DAS EDIÇÕES -->
-    <div class="editions-content-wrapper">
-      {events.map((evt, idx) => (
-        <div 
-          class={`edition-panel ${idx === 0 ? 'active' : ''}`} 
-          id={`panel-${evt.id}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${evt.id}`}
-          hidden={idx !== 0}
-        >
-          <div class="panel-hero">
-            <div class="panel-info">
-              <div class="panel-date-tag">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span>{evt.date} · {evt.venue}</span>
-              </div>
-
-              <h3 class="panel-headline">"{evt.headline}"</h3>
-              
-              <p class="panel-summary">{evt.summary}</p>
-              
-              <div class="panel-audience">
-                <strong>Público impactado:</strong> {evt.audience}
-              </div>
-
-              <div class="panel-highlights">
-                <span class="highlights-title">Resultados da Edição:</span>
-                <ul>
-                  {evt.highlights.map(h => (
-                    <li>{h}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div class="panel-lead-photo">
-              <img 
-                src={evt.leadPhoto} 
-                alt={evt.name} 
-                class="lead-img"
-                loading="lazy"
-                width="800"
-                height="533"
-              />
-              <span class="photo-badge">Registro Documental Oficial · Jefferson Peixoto / Secom PMS</span>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- MOSAICO FOTOGRÁFICO GERAL DOCUMENTAL -->
-    <div class="mosaic-section-wrap">
-      <div class="mosaic-header-row">
-        <div>
-          <span class="badge-territorio badge-dark">Acervo Vivo</span>
-          <h3 class="mosaic-main-heading">Mosaico Fotográfico dos Eventos</h3>
-          <p class="mosaic-sub">Momentos reais capturados nos palcos, nas salas de aula históricas e nas bancadas de desenvolvimento em Salvador.</p>
-        </div>
-        <div class="mascot-corner-mini">
-          <img 
-            src={mascotWelcome.src} 
-            alt="Mascote Black XP acolhedora" 
-            class="mascot-mini"
-            loading="lazy"
-            width="120"
-            height="120"
-          />
-        </div>
+    <!-- MOSAICO EXPANDIDO COM FOTOS 4K DO GOOGLE DRIVE -->
+    <div class="extended-mosaic-section">
+      <div class="ext-header">
+        <h4 class="ext-title">Acervo Fotográfico Completo dos Eventos</h4>
+        <p class="ext-sub">Registros autênticos no Museu da Energia, no SENAI Cimatec Park e nas salas históricas do Pelourinho.</p>
       </div>
-
       <BlackXPMosaic />
-    </div>
-
-    <!-- BANNER DE CONTRATAÇÃO DA METODOLOGIA -->
-    <div class="blackxp-cta-banner">
-      <div class="cta-banner-text">
-        <h3>Leve o Black XP Game Lab para sua escola, empresa ou município</h3>
-        <p>Desenvolvemos edições sob medida para secretarias de educação, fundações, hubs de inovação e empresas que investem em ESG e inclusão sociotécnica real.</p>
-      </div>
-      <a href="#contato" class="btn-primary">
-        <span>Contratar Edição do Lab</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </a>
     </div>
 
   </div>
 </section>
 
 <style>
+  /* SEÇÃO BLACK XP — CLEAN, COM CONTRASTE E ESTILO USTWO GAMES */
   .blackxp-section {
-    padding-top: clamp(60px, 8vw, 100px);
-    padding-bottom: clamp(60px, 8vw, 100px);
-    background-color: var(--graphite);
-    color: var(--pure-white);
-    border-bottom: 1px solid var(--cinza-borda-escura);
+    padding-top: clamp(70px, 9vw, 120px);
+    padding-bottom: clamp(70px, 9vw, 120px);
+    background-color: #FAF8F5;
+    color: var(--graphite);
+    border-top: 2px solid #E8E3DA;
+    border-bottom: 2px solid #E8E3DA;
   }
 
-  /* INTRO BANNER COM MASCOTE 3D */
-  .blackxp-intro-banner {
+  /* HEADER EDITORIAL */
+  .blackxp-header-center {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto clamp(40px, 6vw, 64px) auto;
+  }
+
+  .badge-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bxp-pill {
+    font-size: 0.9375rem;
+    padding: 10px 22px;
+  }
+
+  .bxp-display-title {
+    font-family: var(--font-display), 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #171717;
+    margin-bottom: 18px;
+  }
+
+  .bxp-editorial-lead {
+    font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+    line-height: 1.6;
+    color: #424242;
+    margin: 0 auto;
+  }
+
+  /* SHOWCASE CARD PRINCIPAL COM MOSAICO E MASCOTE */
+  .blackxp-hero-showcase {
+    background-color: #ffffff;
+    border: 3px solid #171717;
+    border-radius: 28px;
+    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    margin-bottom: 64px;
+  }
+
+  /* MOSAICO DE 8 FOTOS REAIS (IGUAL AO SLIDE DA PÁGINA 5) */
+  .mosaic-visual-frame {
+    width: 100%;
+    background-color: #111111;
+    border-bottom: 3px solid #171717;
+  }
+
+  .mosaic-grid-8 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    background-color: #171717;
+  }
+
+  @media (min-width: 768px) {
+    .mosaic-grid-8 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .mosaic-photo-cell {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #222222;
+  }
+
+  .mosaic-photo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .mosaic-photo-cell:hover img {
+    transform: scale(1.08);
+  }
+
+  /* BANNER INFERIOR DO MASCOTE + LEIS + TÍTULO */
+  .mascote-feature-bar {
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
+    padding: clamp(32px, 5vw, 48px);
+    background-color: #ffffff;
     align-items: center;
-    background: linear-gradient(135deg, #1C1528 0%, #251B38 100%);
-    border: 1px solid rgba(124, 77, 255, 0.35);
-    border-radius: var(--radius-surface);
-    padding: clamp(28px, 4vw, 48px);
-    margin-bottom: 56px;
+    position: relative;
   }
 
   @media (min-width: 992px) {
-    .blackxp-intro-banner {
-      grid-template-columns: 1.25fr 0.75fr;
+    .mascote-feature-bar {
+      grid-template-columns: 1.1fr 0.8fr 1.1fr;
+      gap: 36px;
+    }
+  }
+
+  /* LADO ESQUERDO: DESCRIÇÃO E LEIS */
+  .mascote-desc-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .mascote-statement {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #333333;
+    font-weight: 500;
+  }
+
+  .laws-tag-box {
+    background-color: #F3E5F5;
+    border: 2px solid #7C4DFF;
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .laws-badge {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.875rem;
+    color: #4A148C;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .laws-desc {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: #311B92;
+  }
+
+  /* CENTRO: MASCOTE 3D OFICIAL */
+  .mascote-3d-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .mascot-interactive-wrap {
+    position: relative;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mascot-full-render {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mascot-interactive-wrap:hover .mascot-full-render {
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  .mascot-name-pill {
+    margin-top: 10px;
+    background-color: #171717;
+    color: #ffffff;
+    border: 2px solid #333333;
+    border-radius: var(--radius-pill);
+    padding: 6px 16px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00E676;
+    box-shadow: 0 0 6px #00E676;
+  }
+
+  /* LADO DIREITO: TÍTULO GIGANTE */
+  .mascote-title-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sub-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--aimo-purple);
+    margin-bottom: 6px;
+  }
+
+  .giant-bxp-title {
+    font-family: var(--font-display), 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 4.75rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #171717;
+    margin-bottom: 24px;
+  }
+
+  .bxp-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* SELETOR DE EDIÇÕES */
+  .editions-selector-wrapper {
+    margin-bottom: 64px;
+  }
+
+  .selector-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .selector-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: #171717;
+  }
+
+  .selector-hint {
+    font-size: 0.875rem;
+    color: #666666;
+  }
+
+  .editions-tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .tab-pill-btn {
+    font-size: 1rem;
+    padding: 12px 22px;
+  }
+
+  .tab-year-badge {
+    background: rgba(0, 0, 0, 0.12);
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+  }
+
+  .tab-pill-btn.active .tab-year-badge {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* CARDS DOS PAINEIS */
+  .edition-panel-card {
+    display: none;
+    background-color: #ffffff;
+    border: 3px solid #171717;
+    border-radius: 24px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: clamp(28px, 4vw, 40px);
+  }
+
+  .edition-panel-card.active {
+    display: block;
+  }
+
+  .panel-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .panel-layout {
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 48px;
     }
   }
 
-  .intro-text .badge-territorio {
-    margin-bottom: 20px;
-  }
-
-  .section-title {
-    margin-bottom: 20px;
-    color: var(--pure-white);
-    font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-  }
-
-  .section-subtitle {
-    font-size: clamp(1rem, 1vw + 0.75rem, 1.1875rem);
-    line-height: 1.6;
-    color: #D1C4E9;
-    margin-bottom: 28px;
-  }
-
-  .intro-stats-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .stat-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-  }
-
-  .stat-num {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.125rem;
-    color: #B388FF;
-  }
-
-  .stat-desc {
-    font-size: 0.8125rem;
-    color: var(--pure-white);
-    font-weight: 500;
-  }
-
-  .intro-mascot-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .mascot-frame {
-    position: relative;
-    max-width: 320px;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
-  }
-
-  .mascot-3d-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    animation: floatMascot 4s ease-in-out infinite alternate;
-  }
-
-  @keyframes floatMascot {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-8px); }
-  }
-
-  .mascot-tag {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    background-color: rgba(23, 23, 23, 0.9);
-    border: 1px solid rgba(124, 77, 255, 0.4);
-    border-radius: var(--radius-pill);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    color: var(--pure-white);
-    white-space: nowrap;
-  }
-
-  .mascot-tag-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #7C4DFF;
-    box-shadow: 0 0 6px #7C4DFF;
-  }
-
-  /* TABS */
-  .editions-nav-container {
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--cinza-borda-escura);
-    padding-bottom: 16px;
-  }
-
-  .editions-nav {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    scrollbar-width: thin;
-  }
-
-  .tab-edition-btn {
-    flex: 1;
-    min-width: 240px;
-    text-align: left;
-    background-color: var(--graphite-surface);
-    border: 1px solid var(--cinza-borda-escura);
-    border-radius: var(--radius-surface);
-    padding: 16px 20px;
-    cursor: pointer;
-    color: var(--pure-white);
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .tab-edition-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(124, 77, 255, 0.4);
-  }
-
-  .tab-edition-btn.active {
-    background-color: #241D35;
-    border-color: var(--aimo-purple);
-    box-shadow: 0 4px 16px rgba(124, 77, 255, 0.2);
-  }
-
-  .tab-badge {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--aimo-purple);
-  }
-
-  .tab-edition-btn.active .tab-badge {
-    color: #B388FF;
-  }
-
-  .tab-title {
-    font-family: var(--font-heading);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--pure-white);
-    line-height: 1.3;
-  }
-
-  .tab-meta {
-    font-size: 0.75rem;
-    color: var(--cinza-medio);
-  }
-
-  /* PANELS */
-  .edition-panel {
-    display: none;
-    flex-direction: column;
-    gap: 32px;
-    margin-bottom: 56px;
-  }
-
-  .edition-panel.active {
-    display: flex;
-  }
-
-  .panel-hero {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    background-color: var(--graphite-surface);
-    border: 1px solid var(--cinza-borda-escura);
-    border-radius: var(--radius-surface);
-    overflow: hidden;
-    padding: clamp(24px, 4vw, 40px);
-  }
-
-  @media (min-width: 992px) {
-    .panel-hero {
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-    }
-  }
-
-  .panel-date-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.8125rem;
-    color: var(--cinza-medio);
-    margin-bottom: 16px;
+  .panel-venue-pill {
     font-family: monospace;
+    font-size: 0.875rem;
+    color: #7C4DFF;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
   }
 
   .panel-headline {
-    font-size: clamp(1.375rem, 2.5vw, 1.875rem);
-    color: var(--pure-white);
-    line-height: 1.25;
-    margin-bottom: 18px;
-    font-family: var(--font-heading);
+    font-family: var(--font-display), 'Fraunces', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.125rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #171717;
+    margin-bottom: 16px;
   }
 
-  .panel-summary {
-    font-size: 0.9375rem;
+  .panel-desc {
+    font-size: 1rem;
     line-height: 1.6;
-    color: var(--warm-gray);
+    color: #424242;
     margin-bottom: 20px;
   }
 
-  .panel-audience {
-    font-size: 0.8125rem;
-    color: #BDBDBD;
-    background-color: rgba(0, 0, 0, 0.25);
-    padding: 12px 16px;
-    border-radius: var(--radius-control);
+  .panel-audience-callout {
+    background-color: #F5F5F5;
+    border-left: 4px solid var(--aimo-purple);
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    color: #212121;
     margin-bottom: 20px;
-    border-left: 2px solid var(--aimo-purple);
   }
 
-  .panel-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .highlights-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--cinza-medio);
-  }
-
-  .panel-highlights ul {
+  .panel-results-list ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 8px;
   }
 
-  .panel-highlights li {
-    font-size: 0.8125rem;
-    color: #E0E0E0;
+  .panel-results-list li {
+    font-size: 0.875rem;
+    color: #333333;
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  .panel-highlights li::before {
+  .panel-results-list li::before {
     content: "✓";
-    color: var(--aimo-purple);
-    font-weight: 800;
+    color: var(--verde-mata);
+    font-weight: 900;
   }
 
-  .panel-lead-photo {
+  .panel-photo-block {
     position: relative;
-    border-radius: var(--radius-surface);
+    border-radius: 16px;
+    border: 2px solid #171717;
     overflow: hidden;
-    background-color: #111;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
   }
 
-  .lead-img {
+  .panel-lead-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
   }
 
-  .photo-badge {
+  .photo-credit {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
     font-size: 0.6875rem;
-    font-weight: 600;
     padding: 4px 10px;
-    background-color: rgba(23, 23, 23, 0.85);
     border-radius: var(--radius-pill);
-    color: var(--pure-white);
-    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  /* MOSAIC SECTION WRAP */
-  .mosaic-section-wrap {
+  /* MOSAICO EXPANDIDO */
+  .extended-mosaic-section {
     margin-top: 48px;
-    margin-bottom: 56px;
   }
 
-  .mosaic-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+  .ext-header {
     margin-bottom: 24px;
-    border-bottom: 1px solid var(--cinza-borda-escura);
+    border-bottom: 2px solid #E8E3DA;
     padding-bottom: 16px;
   }
 
-  .mosaic-main-heading {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    color: var(--pure-white);
-    margin-top: 8px;
-    margin-bottom: 8px;
+  .ext-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #171717;
+    margin-bottom: 6px;
   }
 
-  .mosaic-sub {
+  .ext-sub {
     font-size: 0.9375rem;
-    color: var(--warm-gray);
-    max-width: 60ch;
-  }
-
-  .mascot-corner-mini {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .mascot-corner-mini {
-      display: block;
-    }
-  }
-
-  .mascot-mini {
-    width: 90px;
-    height: auto;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
-  }
-
-  /* CTA BANNER */
-  .blackxp-cta-banner {
-    background-color: #241D35;
-    border: 1px solid var(--aimo-purple);
-    border-radius: var(--radius-surface);
-    padding: clamp(28px, 4vw, 40px);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: flex-start;
-  }
-
-  @media (min-width: 768px) {
-    .blackxp-cta-banner {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .cta-banner-text h3 {
-    font-size: clamp(1.25rem, 2vw, 1.625rem);
-    color: var(--pure-white);
-    margin-bottom: 8px;
-  }
-
-  .cta-banner-text p {
-    font-size: 0.9375rem;
-    color: #D1C4E9;
-    max-width: 60ch;
+    color: #616161;
   }
 </style>
 
 <script>
-  const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tab-edition-btn');
-  const panels = document.querySelectorAll<HTMLElement>('.edition-panel');
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tab-pill-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.edition-panel-card');
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
 
       tabButtons.forEach(b => {
-        b.classList.remove('active');
+        b.classList.remove('active', 'btn-colored');
         b.setAttribute('aria-selected', 'false');
       });
-      btn.classList.add('active');
+      btn.classList.add('active', 'btn-colored');
       btn.setAttribute('aria-selected', 'true');
 
       panels.forEach(p => {

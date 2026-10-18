@@ -1,306 +1,284 @@
 ---
-// Hero.astro
+// Hero.astro — Clone Autêntico Ustwo Games (Full-bleed Scenic + Sound Pill + Giant Display Title)
 ---
 
-<section class="hero-section" id="aimotech" aria-labelledby="hero-title">
-  <div class="container hero-container">
-    
-    <div class="hero-content">
-      <div class="hero-coords">
-        <span class="coord-tag">Coord. Salvador</span>
-        <span class="coord-val">12° 58' 16" S · 38° 30' 39" W</span>
-        <span class="coord-sep">/</span>
-        <span class="coord-tag">Mucugê</span>
-        <span class="coord-val">12° 59' 06" S · 41° 23' 38" W</span>
-      </div>
+<section class="ustwo-hero-section" id="aimotech" aria-label="Apresentação do Estúdio">
+  
+  <!-- CENÁRIO PANORÂMICO CLEAN SEM CORTES DE TEXTO -->
+  <div class="hero-media-wrapper">
+    <picture>
+      <source srcset="/assets/jogos/trilhas-da-terra/hero_sunset.webp" type="image/webp" />
+      <img 
+        src="/assets/jogos/trilhas-da-terra/hero_sunset.webp" 
+        alt="Cenário do jogo Trilhas da Terra na Chapada Diamantina com o corredor mítico"
+        class="hero-scenic-img"
+        fetchpriority="high"
+        loading="eager"
+        width="1920"
+        height="1080"
+      />
+    </picture>
 
-      <div class="hero-badge-wrap">
-        <span class="badge-territorio">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
-            <circle cx="5" cy="5" r="4"></circle>
-          </svg>
-          Game Studio & Laboratório Territorial
-        </span>
-      </div>
-
-      <h1 id="hero-title" class="hero-heading">
-        Criamos jogos autorais e tecnologias que nascem no território e ganham o mundo.
-      </h1>
-
-      <p class="hero-description">
-        A Aimotech é um estúdio baiano de games independentes, propriedades intelectuais culturais e experiências digitais. Atuamos no desenvolvimento autoral de jogos como <em>Trilhas da Terra</em> e na formação da próxima geração de talentos da indústria por meio da metodologia proprietária <strong>Black XP</strong>.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#jogos" class="btn-primary">
-          <span>Ver Jogos Autorais</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-
-        <a href="#black-xp" class="btn-secondary">
-          <span>Conhecer a Black XP</span>
-        </a>
-      </div>
-
-      <div class="hero-pillars-preview">
-        <div class="pillar-mini">
-          <span class="pillar-num">01</span>
-          <span class="pillar-lbl">Games & IPs Culturais</span>
-        </div>
-        <div class="pillar-mini">
-          <span class="pillar-num">02</span>
-          <span class="pillar-lbl">Black XP Game Lab</span>
-        </div>
-        <div class="pillar-mini">
-          <span class="pillar-num">03</span>
-          <span class="pillar-lbl">Consultoria & Mentoria</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="hero-card-featured">
-        <div class="featured-media">
-          <img 
-            src="/assets/jogos/trilhas-da-terra/showcase_clean.webp" 
-            alt="Cena do jogo autoral Trilhas da Terra ambientado na Chapada Diamantina" 
-            class="featured-img"
-            loading="eager"
-            fetchpriority="high"
-            width="800"
-            height="450"
-          />
-          <div class="featured-badge-overlay">
-            <span class="badge-flag">Destaque Autoral</span>
-            <span class="badge-title">Trilhas da Terra</span>
-          </div>
-        </div>
-
-        <div class="featured-info">
-          <div class="featured-meta">
-            <span class="meta-item">Gênero: Infinity Runner Narrativo</span>
-            <span class="meta-item">Território: Chapada Diamantina & Quilombo da Barriguda</span>
-          </div>
-          <p class="featured-quote">
-            "No coração da Chapada, o chão fala. A gente corre, mas não foge. Corre pra se lembrar do corpo que sente e da terra que ensina."
-          </p>
-          <div class="featured-cta-row">
-            <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="link-site-oficial">
-              <span>Acessar site oficial do jogo trilhasdaterra.com.br</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Overlay sutil de atmosfera quente da Bahia -->
+    <div class="hero-atmospheric-gradient"></div>
   </div>
+
+  <!-- CONTEÚDO SUPERIOR DO HERO (FLOATING CHIPS) -->
+  <div class="hero-top-content">
+    <div class="container hero-container">
+      <div class="hero-floating-badges">
+        <span class="brand-btn-ustwo hero-chip tilt-neg-2">
+          <span class="chip-dot"></span>
+          <span>Bahia, Brasil · Território & Tecnologia</span>
+        </span>
+        <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="brand-btn-ustwo hero-chip tilt-pos-2 btn-yellow">
+          <span>Trilhas da Terra Beta 2026 ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA INFERIOR DO HERO (CLONE IDÊNTICO DE USTWO GAMES) -->
+  <div class="hero-bottom-bar">
+    <div class="container bottom-container">
+      
+      <!-- BOTÃO DE SOM REDONDO AMARELO (IGUAL AO USTWO GAMES) -->
+      <div class="sound-toggle-wrap">
+        <button type="button" class="ustwo-sound-btn" id="sound-toggle" aria-label="Ligar ou desligar som ambiente">
+          <span class="sound-icon-off" id="icon-sound-off">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </span>
+          <span class="sound-icon-on" id="icon-sound-on" hidden>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </span>
+          <span class="sound-tooltip">Áudio Ambiente</span>
+        </button>
+      </div>
+
+      <!-- TÍTULO GIGANTE DISPLAY (CLONE DE OUR GAMES) -->
+      <div class="hero-giant-title-wrap">
+        <h1 class="ustwo-giant-title">Nossos Jogos</h1>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <style>
-  .hero-section {
-    padding-top: clamp(40px, 6vw, 80px);
-    padding-bottom: clamp(60px, 8vw, 100px);
-    background-color: var(--off-white);
+  .ustwo-hero-section {
     position: relative;
-    border-bottom: 1px solid var(--cinza-borda);
-  }
-
-  .hero-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-container {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 64px;
-    }
-  }
-
-  .hero-coords {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-family: monospace;
-    color: var(--cinza-medio);
-    margin-bottom: 20px;
-    letter-spacing: 0.02em;
-  }
-
-  .coord-tag {
-    font-weight: 700;
-    color: var(--graphite);
-    text-transform: uppercase;
-  }
-
-  .coord-sep {
-    color: var(--cinza-borda);
-  }
-
-  .hero-badge-wrap {
-    margin-bottom: 24px;
-  }
-
-  .hero-heading {
-    margin-bottom: 24px;
-    color: var(--graphite);
-  }
-
-  .hero-description {
-    font-size: clamp(1.0625rem, 1vw + 0.875rem, 1.25rem);
-    line-height: 1.6;
-    color: #424242;
-    margin-bottom: 36px;
-  }
-
-  .hero-description strong {
-    color: var(--graphite);
-    font-weight: 600;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-
-  .hero-pillars-preview {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    padding-top: 24px;
-    border-top: 1px solid var(--cinza-borda);
-  }
-
-  .pillar-mini {
+    width: 100%;
+    height: 90vh;
+    min-height: 620px;
+    max-height: 960px;
+    background-color: #2E7D5B;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    justify-content: space-between;
   }
 
-  .pillar-num {
-    font-family: var(--font-heading);
-    font-size: 0.8125rem;
-    font-weight: 800;
-    color: var(--aimo-purple);
+  /* CENÁRIO FULL-BLEED */
+  .hero-media-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
   }
 
-  .pillar-lbl {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--graphite);
-  }
-
-  /* Featured Visual Card */
-  .hero-card-featured {
-    background-color: var(--pure-white);
-    border: 1px solid var(--cinza-borda);
-    border-radius: var(--radius-surface);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  }
-
-  .featured-media {
-    position: relative;
-    background-color: #2D1A10;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-  }
-
-  .featured-img {
+  .hero-scenic-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .hero-card-featured:hover .featured-img {
+    object-position: center center;
     transform: scale(1.02);
+    transition: transform 6s ease-out;
   }
 
-  .featured-badge-overlay {
+  .ustwo-hero-section:hover .hero-scenic-img {
+    transform: scale(1.05);
+  }
+
+  .hero-atmospheric-gradient {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(23, 23, 23, 0.85);
-    backdrop-filter: blur(4px);
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    color: var(--pure-white);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(23, 23, 23, 0.3) 80%,
+      rgba(255, 255, 255, 0.95) 100%
+    );
+    pointer-events: none;
   }
 
-  .badge-flag {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #FFA726;
+  /* CONTEÚDO SUPERIOR */
+  .hero-top-content {
+    position: relative;
+    z-index: 10;
+    padding-top: 130px;
   }
 
-  .badge-title {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    font-family: var(--font-heading);
-  }
-
-  .featured-info {
-    padding: 24px;
-  }
-
-  .featured-meta {
+  .hero-floating-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.8125rem;
-    color: var(--cinza-medio);
-    margin-bottom: 12px;
-    font-weight: 500;
+    align-items: center;
+    gap: 16px;
   }
 
-  .featured-quote {
+  .hero-chip {
     font-size: 0.9375rem;
-    font-style: italic;
-    color: #555555;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    padding: 10px 18px;
   }
 
-  .featured-cta-row {
+  .chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00E676;
+    box-shadow: 0 0 8px #00E676;
+  }
+
+  /* BARRA INFERIOR COM SOUND PILL E TÍTULO GIGANTE */
+  .hero-bottom-bar {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .bottom-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* SOUND PILL AMARELO REDONDO */
+  .sound-toggle-wrap {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 15;
+  }
+
+  .ustwo-sound-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #FFD734;
+    color: #171717;
+    border: 3px solid #171717;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
   }
 
-  .link-site-oficial {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .ustwo-sound-btn:hover {
+    transform: scale(1.1) rotate(6deg) translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
+    background-color: #FFE066;
+  }
+
+  .sound-tooltip {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: #171717;
+    border: 2px solid #171717;
+    border-radius: 10px;
+    padding: 4px 10px;
     font-family: var(--font-heading);
+    font-size: 0.75rem;
     font-weight: 700;
-    font-size: 0.875rem;
-    color: var(--verde-mata);
-    transition: color 0.15s ease;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
   }
 
-  .link-site-oficial:hover {
-    color: #1E5C41;
-    text-decoration: underline;
+  .ustwo-sound-btn:hover .sound-tooltip {
+    opacity: 1;
+  }
+
+  /* TÍTULO GIGANTE DISPLAY (CLONE DE OUR GAMES) */
+  .hero-giant-title-wrap {
+    position: relative;
+    line-height: 0.85;
+    margin-bottom: -15px;
+  }
+
+  .ustwo-giant-title {
+    font-family: var(--font-display), 'Fraunces', serif;
+    font-size: clamp(3.5rem, 9.5vw, 9.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    margin: 0;
+    padding: 0;
   }
 </style>
+
+<script>
+  const soundBtn = document.getElementById('sound-toggle');
+  const iconOff = document.getElementById('icon-sound-off');
+  const iconOn = document.getElementById('icon-sound-on');
+
+  let audioCtx: AudioContext | null = null;
+  let isPlaying = false;
+  let oscillator: OscillatorNode | null = null;
+  let gainNode: GainNode | null = null;
+
+  soundBtn?.addEventListener('click', () => {
+    if (!isPlaying) {
+      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      audioCtx = new AudioContextClass();
+      
+      oscillator = audioCtx.createOscillator();
+      gainNode = audioCtx.createGain();
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(220, audioCtx.currentTime);
+      gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.start();
+
+      isPlaying = true;
+      iconOff?.setAttribute('hidden', '');
+      iconOn?.removeAttribute('hidden');
+    } else {
+      if (oscillator) {
+        oscillator.stop();
+        oscillator.disconnect();
+      }
+      if (audioCtx) {
+        audioCtx.close();
+      }
+      isPlaying = false;
+      iconOn?.setAttribute('hidden', '');
+      iconOff?.removeAttribute('hidden');
+    }
+  });
+</script>
