@@ -1,0 +1,42 @@
+{
+  "name": "Mascote Black XP",
+  "concept": "Jovem desenvolvedora e criadora de jogos afrofuturista com tranças estilizadas, macacão com padronagem geométrica ancestral e headset gamer neon.",
+  "poses": [
+    {
+      "id": "heroica",
+      "src": "/assets/fotos/mascote/mascote.webp",
+      "alt": "Mascote Black XP em pose heroica com mãos na cintura",
+      "usage": "Destaque da seção Black XP e convite à ação"
+    },
+    {
+      "id": "boas-vindas",
+      "src": "/assets/fotos/mascote/mascote_pose_02.webp",
+      "alt": "Mascote Black XP estendendo a mão em gesto acolhedor",
+      "usage": "Apresentação dos laboratórios e boas-vindas ao ecossistema"
+    },
+    {
+      "id": "pensativa",
+      "src": "/assets/fotos/mascote/mascote_pose_03.webp",
+      "alt": "Mascote Black XP em pose de ideação e game design",
+      "usage": "Metodologia e etapas de co-criação"
+    },
+    {
+      "id": "dinamica",
+      "src": "/assets/fotos/mascote/mascote_pose_04.webp",
+      "alt": "Mascote Black XP apontando para as conquistas",
+      "usage": "Indicadores de impacto e premiações"
+    },
+    {
+      "id": "confiante",
+      "src": "/assets/fotos/mascote/mascote_pose_05.webp",
+      "alt": "Mascote Black XP comemorando resultados",
+      "usage": "Celebração do hackathon e formatura dos alunos"
+    },
+    {
+      "id": "final",
+      "src": "/assets/fotos/mascote/pose01_Final.webp",
+      "alt": "Mascote Black XP pose final de estúdio",
+      "usage": "Rodapé e encerramento"
+    }
+  ]
+}

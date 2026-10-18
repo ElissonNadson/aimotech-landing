@@ -1,0 +1,32 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import StudioManifesto from '../components/StudioManifesto.astro';
+import GamesSection from '../components/GamesSection.astro';
+import BlackXPSection from '../components/BlackXPSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Aimotech — Territorial Game & Innovation Studio | Bahia, Brasil"
+  description="Estúdio baiano de games autorais, propriedades intelectuais culturais e inovação sociotécnica. Criador de Trilhas da Terra e da metodologia Black XP Game Lab."
+>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <StudioManifesto />
+    <GamesSection />
+    <BlackXPSection />
+    <ServicesSection />
+    <ProcessSection />
+    <ExperienceSection />
+    <ContactSection />
+  </main>
+  <Footer />
+</Layout>

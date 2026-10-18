@@ -1,0 +1,117 @@
+[
+  {
+    "id": "2nd-black-xp",
+    "name": "2ª Edição Black XP — Festival Afrofuturismo",
+    "edition": "2ª Edição",
+    "year": "2024",
+    "date": "29 de Novembro de 2024",
+    "venue": "Museu da Energia · Centro Histórico de Salvador, BA",
+    "badge": "Festival & Hackathon",
+    "headline": "Adinkras: o código-fonte da liberdade e da criação de jogos",
+    "audience": "Mais de 150 estudantes e jovens criadores da rede municipal de Salvador",
+    "leadPhoto": "/assets/fotos/black_xp/bxp_museu_12.webp",
+    "photos": [
+      {
+        "src": "/assets/fotos/black_xp/bxp_museu_12.webp",
+        "alt": "Tata Ribeiro apresentando a 2ª Edição da Black XP no Museu da Energia em Salvador",
+        "caption": "Abertura oficial com Tata Ribeiro diante de auditório lotado no Museu da Energia"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_museu_02.webp",
+        "alt": "Estudante da Escola Municipal Praia da Silva apresentando pitch de game no palco do Festival Afrofuturismo",
+        "caption": "Pitch final dos estudantes da Escola Municipal Praia da Silva"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_hackathon_01.webp",
+        "alt": "Estudantes em sala histórica com azulejos portugueses assistindo a apresentação de game no hackathon",
+        "caption": "Salão histórico do centro de Salvador acolhendo o hackathon de desenvolvimento"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_hackathon_03.webp",
+        "alt": "Jogo Mwanga projetado na parede durante defesa de projeto",
+        "caption": "Protótipo 'Mwanga' desenvolvido e apresentado por jovens soteropolitanos"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_museu_31.webp",
+        "alt": "Palco do Festival Afrofuturismo com símbolos Adinkra",
+        "caption": "Palco imersivo com símbolos ancestrais Adinkra como matriz tecnológica"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_museu_01.webp",
+        "alt": "Estudante concedendo entrevista para cobertura oficial de imprensa",
+        "caption": "Cobertura jornalística oficial e escuta ativa da juventude periférica"
+      }
+    ],
+    "summary": "Hackathon de desenvolvimento de jogos digitais e narrativas afrofuturistas unindo turmas de escolas municipais periféricas de Salvador, mentores da indústria independente e banca de jurados técnicos.",
+    "highlights": [
+      "10 protótipos de jogos desenvolvidos do zero pelos alunos",
+      "Mentoria com profissionais seniores de arte, código e roteiro",
+      "Premiação e certificado oficial com apoio SEBRAE e Prefeitura de Salvador"
+    ]
+  },
+  {
+    "id": "bxp-woman-lab",
+    "name": "Black XP Woman Lab",
+    "edition": "Edição Especial Mulheres",
+    "year": "2024",
+    "date": "Outubro de 2024",
+    "venue": "Hub de Inovação · Salvador, BA",
+    "badge": "Laboratório de Formação",
+    "headline": "Desenvolvedoras, Designers e Produtoras Negras no Controle",
+    "audience": "Imersão exclusiva para mulheres desenvolvedoras e criadoras negras",
+    "leadPhoto": "/assets/fotos/black_xp/bxp_woman_lab_02.webp",
+    "photos": [
+      {
+        "src": "/assets/fotos/black_xp/bxp_woman_lab_02.webp",
+        "alt": "Lideranças femininas e participantes do Black XP Woman Lab",
+        "caption": "Lideranças e participantes reunidas durante módulo de game design e governança"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_woman_lab_05.webp",
+        "alt": "Mulheres inovadoras do Black XP Woman Lab celebrando conclusão de etapa",
+        "caption": "Ambiente seguro e colaborativo de trocas técnicas e fortalecimento coletivo"
+      }
+    ],
+    "summary": "Laboratório intensivo voltado a romper o abismo de gênero e raça na indústria de jogos, capacitando mulheres negras em mecânicas, produção executiva, monetização ética e narrativas decoloniais.",
+    "highlights": [
+      "Mentoria personalizada de portfólio e pitching internacional",
+      "Formação técnica em engines e pipelines de desenvolvimento",
+      "Rede permanente de apoio profissional entre participantes"
+    ]
+  },
+  {
+    "id": "meetup-senai",
+    "name": "Meetup SENAI Cimatec & BTX 25",
+    "edition": "Edição Ecossistema",
+    "year": "2024 / 2025",
+    "date": "Setembro 2024 e Edição 2025",
+    "venue": "SENAI Cimatec Park / IFBA · Salvador, BA",
+    "badge": "Encontro & Feira Tech",
+    "headline": "A Bahia no mapa da tecnologia de ponta e dos estúdios autorais",
+    "audience": "Mais de 600 profissionais tech, pesquisadores, investidores e universitários",
+    "leadPhoto": "/assets/fotos/black_xp/bxp_btx_02.webp",
+    "photos": [
+      {
+        "src": "/assets/fotos/black_xp/bxp_btx_02.webp",
+        "alt": "Produtora da Black XP em estande com mapa da Bahia na Bahia Tech Experience",
+        "caption": "A Aimotech e a Black XP marcando presença no Bahia Tech Experience (BTX)"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_btx_01.webp",
+        "alt": "Arena BTX 25 no SENAI Cimatec Park",
+        "caption": "Arena de tecnologia de ponta do SENAI Cimatec Park"
+      },
+      {
+        "src": "/assets/fotos/black_xp/bxp_btx_03.webp",
+        "alt": "Marca oficial Black XP no backdrop de startups e ecossistema baiano",
+        "caption": "Selo Black XP posicionado entre as iniciativas líderes do ecossistema baiano"
+      }
+    ],
+    "summary": "Mesas-redondas, demonstrações de protótipos e rodadas de negócio conectando os jogos territoriais da Aimotech aos maiores centros de pesquisa aplicada e fundos de investimento do Nordeste.",
+    "highlights": [
+      "Demonstração jogável de 'Trilhas da Terra' e 'Algodão Doce' para investidores",
+      "Painel sobre games como vetor de preservação patrimonial e inovação",
+      "Conexão com institutos federais e centros de tecnologia industrial"
+    ]
+  }
+]

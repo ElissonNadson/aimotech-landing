@@ -1,0 +1,27 @@
+{
+  "name": "aimotech-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build && cp dist/index.html ./index.html && cp -r dist/_astro ./",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElissonNadson/aimotech-landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElissonNadson/aimotech-landing/issues"
+  },
+  "homepage": "https://github.com/ElissonNadson/aimotech-landing#readme",
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^7.4.0",
+    "typescript": "^6.0.3"
+  }
+}

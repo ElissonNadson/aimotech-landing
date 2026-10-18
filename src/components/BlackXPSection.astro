@@ -1,0 +1,600 @@
+---
+// BlackXPSection.astro
+import events from '../data/events.json';
+import mascote from '../data/mascote.json';
+import BlackXPMosaic from './BlackXPMosaic.astro';
+
+const mascotHero = mascote.poses.find(p => p.id === 'heroica') || mascote.poses[0];
+const mascotWelcome = mascote.poses.find(p => p.id === 'boas-vindas') || mascote.poses[1];
+---
+
+<section class="blackxp-section" id="black-xp" aria-labelledby="blackxp-title">
+  <div class="container">
+    
+    <!-- HEADER DA SEÇÃO COM MASCOTE 3D OFICIAL -->
+    <div class="blackxp-intro-banner">
+      <div class="intro-text">
+        <span class="badge-territorio badge-dark">Metodologia Proprietária & Game Lab</span>
+        <h2 id="blackxp-title" class="section-title">
+          Black XP: Formando a vanguarda negra e periférica na indústria de games.
+        </h2>
+        <p class="section-subtitle">
+          Criada pela Aimotech, a <strong>Black XP</strong> é muito mais do que um festival: é uma metodologia viva de inclusão sociotécnica que transforma salas de aula públicas, museus e polos industriais em estúdios de desenvolvimento de jogos.
+        </p>
+
+        <div class="intro-stats-row">
+          <div class="stat-pill">
+            <span class="stat-num">150+</span>
+            <span class="stat-desc">Jovens formados</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num">10+</span>
+            <span class="stat-desc">Protótipos premiados</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num">100%</span>
+            <span class="stat-desc">Docência territorial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-mascot-wrap">
+        <div class="mascot-frame">
+          <img 
+            src={mascotHero.src} 
+            alt={mascotHero.alt} 
+            class="mascot-3d-img"
+            loading="lazy"
+            width="380"
+            height="380"
+          />
+          <div class="mascot-tag">
+            <span class="mascot-tag-dot"></span>
+            <span>Mascote Oficial Black XP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELETOR DE EDIÇÕES -->
+    <div class="editions-nav-container">
+      <div class="editions-nav" role="tablist" aria-label="Edições da Black XP">
+        {events.map((evt, idx) => (
+          <button 
+            type="button" 
+            class={`tab-edition-btn ${idx === 0 ? 'active' : ''}`}
+            data-target={evt.id}
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${evt.id}`}
+            id={`tab-${evt.id}`}
+          >
+            <span class="tab-badge">{evt.badge}</span>
+            <span class="tab-title">{evt.name}</span>
+            <span class="tab-meta">{evt.year} · {evt.venue.split('·')[0]}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- PAINEIS DE CONTEÚDO DAS EDIÇÕES -->
+    <div class="editions-content-wrapper">
+      {events.map((evt, idx) => (
+        <div 
+          class={`edition-panel ${idx === 0 ? 'active' : ''}`} 
+          id={`panel-${evt.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${evt.id}`}
+          hidden={idx !== 0}
+        >
+          <div class="panel-hero">
+            <div class="panel-info">
+              <div class="panel-date-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>{evt.date} · {evt.venue}</span>
+              </div>
+
+              <h3 class="panel-headline">"{evt.headline}"</h3>
+              
+              <p class="panel-summary">{evt.summary}</p>
+              
+              <div class="panel-audience">
+                <strong>Público impactado:</strong> {evt.audience}
+              </div>
+
+              <div class="panel-highlights">
+                <span class="highlights-title">Resultados da Edição:</span>
+                <ul>
+                  {evt.highlights.map(h => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel-lead-photo">
+              <img 
+                src={evt.leadPhoto} 
+                alt={evt.name} 
+                class="lead-img"
+                loading="lazy"
+                width="800"
+                height="533"
+              />
+              <span class="photo-badge">Registro Documental Oficial · Jefferson Peixoto / Secom PMS</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- MOSAICO FOTOGRÁFICO GERAL DOCUMENTAL -->
+    <div class="mosaic-section-wrap">
+      <div class="mosaic-header-row">
+        <div>
+          <span class="badge-territorio badge-dark">Acervo Vivo</span>
+          <h3 class="mosaic-main-heading">Mosaico Fotográfico dos Eventos</h3>
+          <p class="mosaic-sub">Momentos reais capturados nos palcos, nas salas de aula históricas e nas bancadas de desenvolvimento em Salvador.</p>
+        </div>
+        <div class="mascot-corner-mini">
+          <img 
+            src={mascotWelcome.src} 
+            alt="Mascote Black XP acolhedora" 
+            class="mascot-mini"
+            loading="lazy"
+            width="120"
+            height="120"
+          />
+        </div>
+      </div>
+
+      <BlackXPMosaic />
+    </div>
+
+    <!-- BANNER DE CONTRATAÇÃO DA METODOLOGIA -->
+    <div class="blackxp-cta-banner">
+      <div class="cta-banner-text">
+        <h3>Leve o Black XP Game Lab para sua escola, empresa ou município</h3>
+        <p>Desenvolvemos edições sob medida para secretarias de educação, fundações, hubs de inovação e empresas que investem em ESG e inclusão sociotécnica real.</p>
+      </div>
+      <a href="#contato" class="btn-primary">
+        <span>Contratar Edição do Lab</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .blackxp-section {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+    background-color: var(--graphite);
+    color: var(--pure-white);
+    border-bottom: 1px solid var(--cinza-borda-escura);
+  }
+
+  /* INTRO BANNER COM MASCOTE 3D */
+  .blackxp-intro-banner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+    background: linear-gradient(135deg, #1C1528 0%, #251B38 100%);
+    border: 1px solid rgba(124, 77, 255, 0.35);
+    border-radius: var(--radius-surface);
+    padding: clamp(28px, 4vw, 48px);
+    margin-bottom: 56px;
+  }
+
+  @media (min-width: 992px) {
+    .blackxp-intro-banner {
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 48px;
+    }
+  }
+
+  .intro-text .badge-territorio {
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    margin-bottom: 20px;
+    color: var(--pure-white);
+    font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1rem, 1vw + 0.75rem, 1.1875rem);
+    line-height: 1.6;
+    color: #D1C4E9;
+    margin-bottom: 28px;
+  }
+
+  .intro-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+  }
+
+  .stat-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: #B388FF;
+  }
+
+  .stat-desc {
+    font-size: 0.8125rem;
+    color: var(--pure-white);
+    font-weight: 500;
+  }
+
+  .intro-mascot-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mascot-frame {
+    position: relative;
+    max-width: 320px;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+  }
+
+  .mascot-3d-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    animation: floatMascot 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatMascot {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+
+  .mascot-tag {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background-color: rgba(23, 23, 23, 0.9);
+    border: 1px solid rgba(124, 77, 255, 0.4);
+    border-radius: var(--radius-pill);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    white-space: nowrap;
+  }
+
+  .mascot-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #7C4DFF;
+    box-shadow: 0 0 6px #7C4DFF;
+  }
+
+  /* TABS */
+  .editions-nav-container {
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--cinza-borda-escura);
+    padding-bottom: 16px;
+  }
+
+  .editions-nav {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .tab-edition-btn {
+    flex: 1;
+    min-width: 240px;
+    text-align: left;
+    background-color: var(--graphite-surface);
+    border: 1px solid var(--cinza-borda-escura);
+    border-radius: var(--radius-surface);
+    padding: 16px 20px;
+    cursor: pointer;
+    color: var(--pure-white);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tab-edition-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(124, 77, 255, 0.4);
+  }
+
+  .tab-edition-btn.active {
+    background-color: #241D35;
+    border-color: var(--aimo-purple);
+    box-shadow: 0 4px 16px rgba(124, 77, 255, 0.2);
+  }
+
+  .tab-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--aimo-purple);
+  }
+
+  .tab-edition-btn.active .tab-badge {
+    color: #B388FF;
+  }
+
+  .tab-title {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    line-height: 1.3;
+  }
+
+  .tab-meta {
+    font-size: 0.75rem;
+    color: var(--cinza-medio);
+  }
+
+  /* PANELS */
+  .edition-panel {
+    display: none;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+
+  .edition-panel.active {
+    display: flex;
+  }
+
+  .panel-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    background-color: var(--graphite-surface);
+    border: 1px solid var(--cinza-borda-escura);
+    border-radius: var(--radius-surface);
+    overflow: hidden;
+    padding: clamp(24px, 4vw, 40px);
+  }
+
+  @media (min-width: 992px) {
+    .panel-hero {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+  }
+
+  .panel-date-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    color: var(--cinza-medio);
+    margin-bottom: 16px;
+    font-family: monospace;
+  }
+
+  .panel-headline {
+    font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+    color: var(--pure-white);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    font-family: var(--font-heading);
+  }
+
+  .panel-summary {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--warm-gray);
+    margin-bottom: 20px;
+  }
+
+  .panel-audience {
+    font-size: 0.8125rem;
+    color: #BDBDBD;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 12px 16px;
+    border-radius: var(--radius-control);
+    margin-bottom: 20px;
+    border-left: 2px solid var(--aimo-purple);
+  }
+
+  .panel-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .highlights-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cinza-medio);
+  }
+
+  .panel-highlights ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .panel-highlights li {
+    font-size: 0.8125rem;
+    color: #E0E0E0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .panel-highlights li::before {
+    content: "✓";
+    color: var(--aimo-purple);
+    font-weight: 800;
+  }
+
+  .panel-lead-photo {
+    position: relative;
+    border-radius: var(--radius-surface);
+    overflow: hidden;
+    background-color: #111;
+  }
+
+  .lead-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    background-color: rgba(23, 23, 23, 0.85);
+    border-radius: var(--radius-pill);
+    color: var(--pure-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* MOSAIC SECTION WRAP */
+  .mosaic-section-wrap {
+    margin-top: 48px;
+    margin-bottom: 56px;
+  }
+
+  .mosaic-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--cinza-borda-escura);
+    padding-bottom: 16px;
+  }
+
+  .mosaic-main-heading {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--pure-white);
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .mosaic-sub {
+    font-size: 0.9375rem;
+    color: var(--warm-gray);
+    max-width: 60ch;
+  }
+
+  .mascot-corner-mini {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .mascot-corner-mini {
+      display: block;
+    }
+  }
+
+  .mascot-mini {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+  }
+
+  /* CTA BANNER */
+  .blackxp-cta-banner {
+    background-color: #241D35;
+    border: 1px solid var(--aimo-purple);
+    border-radius: var(--radius-surface);
+    padding: clamp(28px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .blackxp-cta-banner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .cta-banner-text h3 {
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    color: var(--pure-white);
+    margin-bottom: 8px;
+  }
+
+  .cta-banner-text p {
+    font-size: 0.9375rem;
+    color: #D1C4E9;
+    max-width: 60ch;
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tab-edition-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.edition-panel');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+
+      tabButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      panels.forEach(p => {
+        if (p.id === `panel-${targetId}`) {
+          p.classList.add('active');
+          p.hidden = false;
+        } else {
+          p.classList.remove('active');
+          p.hidden = true;
+        }
+      });
+    });
+  });
+</script>

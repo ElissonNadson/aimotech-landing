@@ -1,0 +1,218 @@
+---
+// Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <a href="#topo" class="footer-logo">
+          <span class="logo-name">aimotech</span>
+          <span class="logo-sub">Territorial Game & Innovation Studio</span>
+        </a>
+        <p class="brand-tagline">
+          Jogos autorais, propriedades intelectuais e formação sociotécnica enraizados na Bahia e conectados ao mundo.
+        </p>
+        <div class="footer-coords">
+          <span>Salvador: 12° 58' 16" S · 38° 30' 39" W</span>
+          <span>Mucugê: 12° 59' 06" S · 41° 23' 38" W</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <span class="col-title">Navegação</span>
+        <ul>
+          <li><a href="#aimotech">Início</a></li>
+          <li><a href="#manifesto">Manifesto Territorial</a></li>
+          <li><a href="#jogos">Jogos Autorais</a></li>
+          <li><a href="#black-xp">Black XP Game Lab</a></li>
+          <li><a href="#servicos">Serviços & Atuação</a></li>
+          <li><a href="#processo">Como Trabalhamos</a></li>
+          <li><a href="#contato">Fale com o Estúdio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <span class="col-title">Jogos & Produções</span>
+        <ul>
+          <li>
+            <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="link-highlight">
+              Trilhas da Terra (Site Oficial) ↗
+            </a>
+          </li>
+          <li><a href="#jogos">Algodão Doce</a></li>
+          <li><a href="#jogos">Tagboy e a Cidade Cinza</a></li>
+          <li><a href="#jogos">Biografia Preta & Wini.IA</a></li>
+          <li><a href="#jogos">PVSC Sequeladus</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <span class="col-title">Contatos Diretos</span>
+        <ul>
+          <li><a href="mailto:contato@aimotech.com.br">contato@aimotech.com.br</a></li>
+          <li><a href="mailto:contato@trilhasdaterra.com.br">contato@trilhasdaterra.com.br</a></li>
+          <li><a href="https://www.instagram.com/gametrilhasdaterra" target="_blank" rel="noopener noreferrer">@gametrilhasdaterra</a></li>
+          <li class="badge-address">Salvador · Bahia · Brasil</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="bottom-copy">
+        © {currentYear} Aimotech — Todos os direitos reservados. Feito com rigor antropológico e engenharia independente na Bahia.
+      </div>
+      <div class="bottom-back-to-top">
+        <a href="#topo" class="back-link">
+          <span>Voltar ao Topo ↑</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #111111;
+    color: var(--warm-gray);
+    border-top: 1px solid var(--cinza-borda-escura);
+    padding-top: clamp(48px, 6vw, 80px);
+    padding-bottom: 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 56px;
+  }
+
+  @media (min-width: 640px) {
+    .footer-top {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-top {
+      grid-template-columns: 1.4fr 0.8fr 1fr 1fr;
+      gap: 48px;
+    }
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--pure-white);
+    letter-spacing: -0.04em;
+  }
+
+  .logo-sub {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--aimo-purple);
+  }
+
+  .brand-tagline {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #9E9E9E;
+    margin-bottom: 20px;
+    max-width: 38ch;
+  }
+
+  .footer-coords {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--cinza-medio);
+  }
+
+  .col-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pure-white);
+    margin-bottom: 18px;
+  }
+
+  .footer-links-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links-col a {
+    font-size: 0.875rem;
+    color: #BDBDBD;
+    transition: color 0.15s ease;
+  }
+
+  .footer-links-col a:hover {
+    color: var(--aimo-purple);
+  }
+
+  .link-highlight {
+    color: var(--verde-mata) !important;
+    font-weight: 600;
+  }
+
+  .link-highlight:hover {
+    color: #4CAF50 !important;
+    text-decoration: underline;
+  }
+
+  .badge-address {
+    font-size: 0.8125rem;
+    color: var(--cinza-medio);
+    padding-top: 6px;
+  }
+
+  /* FOOTER BOTTOM */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8125rem;
+    color: #757575;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+    }
+  }
+
+  .back-link {
+    color: var(--warm-gray);
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+
+  .back-link:hover {
+    color: var(--pure-white);
+  }
+</style>

@@ -1,0 +1,201 @@
+---
+// StudioManifesto.astro
+---
+
+<section class="manifesto-section" id="manifesto" aria-labelledby="manifesto-title">
+  <div class="container">
+    
+    <div class="manifesto-header">
+      <span class="badge-territorio">Manifesto do Estúdio</span>
+      <h2 id="manifesto-title" class="manifesto-title">
+        "O caminho não se perde — ele se transforma."
+      </h2>
+      <p class="manifesto-lead">
+        A Aimotech existe na interseção entre preservação da memória e vanguarda digital. Não fazemos jogos para replicar fórmulas de entretenimento descartável. Criamos mundos onde a terra ensina, as memórias se perpetuam e a juventude se enxerga no centro da história.
+      </p>
+    </div>
+
+    <div class="manifesto-grid">
+      
+      <div class="manifesto-card">
+        <div class="card-num">01</div>
+        <h3 class="card-title">Enraizamento Territorial</h3>
+        <p class="card-text">
+          Cada montanha, cada ladeira e cada tradição oral tem valor dramático. Nossos universos são fundamentados nas paisagens reais e na identidade da Bahia — da Chapada Diamantina ao Centro Histórico de Salvador.
+        </p>
+      </div>
+
+      <div class="manifesto-card">
+        <div class="card-num">02</div>
+        <h3 class="card-title">Protagonismo Decolonial</h3>
+        <p class="card-text">
+          Protagonismo negro, indígena e comunitário não é apêndice de marketing: é a raiz de nossas narrativas. Criamos personagens complexos, pesquisadores, grafiteiros, corredores e guardiões do saber.
+        </p>
+      </div>
+
+      <div class="manifesto-card">
+        <div class="card-num">03</div>
+        <h3 class="card-title">Metodologia Black XP</h3>
+        <p class="card-text">
+          Um estúdio territorial não pode depender de bolhas de privilégio. Desenvolvemos nossa própria metodologia de formação para abrir as portas da indústria de jogos para jovens da rede pública e mulheres negras.
+        </p>
+      </div>
+
+      <div class="manifesto-card">
+        <div class="card-num">04</div>
+        <h3 class="card-title">Circulação Internacional</h3>
+        <p class="card-text">
+          Quanto mais profundamente local e verdadeiro é um relato, maior é sua ressonância universal. Nossos jogos são construídos para emocionar jogadores no Brasil e em qualquer parte do planeta.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Indicadores de Impacto -->
+    <div class="metrics-strip">
+      <div class="metric-item">
+        <span class="metric-val">4+</span>
+        <span class="metric-label">Jogos e IPs em Desenvolvimento</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">150+</span>
+        <span class="metric-label">Jovens Formados nos Labs</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">10+</span>
+        <span class="metric-label">Protótipos Criados por Alunos</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">150 anos</span>
+        <span class="metric-label">De Memória Viva no Quilombo</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .manifesto-section {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+    background-color: var(--warm-gray-light);
+    border-bottom: 1px solid var(--cinza-borda);
+  }
+
+  .manifesto-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 56px auto;
+  }
+
+  .manifesto-header .badge-territorio {
+    margin-bottom: 18px;
+  }
+
+  .manifesto-title {
+    margin-bottom: 20px;
+    color: var(--graphite);
+    font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+    letter-spacing: -0.03em;
+  }
+
+  .manifesto-lead {
+    font-size: clamp(1.0625rem, 1vw + 0.875rem, 1.25rem);
+    line-height: 1.6;
+    color: #424242;
+    margin: 0 auto;
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 640px) {
+    .manifesto-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .manifesto-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .manifesto-card {
+    background-color: var(--pure-white);
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--radius-surface);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .manifesto-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--aimo-purple);
+  }
+
+  .card-num {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--aimo-purple);
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    color: var(--graphite);
+    margin-bottom: 12px;
+  }
+
+  .card-text {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: #555555;
+  }
+
+  /* Metrics Strip */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 36px 32px;
+    background-color: var(--graphite);
+    border-radius: var(--radius-surface);
+    color: var(--pure-white);
+  }
+
+  @media (min-width: 768px) {
+    .metrics-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 2px solid var(--aimo-purple);
+    padding-left: 16px;
+  }
+
+  .metric-val {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--pure-white);
+  }
+
+  .metric-label {
+    font-size: 0.8125rem;
+    color: var(--cinza-medio);
+    font-weight: 500;
+  }
+</style>

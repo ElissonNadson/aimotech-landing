@@ -1,0 +1,230 @@
+---
+// BlackXPMosaic.astro
+interface PhotoItem {
+  src: string;
+  alt: string;
+  caption: string;
+  territory?: string;
+  tag?: string;
+  span?: string; // e.g. "col-span-2", "row-span-2"
+}
+
+interface Props {
+  photos?: PhotoItem[];
+}
+
+const defaultPhotos: PhotoItem[] = [
+  {
+    src: "/assets/fotos/black_xp/bxp_museu_12.webp",
+    alt: "Tata Ribeiro na abertura da 2ª Edição Black XP no Museu da Energia em Salvador",
+    caption: "Abertura oficial com Tata Ribeiro diante do auditório lotado no Museu da Energia",
+    territory: "Centro Histórico · Salvador",
+    tag: "Festival Afrofuturismo",
+    span: "featured-wide"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_museu_02.webp",
+    alt: "Pitch final dos estudantes da Escola Municipal Praia da Silva no palco com símbolos Adinkra",
+    caption: "Apresentação dos protótipos de jogos pelos jovens estudantes da rede municipal",
+    territory: "Escola Municipal Praia da Silva",
+    tag: "Pitch Day",
+    span: "featured-tall"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_woman_lab_02.webp",
+    alt: "Mulheres desenvolvedoras e líderes criativas no Black XP Woman Lab",
+    caption: "Lideranças e participantes do Woman Lab fortalecendo a presença feminina na indústria",
+    territory: "Salvador, BA",
+    tag: "Woman Lab",
+    span: "standard"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_hackathon_01.webp",
+    alt: "Hackathon de games em sala histórica com azulejos portugueses no Pelourinho",
+    caption: "Salão histórico acolhendo a maratona de desenvolvimento de jogos da juventude",
+    territory: "Salvador Colonial & Afrofuturismo",
+    tag: "Hackathon 48h",
+    span: "standard"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_btx_02.webp",
+    alt: "Produtora da Black XP credenciada no Bahia Tech Experience",
+    caption: "A Aimotech e a Black XP marcando presença no Bahia Tech Experience (BTX 25)",
+    territory: "SENAI Cimatec Park",
+    tag: "Ecossistema Tech",
+    span: "featured-tall"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_hackathon_03.webp",
+    alt: "Jogo Mwanga projetado na parede durante a avaliação da banca",
+    caption: "Protótipo 'Mwanga': game afrofuturista criado inteiramente pelos alunos",
+    territory: "Game Design Comunitário",
+    tag: "Game Mwanga",
+    span: "standard"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_museu_31.webp",
+    alt: "Palco com símbolos Adinkra: o código-fonte da liberdade",
+    caption: "Adinkras como matriz de pensamento computacional e conexão ancestral",
+    territory: "Museu da Energia",
+    tag: "Adinkras",
+    span: "featured-wide"
+  },
+  {
+    src: "/assets/fotos/black_xp/bxp_museu_01.webp",
+    alt: "Estudante concedendo entrevista para cobertura de imprensa",
+    caption: "Voz e protagonismo para a juventude das periferias de Salvador",
+    territory: "Cobertura Oficial",
+    tag: "Comunicação",
+    span: "standard"
+  }
+];
+
+const { photos = defaultPhotos } = Astro.props;
+---
+
+<div class="mosaic-container">
+  <div class="mosaic-grid">
+    {photos.map((item: PhotoItem, index: number) => (
+      <figure class={`mosaic-item ${item.span || 'standard'}`} data-index={index}>
+        <div class="mosaic-img-wrap">
+          <img 
+            src={item.src} 
+            alt={item.alt} 
+            class="mosaic-img"
+            loading="lazy"
+            width="600"
+            height="400"
+          />
+          <div class="mosaic-overlay">
+            {item.tag && <span class="mosaic-tag">{item.tag}</span>}
+            {item.territory && <span class="mosaic-territory">{item.territory}</span>}
+          </div>
+        </div>
+        <figcaption class="mosaic-caption">
+          {item.caption}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</div>
+
+<style>
+  .mosaic-container {
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .mosaic-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .mosaic-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .mosaic-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .mosaic-item.featured-wide {
+      grid-column: span 2;
+    }
+
+    .mosaic-item.featured-tall {
+      grid-row: span 2;
+    }
+  }
+
+  .mosaic-item {
+    background-color: var(--graphite-surface);
+    border: 1px solid var(--cinza-borda-escura);
+    border-radius: var(--radius-surface);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .mosaic-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 77, 255, 0.45);
+  }
+
+  .mosaic-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    background-color: #121212;
+    overflow: hidden;
+  }
+
+  .mosaic-item.featured-tall .mosaic-img-wrap {
+    min-height: 380px;
+  }
+
+  .mosaic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .mosaic-item:hover .mosaic-img {
+    transform: scale(1.04);
+  }
+
+  .mosaic-overlay {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+  }
+
+  .mosaic-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: rgba(23, 23, 23, 0.88);
+    backdrop-filter: blur(4px);
+    color: var(--pure-white);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mosaic-territory {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--warm-gray);
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 3px 8px;
+    border-radius: var(--radius-control);
+  }
+
+  .mosaic-caption {
+    padding: 12px 16px;
+    font-size: 0.8125rem;
+    color: #CCCCCC;
+    line-height: 1.45;
+    background-color: var(--graphite-surface);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+</style>

@@ -1,0 +1,814 @@
+---
+// GamesSection.astro
+import projects from '../data/projects.json';
+
+const trilhas = projects.find(p => p.id === 'trilhas-da-terra');
+const otherProjects = projects.filter(p => p.id !== 'trilhas-da-terra');
+---
+
+<section class="games-section" id="jogos" aria-labelledby="jogos-title">
+  <div class="container">
+    
+    <div class="section-header">
+      <span class="badge-territorio badge-dark">Nossos Jogos & Propriedades Intelectuais</span>
+      <h2 id="jogos-title" class="section-title">
+        Experiências autorais que conectam ancestralidade, afeto e vanguarda lúdica.
+      </h2>
+      <p class="section-subtitle">
+        Inspirados na elegância de estúdios autorais globais como a Ustwo Games, mas enraizados no solo sagrado da Bahia: da Chapada Diamantina às encostas de Nova Salvador.
+      </p>
+    </div>
+
+    <!-- LISTA DE JOGOS AUTORAIS COM CARDS AMPLOS ESTILO USTWO GAMES -->
+    <div class="games-list">
+
+      <!-- 01. TRILHAS DA TERRA (HERO SPOTLIGHT) -->
+      {trilhas && (
+        <article class="ustwo-game-card game-trilhas" id={trilhas.id}>
+          <div class="card-visual">
+            <div class="image-wrapper">
+              <img 
+                src={trilhas.image} 
+                alt={trilhas.title} 
+                class="game-art-img"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="character-cutout-wrap">
+                <img 
+                  src={trilhas.characterImage || trilhas.image} 
+                  alt="Protagonista correndo pelas Trilhas da Terra" 
+                  class="character-cutout"
+                  loading="lazy"
+                  width="360"
+                  height="360"
+                />
+              </div>
+            </div>
+            
+            <div class="visual-status-pill">
+              <span class="pulse-dot"></span>
+              <span>Beta em Desenvolvimento · 2026</span>
+            </div>
+          </div>
+
+          <div class="card-details">
+            <div class="game-meta-top">
+              <span class="pill-category">{trilhas.category}</span>
+              <span class="pill-territory">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {trilhas.territory}
+              </span>
+            </div>
+
+            <h3 class="game-main-title">{trilhas.title}</h3>
+            <p class="game-one-liner">{trilhas.subtitle}</p>
+
+            <blockquote class="game-quote-callout">
+              "{trilhas.quote}"
+            </blockquote>
+
+            <p class="game-synopsis">
+              {trilhas.description}
+            </p>
+
+            <div class="game-specs-box">
+              <div class="spec-cell">
+                <span class="spec-k">Mecânicas</span>
+                <span class="spec-v">Infinity runner tático, leitura de terreno e esquiva de entidades míticas</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Território</span>
+                <span class="spec-v">Vale do Pati, Mucugê e Comunidade Quilombola de Barriguda</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Legado</span>
+                <span class="spec-v">Memória centenária quilombola com respaldo da Lei Paulo Gustavo</span>
+              </div>
+            </div>
+
+            {trilhas.locations && (
+              <div class="locations-strip">
+                <span class="locations-label">Cenários Reais da Chapada Diamantina:</span>
+                <div class="locations-tags">
+                  {trilhas.locations.map(loc => (
+                    <div class="loc-tag-item">
+                      <img src={loc.image} alt={loc.name} class="loc-mini-img" width="32" height="32" loading="lazy" />
+                      <span>{loc.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div class="card-action-bar">
+              <a 
+                href={trilhas.website} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-game-primary"
+                title="Acessar o site oficial de Trilhas da Terra"
+              >
+                <span>Visitar Site Oficial trilhasdaterra.com.br</span>
+                <span class="btn-arrow-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
+              </a>
+
+              <a 
+                href="https://www.instagram.com/gametrilhasdaterra" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-game-ghost"
+              >
+                <span>Instagram @gametrilhasdaterra ↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      <!-- 02. ALGODÃO DOCE -->
+      {otherProjects.filter(p => p.id === 'algodao-doce').map(game => (
+        <article class="ustwo-game-card game-algodao reverse" id={game.id}>
+          <div class="card-visual">
+            <div class="image-wrapper">
+              <img 
+                src={game.image} 
+                alt={game.title} 
+                class="game-art-img"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="character-cutout-wrap float-left">
+                <img 
+                  src={game.characterImage || game.image} 
+                  alt="Personagens Algodão Doce e Floquinho" 
+                  class="character-cutout"
+                  loading="lazy"
+                  width="360"
+                  height="360"
+                />
+              </div>
+            </div>
+            <div class="visual-status-pill">
+              <span class="pulse-dot yellow"></span>
+              <span>{game.status}</span>
+            </div>
+          </div>
+
+          <div class="card-details">
+            <div class="game-meta-top">
+              <span class="pill-category">{game.category}</span>
+              <span class="pill-territory">{game.territory}</span>
+            </div>
+
+            <h3 class="game-main-title">{game.title}</h3>
+            <p class="game-one-liner">{game.subtitle}</p>
+
+            <blockquote class="game-quote-callout">
+              "{game.quote}"
+            </blockquote>
+
+            <p class="game-synopsis">
+              {game.description}
+            </p>
+
+            <div class="game-specs-box">
+              <div class="spec-cell">
+                <span class="spec-k">Personagens</span>
+                <span class="spec-v">Algodão Doce (jogável) e Floquinho (apoio narrativo)</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Física Reativa</span>
+                <span class="spec-v">Plataformas doces despencam segundos após o impacto</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Inspiração</span>
+                <span class="spec-v">Doces de tabuleiro e culinária tradicional da Bahia</span>
+              </div>
+            </div>
+
+            <div class="tags-row">
+              {game.tags.map(t => (
+                <span class="game-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <!-- 03. TAGBOY E A CIDADE CINZA -->
+      {otherProjects.filter(p => p.id === 'tagboy').map(game => (
+        <article class="ustwo-game-card game-tagboy" id={game.id}>
+          <div class="card-visual">
+            <div class="image-wrapper">
+              <img 
+                src={game.image} 
+                alt={game.title} 
+                class="game-art-img"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="character-cutout-wrap">
+                <img 
+                  src={game.characterImage || game.image} 
+                  alt="Tagboy grafitando com rolo de tinta" 
+                  class="character-cutout"
+                  loading="lazy"
+                  width="360"
+                  height="360"
+                />
+              </div>
+            </div>
+            <div class="visual-status-pill">
+              <span class="pulse-dot green"></span>
+              <span>{game.status}</span>
+            </div>
+          </div>
+
+          <div class="card-details">
+            <div class="game-meta-top">
+              <span class="pill-category">{game.category}</span>
+              <span class="pill-territory">{game.territory}</span>
+            </div>
+
+            <h3 class="game-main-title">{game.title}</h3>
+            <p class="game-one-liner">{game.subtitle}</p>
+
+            <blockquote class="game-quote-callout">
+              "{game.quote}"
+            </blockquote>
+
+            <p class="game-synopsis">
+              {game.description}
+            </p>
+
+            <div class="game-specs-box">
+              <div class="spec-cell">
+                <span class="spec-k">Missão Central</span>
+                <span class="spec-v">Devolver as cores roubadas e a memória de Nova Salvador</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Mecânicas</span>
+                <span class="spec-v">4 personagens jogáveis, pulo duplo, spray de tinta e puzzles</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Tom Narrativo</span>
+                <span class="spec-v">Sci-Fi afrofuturista com protagonismo científico e urbano</span>
+              </div>
+            </div>
+
+            <div class="tags-row">
+              {game.tags.map(t => (
+                <span class="game-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <!-- 04. BIOGRAFIA PRETA -->
+      {otherProjects.filter(p => p.id === 'biografia-preta').map(game => (
+        <article class="ustwo-game-card game-biografia reverse" id={game.id}>
+          <div class="card-visual">
+            <div class="image-wrapper">
+              <img 
+                src={game.image} 
+                alt={game.title} 
+                class="game-art-img"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="character-cutout-wrap float-left">
+                <img 
+                  src={game.secondaryImage || game.image} 
+                  alt="Metaverso Biografia Preta" 
+                  class="character-cutout"
+                  loading="lazy"
+                  width="360"
+                  height="360"
+                />
+              </div>
+            </div>
+            <div class="visual-status-pill">
+              <span class="pulse-dot blue"></span>
+              <span>{game.status}</span>
+            </div>
+          </div>
+
+          <div class="card-details">
+            <div class="game-meta-top">
+              <span class="pill-category">{game.category}</span>
+              <span class="pill-territory">{game.territory}</span>
+            </div>
+
+            <h3 class="game-main-title">{game.title}</h3>
+            <p class="game-one-liner">{game.subtitle}</p>
+
+            <blockquote class="game-quote-callout">
+              "{game.quote}"
+            </blockquote>
+
+            <p class="game-synopsis">
+              {game.description}
+            </p>
+
+            <div class="game-specs-box">
+              <div class="spec-cell">
+                <span class="spec-k">Marco Legal</span>
+                <span class="spec-v">Instrumental pedagógico para Leis Federais 10.639 e 11.645</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Inteligência Artificial</span>
+                <span class="spec-v">Wini.IA assistindo docentes e alunos na pesquisa histórica</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-k">Ambiente</span>
+                <span class="spec-v">Exploração 3D interativa de personalidades e heróis negros</span>
+              </div>
+            </div>
+
+            <div class="tags-row">
+              {game.tags.map(t => (
+                <span class="game-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+
+    </div>
+
+    <!-- CALLOUT DE COMUNIDADE ESTILO USTWO GAMES ("JOIN THE COMMUNITY") -->
+    <div class="games-community-card">
+      <div class="community-content">
+        <span class="badge-territorio badge-dark">Comunidade de Jogadores</span>
+        <h3>A trilha está sendo traçada. Corre com a gente.</h3>
+        <p>
+          O jogo Trilhas da Terra ainda está em desenvolvimento, mas a travessia já começou. Inscreva-se para participar dos playtests beta, receber novidades exclusivas e acompanhar de perto o nascimento dos jogos da Aimotech.
+        </p>
+        <div class="community-actions">
+          <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <span>Inscrever-se para o Beta de Trilhas da Terra ↗</span>
+          </a>
+          <a href="https://www.instagram.com/gametrilhasdaterra" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-secondary-light">
+            <span>Siga @gametrilhasdaterra</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .games-section {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+    background-color: var(--graphite);
+    color: var(--pure-white);
+    border-bottom: 1px solid var(--cinza-borda-escura);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 64px auto;
+  }
+
+  .section-header .badge-territorio {
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    margin-bottom: 20px;
+    color: var(--pure-white);
+    font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+    letter-spacing: -0.03em;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1rem, 1vw + 0.75rem, 1.1875rem);
+    line-height: 1.6;
+    color: var(--warm-gray);
+    margin: 0 auto;
+  }
+
+  /* LISTA DE JOGOS */
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+
+  /* CARD AMPLO ESTILO USTWO GAMES */
+  .ustwo-game-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--graphite-surface);
+    border: 1px solid var(--cinza-borda-escura);
+    border-radius: var(--radius-surface);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  @media (min-width: 992px) {
+    .ustwo-game-card {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .ustwo-game-card.reverse .card-visual {
+      order: 2;
+    }
+
+    .ustwo-game-card.reverse .card-details {
+      order: 1;
+    }
+  }
+
+  .ustwo-game-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 77, 255, 0.45);
+  }
+
+  /* Cores temáticas de fundo sutis por jogo */
+  .game-trilhas {
+    background: linear-gradient(135deg, #1C1714 0%, #20241F 100%);
+    border-color: rgba(46, 125, 91, 0.35);
+  }
+
+  .game-algodao {
+    background: linear-gradient(135deg, #1F171A 0%, #291C22 100%);
+    border-color: rgba(183, 90, 54, 0.35);
+  }
+
+  .game-tagboy {
+    background: linear-gradient(135deg, #181422 0%, #211933 100%);
+    border-color: rgba(124, 77, 255, 0.35);
+  }
+
+  .game-biografia {
+    background: linear-gradient(135deg, #141A26 0%, #1A2436 100%);
+    border-color: rgba(32, 74, 122, 0.35);
+  }
+
+  /* LADO VISUAL */
+  .card-visual {
+    position: relative;
+    height: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .game-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .ustwo-game-card:hover .game-art-img {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+
+  .character-cutout-wrap {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    width: 220px;
+    height: 220px;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+    transition: transform 0.35s ease;
+  }
+
+  .character-cutout-wrap.float-left {
+    right: auto;
+    left: 20px;
+  }
+
+  .character-cutout {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ustwo-game-card:hover .character-cutout-wrap {
+    transform: translateY(-8px) scale(1.04);
+  }
+
+  .visual-status-pill {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background-color: rgba(23, 23, 23, 0.85);
+    backdrop-filter: blur(4px);
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--pure-white);
+    z-index: 3;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    box-shadow: 0 0 8px #4CAF50;
+  }
+
+  .pulse-dot.yellow {
+    background-color: #FFB300;
+    box-shadow: 0 0 8px #FFB300;
+  }
+
+  .pulse-dot.green {
+    background-color: #00E676;
+    box-shadow: 0 0 8px #00E676;
+  }
+
+  .pulse-dot.blue {
+    background-color: #29B6F6;
+    box-shadow: 0 0 8px #29B6F6;
+  }
+
+  /* LADO DETALHES */
+  .card-details {
+    padding: clamp(28px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .game-meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .pill-category {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--aimo-purple);
+  }
+
+  .pill-territory {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--warm-gray);
+  }
+
+  .game-main-title {
+    font-size: clamp(1.875rem, 3vw, 2.75rem);
+    color: var(--pure-white);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .game-one-liner {
+    font-size: 1.0625rem;
+    color: var(--warm-gray);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .game-quote-callout {
+    font-size: 1rem;
+    font-style: italic;
+    color: #E2DDD5;
+    border-left: 2px solid var(--aimo-purple);
+    padding-left: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .game-synopsis {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #BDBDBD;
+    margin-bottom: 24px;
+  }
+
+  .game-specs-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    background-color: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-control);
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 640px) {
+    .game-specs-box {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .spec-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .spec-k {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cinza-medio);
+  }
+
+  .spec-v {
+    font-size: 0.8125rem;
+    color: var(--pure-white);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* LOCATIONS STRIP */
+  .locations-strip {
+    margin-bottom: 24px;
+  }
+
+  .locations-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cinza-medio);
+    margin-bottom: 10px;
+  }
+
+  .locations-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .loc-tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .loc-mini-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* BOTÕES ESTILO USTWO GAMES */
+  .card-action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-game-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background-color: var(--aimo-purple);
+    color: var(--pure-white);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .btn-game-primary:hover {
+    background-color: var(--aimo-purple-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-game-ghost {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--warm-gray);
+    transition: color 0.15s ease;
+  }
+
+  .btn-game-ghost:hover {
+    color: var(--pure-white);
+    text-decoration: underline;
+  }
+
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .game-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--warm-gray);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* COMMUNITY CARD */
+  .games-community-card {
+    background-color: #20182E;
+    border: 1px solid rgba(124, 77, 255, 0.4);
+    border-radius: var(--radius-surface);
+    padding: clamp(32px, 5vw, 56px);
+    text-align: center;
+  }
+
+  .community-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .community-content .badge-territorio {
+    margin-bottom: 20px;
+  }
+
+  .community-content h3 {
+    font-size: clamp(1.75rem, 2.5vw, 2.375rem);
+    color: var(--pure-white);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .community-content p {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #D1C4E9;
+    margin: 0 auto 32px auto;
+  }
+
+  .community-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+</style>

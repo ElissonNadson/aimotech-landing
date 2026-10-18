@@ -1,0 +1,306 @@
+---
+// Hero.astro
+---
+
+<section class="hero-section" id="aimotech" aria-labelledby="hero-title">
+  <div class="container hero-container">
+    
+    <div class="hero-content">
+      <div class="hero-coords">
+        <span class="coord-tag">Coord. Salvador</span>
+        <span class="coord-val">12° 58' 16" S · 38° 30' 39" W</span>
+        <span class="coord-sep">/</span>
+        <span class="coord-tag">Mucugê</span>
+        <span class="coord-val">12° 59' 06" S · 41° 23' 38" W</span>
+      </div>
+
+      <div class="hero-badge-wrap">
+        <span class="badge-territorio">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+            <circle cx="5" cy="5" r="4"></circle>
+          </svg>
+          Game Studio & Laboratório Territorial
+        </span>
+      </div>
+
+      <h1 id="hero-title" class="hero-heading">
+        Criamos jogos autorais e tecnologias que nascem no território e ganham o mundo.
+      </h1>
+
+      <p class="hero-description">
+        A Aimotech é um estúdio baiano de games independentes, propriedades intelectuais culturais e experiências digitais. Atuamos no desenvolvimento autoral de jogos como <em>Trilhas da Terra</em> e na formação da próxima geração de talentos da indústria por meio da metodologia proprietária <strong>Black XP</strong>.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#jogos" class="btn-primary">
+          <span>Ver Jogos Autorais</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <a href="#black-xp" class="btn-secondary">
+          <span>Conhecer a Black XP</span>
+        </a>
+      </div>
+
+      <div class="hero-pillars-preview">
+        <div class="pillar-mini">
+          <span class="pillar-num">01</span>
+          <span class="pillar-lbl">Games & IPs Culturais</span>
+        </div>
+        <div class="pillar-mini">
+          <span class="pillar-num">02</span>
+          <span class="pillar-lbl">Black XP Game Lab</span>
+        </div>
+        <div class="pillar-mini">
+          <span class="pillar-num">03</span>
+          <span class="pillar-lbl">Consultoria & Mentoria</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-featured">
+        <div class="featured-media">
+          <img 
+            src="/assets/jogos/trilhas-da-terra/showcase_clean.webp" 
+            alt="Cena do jogo autoral Trilhas da Terra ambientado na Chapada Diamantina" 
+            class="featured-img"
+            loading="eager"
+            fetchpriority="high"
+            width="800"
+            height="450"
+          />
+          <div class="featured-badge-overlay">
+            <span class="badge-flag">Destaque Autoral</span>
+            <span class="badge-title">Trilhas da Terra</span>
+          </div>
+        </div>
+
+        <div class="featured-info">
+          <div class="featured-meta">
+            <span class="meta-item">Gênero: Infinity Runner Narrativo</span>
+            <span class="meta-item">Território: Chapada Diamantina & Quilombo da Barriguda</span>
+          </div>
+          <p class="featured-quote">
+            "No coração da Chapada, o chão fala. A gente corre, mas não foge. Corre pra se lembrar do corpo que sente e da terra que ensina."
+          </p>
+          <div class="featured-cta-row">
+            <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="link-site-oficial">
+              <span>Acessar site oficial do jogo trilhasdaterra.com.br</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+    background-color: var(--off-white);
+    position: relative;
+    border-bottom: 1px solid var(--cinza-borda);
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+    }
+  }
+
+  .hero-coords {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--cinza-medio);
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .coord-tag {
+    font-weight: 700;
+    color: var(--graphite);
+    text-transform: uppercase;
+  }
+
+  .coord-sep {
+    color: var(--cinza-borda);
+  }
+
+  .hero-badge-wrap {
+    margin-bottom: 24px;
+  }
+
+  .hero-heading {
+    margin-bottom: 24px;
+    color: var(--graphite);
+  }
+
+  .hero-description {
+    font-size: clamp(1.0625rem, 1vw + 0.875rem, 1.25rem);
+    line-height: 1.6;
+    color: #424242;
+    margin-bottom: 36px;
+  }
+
+  .hero-description strong {
+    color: var(--graphite);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .hero-pillars-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--cinza-borda);
+  }
+
+  .pillar-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pillar-num {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 800;
+    color: var(--aimo-purple);
+  }
+
+  .pillar-lbl {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--graphite);
+  }
+
+  /* Featured Visual Card */
+  .hero-card-featured {
+    background-color: var(--pure-white);
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--radius-surface);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .featured-media {
+    position: relative;
+    background-color: #2D1A10;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .hero-card-featured:hover .featured-img {
+    transform: scale(1.02);
+  }
+
+  .featured-badge-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(23, 23, 23, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    color: var(--pure-white);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .badge-flag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #FFA726;
+  }
+
+  .badge-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+  }
+
+  .featured-info {
+    padding: 24px;
+  }
+
+  .featured-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8125rem;
+    color: var(--cinza-medio);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .featured-quote {
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .featured-cta-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .link-site-oficial {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--verde-mata);
+    transition: color 0.15s ease;
+  }
+
+  .link-site-oficial:hover {
+    color: #1E5C41;
+    text-decoration: underline;
+  }
+</style>

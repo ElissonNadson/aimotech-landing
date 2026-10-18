@@ -1,0 +1,44 @@
+[
+  {
+    "id": "games-ips",
+    "number": "01",
+    "title": "Games e Propriedades Intelectuais",
+    "tag": "Estúdio de Desenvolvimento",
+    "description": "Desenvolvimento de jogos autorais para PC, mobile e consoles, protótipos jogáveis, experiências interativas e criação de universos narrativos enraizados na cultura brasileira.",
+    "deliverables": [
+      "Concepção e Game Design Document (GDD)",
+      "Prototipagem rápida e playtests comunitários",
+      "Modelagem 3D, pixel art e direção de arte identitária",
+      "Engenharia de gameplay e publicação multiplataforma"
+    ],
+    "highlight": "Cases como Trilhas da Terra e Algodão Doce provam que territorialidade e apelo internacional caminham juntos."
+  },
+  {
+    "id": "black-xp-lab",
+    "number": "02",
+    "title": "Black XP Game Lab",
+    "tag": "Metodologia Proprietária",
+    "description": "Metodologia própria de formação, aceleração e incubação de novos talentos para a indústria de games, especializada em inclusão sociotécnica, afrofuturismo e protagonismo periférico.",
+    "deliverables": [
+      "Hackathons temáticos e maratonas imersivas de criação",
+      "Laboratórios exclusivos para mulheres e juventudes negras",
+      "Capacitação técnica em engines e pipelines de produção",
+      "Banca de jurados, prêmios e conexão direta com o mercado"
+    ],
+    "highlight": "Mais de 150 jovens e dezenas de protótipos de jogos criados e premiados em festivais e equipamentos culturais."
+  },
+  {
+    "id": "consultoria-produtos",
+    "number": "03",
+    "title": "Consultoria e Mentoria em Produtos Digitais",
+    "tag": "Estratégia & Inovação",
+    "description": "Estruturação de produtos digitais, plataformas educacionais e experiências imersivas para instituições, marcas e governos que buscam impacto cultural legítimo e rigor técnico.",
+    "deliverables": [
+      "Diagnóstico de viabilidade técnica e validação de mercado",
+      "Adequação pedagógica às Leis Federais 10.639/03 e 11.645/08",
+      "Arquitetura de experiências com IA Generativa e Web3",
+      "Mentoria contínua de produto, métricas e governança"
+    ],
+    "highlight": "Metodologia validada com plataformas como Biografia Preta e parcerias com o setor público e terceiro setor."
+  }
+]

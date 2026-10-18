@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Prefeitura de Salvador / SEMDEC",
+    "role": "Parceria Institucional & Secretaria de Desenvolvimento Econômico",
+    "logo": "/assets/logos/semdec-clean.png"
+  },
+  {
+    "name": "Impact Hub Salvador",
+    "role": "Hub de Inovação & Comunidade",
+    "logo": "/assets/logos/impact-hub.svg"
+  },
+  {
+    "name": "Goethe-Institut Salvador",
+    "role": "Cooperação Internacional & Residências Culturais",
+    "logo": "/assets/logos/goethe.svg"
+  },
+  {
+    "name": "Darwin Startups",
+    "role": "Aceleração & Capital Empreendedor",
+    "logo": "/assets/logos/darwin.png"
+  },
+  {
+    "name": "Feira Preta / PretaHub",
+    "role": "Maior Festival de Economia Criativa Negra da América Latina",
+    "logo": "/assets/logos/feira-preta.svg"
+  },
+  {
+    "name": "SENAC Bahia",
+    "role": "Formação Profissional & Capacitação Técnica",
+    "logo": "/assets/logos/senac.svg"
+  }
+]

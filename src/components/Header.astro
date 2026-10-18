@@ -1,0 +1,320 @@
+---
+// Header.astro
+---
+
+<header class="site-header" id="topo">
+  <div class="container header-container">
+    <a href="#topo" class="logo-link" aria-label="Aimotech - Início">
+      <div class="logo-mark">
+        <span class="logo-text">aimotech</span>
+        <span class="logo-tag">Territorial Game & Innovation Studio</span>
+      </div>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navegação Principal">
+      <ul class="nav-list">
+        <li><a href="#manifesto" class="nav-link">Manifesto</a></li>
+        <li><a href="#jogos" class="nav-link">Jogos Autorais</a></li>
+        <li><a href="#black-xp" class="nav-link">Black XP</a></li>
+        <li><a href="#servicos" class="nav-link">Serviços</a></li>
+        <li><a href="#processo" class="nav-link">Metodologia</a></li>
+        <li><a href="#contato" class="nav-link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="btn-trilhas-chip" title="Visitar site oficial de Trilhas da Terra">
+        <span class="chip-dot"></span>
+        <span>Trilhas da Terra</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17L17 7"></path>
+          <path d="M7 7h10v10"></path>
+        </svg>
+      </a>
+
+      <a href="#contato" class="btn-primary header-cta">
+        Fale Conosco
+      </a>
+
+      <button type="button" class="mobile-toggle" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-burger">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" hidden>
+    <div class="drawer-header">
+      <span class="logo-text">aimotech</span>
+      <button type="button" class="drawer-close" id="drawer-close-btn" aria-label="Fechar menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#manifesto" class="drawer-item">Manifesto</a></li>
+      <li><a href="#jogos" class="drawer-item">Jogos Autorais</a></li>
+      <li><a href="#black-xp" class="drawer-item">Black XP Festival & Lab</a></li>
+      <li><a href="#servicos" class="drawer-item">Serviços e Pilares</a></li>
+      <li><a href="#processo" class="drawer-item">Como Trabalhamos</a></li>
+      <li><a href="#contato" class="drawer-item">Contato & Coprodução</a></li>
+      <li class="drawer-divider"></li>
+      <li>
+        <a href="https://www.trilhasdaterra.com.br" target="_blank" rel="noopener noreferrer" class="drawer-trilhas-link">
+          Visitar site oficial: Trilhas da Terra ↗
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(248, 246, 242, 0.94);
+    border-bottom: 1px solid var(--cinza-borda);
+    backdrop-filter: blur(8px);
+    transition: background-color 0.2s ease;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 20px;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--graphite);
+  }
+
+  .logo-mark {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+    color: var(--graphite);
+    line-height: 1;
+  }
+
+  .logo-tag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cinza-medio);
+    margin-top: 3px;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  @media (min-width: 992px) {
+    .nav-desktop {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--graphite);
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--aimo-purple);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-trilhas-chip {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--verde-mata);
+    background-color: rgba(46, 125, 91, 0.09);
+    border: 1px solid rgba(46, 125, 91, 0.22);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    transition: all 0.18s ease;
+  }
+
+  @media (min-width: 768px) {
+    .btn-trilhas-chip {
+      display: inline-flex;
+    }
+  }
+
+  .btn-trilhas-chip:hover {
+    background-color: rgba(46, 125, 91, 0.16);
+    border-color: var(--verde-mata);
+  }
+
+  .chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--verde-mata);
+  }
+
+  .header-cta {
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .header-cta {
+      display: inline-flex;
+    }
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--graphite);
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  @media (min-width: 992px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  /* Drawer Mobile */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    background-color: var(--pure-white);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+    z-index: 200;
+    padding: 24px;
+    flex-direction: column;
+  }
+
+  .mobile-drawer.is-open {
+    display: flex;
+  }
+
+  @media (min-width: 992px) {
+    .mobile-drawer,
+    .mobile-drawer.is-open {
+      display: none !important;
+    }
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .drawer-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--graphite);
+    padding: 6px;
+  }
+
+  .drawer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .drawer-item {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--graphite);
+    display: block;
+    padding: 6px 0;
+  }
+
+  .drawer-divider {
+    height: 1px;
+    background-color: var(--cinza-borda);
+    margin: 12px 0;
+  }
+
+  .drawer-trilhas-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--verde-mata);
+  }
+</style>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('drawer-close-btn');
+  const drawer = document.getElementById('mobile-drawer');
+
+  function openDrawer() {
+    if (drawer) {
+      drawer.classList.add('is-open');
+      drawer.removeAttribute('hidden');
+      toggleBtn?.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeDrawer() {
+    if (drawer) {
+      drawer.classList.remove('is-open');
+      drawer.setAttribute('hidden', '');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  toggleBtn?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+
+  drawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+</script>

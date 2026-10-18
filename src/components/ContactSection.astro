@@ -1,0 +1,267 @@
+---
+// ContactSection.astro
+---
+
+<section class="contact-section" id="contato" aria-labelledby="contato-title">
+  <div class="container">
+    
+    <div class="contact-grid">
+      
+      <div class="contact-info">
+        <span class="badge-territorio">Conecte-se ao Estúdio</span>
+        <h2 id="contato-title" class="contact-title">
+          Vamos construir a próxima fronteira dos jogos territoriais.
+        </h2>
+        <p class="contact-lead">
+          Seja para coproduzir um jogo autoral, licenciar nossas propriedades intelectuais, levar o Black XP Game Lab para seu município ou desenvolver experiências digitais de impacto.
+        </p>
+
+        <div class="contact-details">
+          <div class="detail-block">
+            <span class="detail-label">Sede e Operação</span>
+            <span class="detail-value">Salvador · Bahia · Brasil</span>
+            <span class="detail-coords">12° 58' 16" S · 38° 30' 39" W</span>
+          </div>
+
+          <div class="detail-block">
+            <span class="detail-label">Território de Pesquisa</span>
+            <span class="detail-value">Mucugê & Vale do Pati · Chapada Diamantina</span>
+            <span class="detail-coords">12° 59' 06" S · 41° 23' 38" W</span>
+          </div>
+
+          <div class="detail-block">
+            <span class="detail-label">Canais Diretos</span>
+            <a href="mailto:contato@aimotech.com.br" class="detail-email">contato@aimotech.com.br</a>
+            <a href="mailto:contato@trilhasdaterra.com.br" class="detail-email">contato@trilhasdaterra.com.br</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="main-contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="form-name" class="form-label">Seu Nome Completo *</label>
+            <input type="text" id="form-name" name="name" class="form-input" placeholder="Ex: Maria Santos" required />
+          </div>
+
+          <div class="form-group">
+            <label for="form-email" class="form-label">E-mail Profissional *</label>
+            <input type="email" id="form-email" name="email" class="form-input" placeholder="Ex: maria@instituicao.org" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-org" class="form-label">Empresa / Instituição</label>
+              <input type="text" id="form-org" name="organization" class="form-input" placeholder="Ex: Studio / Fundação / SECTI" />
+            </div>
+
+            <div class="form-group">
+              <label for="form-interest" class="form-label">Interesse Principal *</label>
+              <select id="form-interest" name="interest" class="form-select" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="coproducao">Coprodução de Games / Investimento</option>
+                <option value="black-xp">Contratação do Black XP Game Lab</option>
+                <option value="consultoria">Consultoria em Produtos Digitais / Leis 10.639</option>
+                <option value="licenciamento">Licenciamento de IPs Culturais</option>
+                <option value="imprensa">Imprensa e Festivais</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="form-message" class="form-label">Mensagem ou Proposta *</label>
+            <textarea id="form-message" name="message" class="form-textarea" rows="4" placeholder="Conte-nos sobre seu projeto, território ou objetivo institucional..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit-btn">
+            <span>Enviar Mensagem</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+
+          <p class="form-feedback" id="form-feedback" hidden>
+            ✓ Mensagem registrada com sucesso! Nossa equipe entrará em contato em até 48 horas úteis.
+          </p>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+    background-color: var(--warm-gray-light);
+    border-bottom: 1px solid var(--cinza-borda);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.15fr;
+      gap: 64px;
+    }
+  }
+
+  .contact-info .badge-territorio {
+    margin-bottom: 20px;
+  }
+
+  .contact-title {
+    font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+    color: var(--graphite);
+    line-height: 1.18;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+  }
+
+  .contact-lead {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #424242;
+    margin-bottom: 36px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--cinza-borda);
+  }
+
+  .detail-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .detail-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--aimo-purple);
+  }
+
+  .detail-value {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--graphite);
+  }
+
+  .detail-coords {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--cinza-medio);
+  }
+
+  .detail-email {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--graphite);
+    transition: color 0.15s ease;
+  }
+
+  .detail-email:hover {
+    color: var(--aimo-purple);
+  }
+
+  /* FORMULÁRIO */
+  .contact-form-wrap {
+    background-color: var(--pure-white);
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--radius-surface);
+    padding: clamp(24px, 4vw, 40px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--graphite);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: var(--off-white);
+    border: 1.5px solid var(--cinza-borda);
+    border-radius: var(--radius-control);
+    font-size: 0.9375rem;
+    color: var(--graphite);
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--aimo-purple);
+    background-color: var(--pure-white);
+  }
+
+  .form-submit-btn {
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 14px 32px;
+  }
+
+  .form-feedback {
+    background-color: rgba(46, 125, 91, 0.12);
+    border: 1px solid var(--verde-mata);
+    border-radius: var(--radius-control);
+    padding: 14px;
+    font-size: 0.875rem;
+    color: var(--verde-mata);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('main-contact-form') as HTMLFormElement | null;
+  const feedback = document.getElementById('form-feedback');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (feedback) {
+      feedback.hidden = false;
+      form.reset();
+    }
+  });
+</script>
