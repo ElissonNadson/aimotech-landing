@@ -1,4 +1,4 @@
-name: Build and Verify Aimotech Landing
+name: Build and Deploy Aimotech Landing
 
 on:
   push:
@@ -7,9 +7,10 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-verify:
     name: Build & Verify
     runs-on: ubuntu-latest
     steps:
@@ -36,3 +37,33 @@ jobs:
           test -f dist/index.html
           test -f index.html
           echo "Static build verified successfully."
+
+  deploy-hostinger:
+    name: Deploy to Hostinger
+    needs: build-and-verify
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Hostinger Webhook (se configurado)
+        if: env.WEBHOOK_URL != ''
+        env:
+          WEBHOOK_URL: ${{ secrets.HOSTINGER_WEBHOOK_URL }}
+        run: |
+          echo "Disparando webhook de deploy da Hostinger..."
+          curl -X POST "$WEBHOOK_URL"
+          echo "Webhook disparado com sucesso."
+
+      - name: Deploy via SSH (se chaves configuradas)
+        if: env.SSH_KEY != ''
+        env:
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          SSH_PORT: ${{ secrets.HOSTINGER_SSH_PORT || '65002' }}
+        run: |
+          echo "Configurando SSH para Hostinger..."
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_hostinger
+          chmod 600 ~/.ssh/id_hostinger
+          ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" -i ~/.ssh/id_hostinger "$SSH_USER@$SSH_HOST" "cd public_html && git pull origin main"
+          echo "Git pull concluído na Hostinger."
